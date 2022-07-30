@@ -44,9 +44,12 @@ Lien Public (view only) : https://miro.com/app/board/uXjVOiLhmgQ=/?share_link_id
 
 ## 3. Wireframes (Whimsical)
 
+lien : https://whimsical.com/wireframe-gdc-KWwzbhLf3vqDFkgJbYpHHQ 
 
 ## 4. Macquettes - Mockup (Figma)
 ## 5. Users stories (Trello)
+
+
 ## 6. Modelisation Bdd (Whimsical)
 
 Lien : https://whimsical.com/bdd-true-UTNDY5Gez9ReXCT2ncjZ2p 
