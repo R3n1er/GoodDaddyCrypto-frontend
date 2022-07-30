@@ -29,3 +29,10 @@ Dans le dossier Ressources il y a les éléments de travail de préparation du p
 1. Carte mentale
 2. Storyboards
 
+
+
+Node Version : 16.15.1
+
+Npm version : 8.11.0 
+
+
