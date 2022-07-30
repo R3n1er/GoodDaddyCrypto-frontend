@@ -32,7 +32,19 @@ Dans le dossier Ressources il y a les éléments de travail de préparation du p
 
 ## 1. Carte mentale intialisation du projet (Xmind)
 ## 2. Storyboards (Miro)
+
+Lien equipe (edit) : https://miro.com/welcomeonboard/Q1hiU29HZm1PeWR1TkhsSnZKZEpib3RHNVdrR2dOVE5nTkVDM0hkSWh1YTFWTkJQc0pzSEltMk1WQnJOYUlPMXwzNDU4NzY0NTI5NTUzMDE3MDQ4?share_link_id=368182774888 
+
+Lien public (view only) : https://miro.com/app/board/uXjVOlFYxT0=/?share_link_id=692704374393 
+## 3. Test utilisateurs (Miro)
+
+Lien Equipe : https://miro.com/welcomeonboard/U0dGMjNTeHc1MElqWFdqaWY5N2ZvMzFLaDlXWU9nUmVuT1pvbjJhRk9kUG9meEp3STJSRlFVM1BrU3RpaTZ5ZHwzNDU4NzY0NTI5NTUzMDE3MDQ4?share_link_id=445134783247 
+
+Lien Public (view only) : https://miro.com/app/board/uXjVOiLhmgQ=/?share_link_id=377687058061 
+
 ## 3. Wireframes (Whimsical)
+
+
 ## 4. Macquettes - Mockup (Figma)
 ## 5. Users stories (Trello)
 ## 6. Modelisation Bdd (Whimsical)
