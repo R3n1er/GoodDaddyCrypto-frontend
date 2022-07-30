@@ -48,8 +48,11 @@ Lien Public (view only) : https://miro.com/app/board/uXjVOiLhmgQ=/?share_link_id
 ## 4. Macquettes - Mockup (Figma)
 ## 5. Users stories (Trello)
 ## 6. Modelisation Bdd (Whimsical)
+
+Lien : https://whimsical.com/bdd-true-UTNDY5Gez9ReXCT2ncjZ2p 
 ## 7. Schematisation des routes backend (Whimsical)
 
+Lien : https://whimsical.com/schemaroutesbackend-gdc-UWxQ53ghCkYkGjjetAQg6h 
 # Lien vers les repository et bdd
 
 * FrontEnd : C'est ce repository https://github.com/lechefalban/GoodDaddyCrypto-frontend  
