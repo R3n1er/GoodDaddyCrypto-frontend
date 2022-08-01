@@ -12,7 +12,7 @@ import  DashBoardScreen  from './screens/DashBoardScreen';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -52,6 +52,7 @@ const BottomNavigator = () => {
   <Tab.Screen name='GuidesScreen' component={GuidesScreen} />
   <Tab.Screen name='TransactionsScreen' component={TransactionsScreen} />
     </Tab.Navigator>
+
   )
 }
 
