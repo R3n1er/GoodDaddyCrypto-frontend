@@ -33,13 +33,13 @@ const BottomNavigator = () => {
           let iconName;
           // Routes des éléments du menu
           if (route.name == "StrategiesScreen") {
-            iconName = "fa-solid fa-presentation-screen";
+            iconName = "clipboard-check";
           } else if (route.name == "DashboardScreen") {
             iconName = "bitcoin";
           } else if (route.name == "GuidesScreen") {
-            iconName = "webpage";
+            iconName = "newspaper";
           } else if (route.name == "TransactionsScreen") {
-            iconName = "fa-square-plus";
+            iconName = "plus-circle";
           }
           //Fonction de retour des icones de menu
           return <FontAwesomeIcon icon={iconName} size={25} color={color} />;
