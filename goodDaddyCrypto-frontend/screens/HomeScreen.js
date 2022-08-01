@@ -6,7 +6,8 @@ import { StyleSheet, View, Text } from 'react-native';
 
 // Import de React Native Elements
 
-import { Icon } from "@rneui/base";
+
+// import { Icon } from "@rneui/base";
 
 // Import de la navigation
 
@@ -16,18 +17,23 @@ import { createStackNavigator } from "@react-navigation/stack";
 // Import du CSS correspondant à ui-neumorphism
 import 'ui-neumorphism/dist/index.css';
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
 
     return(
         // View est équivalent à div
-        <View> 
+        <View style={{ flex:1, alignItems:'center', justifyContent: 'center'}}> 
             <Text>HOME</Text>
-            <Button>GO !</Button>
+            <Button
+            title="GO !"
+            onPress={() => navigation.navigate('LoginScren')}
+            />
         </View>
 
     );
 
 }
+
+
 
 const styles = StyleSheet.create({
     container: {
