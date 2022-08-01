@@ -5,9 +5,12 @@ import { FontAwesome, Icon } from '@rneui/themed';
 
 // Imports des screens
 import  HomeScreen  from './screens/HomeScreen';
-import  RegisterScreen  from './screens/RegisterScreen';
-import  LoginScreen  from './screens/LoginScreen';
-import  DashBoardScreen  from './screens/DashBoardScreen';
+
+import  DashboardScreen  from './screens/DashBoardScreen';
+import GuidesScreen from './screens/GuidesScreen';
+import StrategieScreen from './screens/StrategieScreen';
+import TransactionsScreen from './screens/TransactionsScreen';
+
 
 //Imports de la navigation
 import { NavigationContainer } from '@react-navigation/native';
@@ -55,6 +58,8 @@ const BottomNavigator = () => {
     </Tab.Navigator>
   );
 }
+
+// on peut créer une page dans stratégie avec une fonction stratégie
 
 // Début return fonction App
 export default function App() {
