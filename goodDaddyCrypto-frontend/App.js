@@ -34,10 +34,11 @@ const BottomNavigator = () => {
       }
     }}
 >
-  <Tab.Screen name='RegisterScren' component={RegisterScreen} />
-  <Tab.Screen name
+  <Tab.Screen name='RegisterScreen' component={RegisterScreen} />
+  <Tab.Screen name='LoginScreen' component={LoginScreen} />
+  <Tab.Screen name='DashBoardScreen' component={DashBoardScreen} />
+    </Tab.Navigator>
   )
-
 }
 
 export default function App() {
