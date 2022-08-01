@@ -7,7 +7,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-const Stack = createStackNavigator();
+
+
+
+
+
+const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const BottomNavigator = () => {
@@ -48,13 +53,14 @@ const BottomNavigator = () => {
 
 export default function App() {
 
-  return(
+  return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
       </Stack.Navigator>
     </NavigationContainer>
-);
+  );
 
 }
 
