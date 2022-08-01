@@ -1,8 +1,8 @@
 import React from 'react';
 // Import de librairie ui-neumorphism
-import { Button } from 'ui-neumorphism';
 
-import { StyleSheet, View, Text } from 'react-native';
+
+import { StyleSheet, View, Text, Button } from 'react-native';
 
 // Import de React Native Elements
 
@@ -15,7 +15,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 // Import du CSS correspondant à ui-neumorphism
-import 'ui-neumorphism/dist/index.css';
+
 
 export default function HomeScreen({ navigation }) {
 
@@ -25,7 +25,7 @@ export default function HomeScreen({ navigation }) {
             <Text>HOME</Text>
             <Button
             title="GO !"
-            onPress={() => navigation.navigate('LoginScren')}
+            onPress={() => navigation.navigate('BottomNavigator')}
             />
         </View>
 
