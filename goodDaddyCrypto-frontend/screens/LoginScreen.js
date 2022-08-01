@@ -1,16 +1,23 @@
-import React from 'react';
+import React from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  SafeAreaView,
+  TextInput,
+  Button,
+} from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { StyleSheet, View, Text, SafeAreaView, TextInput, Button } from 'react-native';
-  
 
 
 export default function LoginScreen() {
+  const [text, onChangeText] = React.useState("Useless Text");
+  const [number, onChangeNumber] = React.useState(null);
 
-    const [text, onChangeText] = React.useState("Useless Text");
-    const [number, onChangeNumber] = React.useState(null);
-
-    return (
-<SafeAreaView style={styles.container}>
+  return (
+    <SafeAreaView style={styles.container}>
       <TextInput
         style={styles.input}
         onChangeText={onChangeText}
@@ -23,10 +30,9 @@ export default function LoginScreen() {
         placeholder="useless placeholder"
         keyboardType="numeric"
       />
-      <Button>SIGN IN</Button>
+      <Button title="SIGN-IN" onPress={() => navigation.navigate('Dashboard')} />
     </SafeAreaView>
-    );
-
+  );
 }
 
 // Style CSS 🎨
@@ -37,6 +43,16 @@ const styles = StyleSheet.create({
     color: "white",
     alignItems: "center",
     justifyContent: "center",
+  },
+  textTitle: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 50,
+  },
+
+  text: {
+    color: "white",
+    fontSize: "20",
   },
 
   button: {
