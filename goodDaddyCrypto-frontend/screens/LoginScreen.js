@@ -1,12 +1,11 @@
 //blabla
 import React from 'react';
 // Import de librairie ui-neumorphism
-import { Button } from 'ui-neumorphism';
+
 
 import { StyleSheet, View, Text } from 'react-native';
 
 // Import du CSS correspondant à ui-neumorphism
-import 'ui-neumorphism/dist/index.css';
 
 export default function LoginScreen() {
 

@@ -1,7 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { HomeScreen } from './screens/HomeScreen';
+import { FontAwesome, Icon } from '@rneui/themed';
+
+// Imports des screens
+
+import  HomeScreen  from './screens/HomeScreen';
+import  RegisterScreen  from './screens/RegisterScreen';
+import  LoginScreen  from './screens/LoginScreen';
+import  DashBoardScreen  from './screens/DashBoardScreen';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -24,13 +31,17 @@ const BottomNavigator = () => {
         tabBarIcon: ({ color }) => {
           let iconName;
 
-          if(route.name == 'Map') {
-            iconName = 'ios-navigate';
-          } else if (route.name == 'Chat') {
-            iconName = 'ios-chatbubbles';
+          if(route.name == 'Strategie') {
+            iconName = 'presentation';
+          } else if (route.name == 'Dashboard') {
+            iconName = 'bitcoin';
+          } else if (route.name == 'Guides') {
+            iconName = 'webpage';
+          } else if (route.name == 'Transactions') {
+            iconName = 'c-add';
           }
         
-          return <Ionicons name={iconName} size={25} color={color} />
+          return <FontAwesome name={iconName} size={25} color={color} />
       },
     })}
     tabBarOptions={{
@@ -41,9 +52,10 @@ const BottomNavigator = () => {
       }
     }}
 >
-  <Tab.Screen name='RegisterScreen' component={RegisterScreen} />
-  <Tab.Screen name='LoginScreen' component={LoginScreen} />
-  <Tab.Screen name='DashBoardScreen' component={DashBoardScreen} />
+  <Tab.Screen name='StrategieScreen' component={StrategieScreen} />
+  <Tab.Screen name='DashboardScreen' component={DashboardScreen} />
+  <Tab.Screen name='GuidesScreen' component={GuidesScreen} />
+  <Tab.Screen name='TransactionsScreen' component={TransactionsScreen} />
     </Tab.Navigator>
 
   )
