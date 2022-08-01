@@ -5,11 +5,11 @@ import { StyleSheet, View, Text } from "react-native";
 
 // Import du CSS correspondant à ui-neumorphism
 
-export default function DashBoardScreen() {
+export default function TransactionsScreen() {
   return (
     // View est équivalent à div
     <View>
-      <Text>DASHBOARD</Text>
+      <Text>LOGIN</Text>
     </View>
   );
 }

@@ -1,15 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Icon } from 'react-native';
 
-// Import React Native elements
-import { FontAwesome, Icon } from '@rneui/themed';
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+
+
 
 // Imports des screens
-import  HomeScreen  from './screens/HomeScreen';
-
-import  DashboardScreen  from './screens/DashBoardScreen';
+import HomeScreen from './screens/HomeScreen';
+import DashboardScreen from './screens/DashBoardScreen';
 import GuidesScreen from './screens/GuidesScreen';
-import StrategieScreen from './screens/StrategieScreen';
-import TransactionsScreen from './screens/TransactionsScreen';
+import StrategiesScreen from './screens/StrategiesScreen';
+import TransactionsScreen from "./screens/TransactionsScreen";
+import LoginScreen from './screens/LoginScreen';
 
 
 //Imports de la navigation
@@ -28,19 +29,20 @@ const BottomNavigator = () => {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color }) => {
+
           let iconName;
           // Routes des éléments du menu
-          if (route.name == "Strategie") {
-            iconName = "presentation";
-          } else if (route.name == "Dashboard") {
+          if (route.name == "StrategiesScreen") {
+            iconName = "fa-solid fa-presentation-screen";
+          } else if (route.name == "DashboardScreen") {
             iconName = "bitcoin";
-          } else if (route.name == "Guides") {
+          } else if (route.name == "GuidesScreen") {
             iconName = "webpage";
-          } else if (route.name == "Transactions") {
-            iconName = "c-add";
+          } else if (route.name == "TransactionsScreen") {
+            iconName = "fa-square-plus";
           }
           //Fonction de retour des icones de menu
-          return <FontAwesome name={iconName} size={25} color={color} />;
+          return <FontAwesomeIcon icon={iconName} size={25} color={color} />;
         },
       })}
       tabBarOptions={{
@@ -51,10 +53,10 @@ const BottomNavigator = () => {
         },
       }}
     >
-      <Tab.Screen name="StrategieScreen" component={StrategieScreen} />
-      <Tab.Screen name="DashboardScreen" component={DashboardScreen} />
-      <Tab.Screen name="GuidesScreen" component={GuidesScreen} />
-      <Tab.Screen name="TransactionsScreen" component={TransactionsScreen} />
+      <Tab.Screen name="Strategies" component={StrategiesScreen} />
+      <Tab.Screen name="Dashboard" component={DashboardScreen} />
+      <Tab.Screen name="Guides" component={GuidesScreen} />
+      <Tab.Screen name="Transactions" component={TransactionsScreen} />
     </Tab.Navigator>
   );
 }
@@ -68,6 +70,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
+
         <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
       </Stack.Navigator>
     </NavigationContainer>
