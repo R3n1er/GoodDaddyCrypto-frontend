@@ -11,6 +11,7 @@ import GuidesScreen from './screens/GuidesScreen';
 import StrategiesScreen from './screens/StrategiesScreen';
 import TransactionsScreen from "./screens/TransactionsScreen";
 import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen';
 
 
 //Imports de la navigation
@@ -69,8 +70,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} options={{ title:'Page Home' }}/>
+        <Stack.Screen name="Register" component={RegisterScreen} options={{ title:'Register' }}/>
+        <Stack.Screen name="Login" component={LoginScreen} options={{ title:'Login' }}/>
         <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
       </Stack.Navigator>
     </NavigationContainer>

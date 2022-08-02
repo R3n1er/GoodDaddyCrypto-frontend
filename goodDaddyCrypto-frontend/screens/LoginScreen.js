@@ -14,7 +14,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Linking, TouchableOpacity } from "react-native";
 // import { ScrollView } from "react-native-gesture-handler";
 
-export default function LoginScreen() {
+export default function LoginScreen(props) {
   const [text, onChangeText] = React.useState("Useless Text");
   const [number, onChangeNumber] = React.useState(null);
 
@@ -37,7 +37,7 @@ export default function LoginScreen() {
       </TouchableOpacity>
       <Text
         style={{ color: "blue" }}
-        onPress={() => Linking.openURL("RegisterScreen")}
+        onPress={() => props.navigation.navigate('Register')}
       >
         Nouveau compte ? Créer un compte !{" "}
       </Text>
