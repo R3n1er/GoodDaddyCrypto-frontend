@@ -8,7 +8,7 @@ import  HomeScreen  from './screens/HomeScreen';
 
 import  DashboardScreen  from './screens/DashBoardScreen';
 import GuidesScreen from './screens/GuidesScreen';
-import StrategieScreen from './screens/StrategieScreen';
+import StrategiesScreen from './screens/StrategiesScreen';
 import TransactionsScreen from './screens/TransactionsScreen';
 
 
@@ -51,7 +51,7 @@ const BottomNavigator = () => {
         },
       }}
     >
-      <Tab.Screen name="StrategieScreen" component={StrategieScreen} />
+      <Tab.Screen name="StrategiesScreen" component={StrategiesScreen} />
       <Tab.Screen name="DashboardScreen" component={DashboardScreen} />
       <Tab.Screen name="GuidesScreen" component={GuidesScreen} />
       <Tab.Screen name="TransactionsScreen" component={TransactionsScreen} />
@@ -74,13 +74,3 @@ export default function App() {
   );
 
 }
-
-// Styles CSS
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
