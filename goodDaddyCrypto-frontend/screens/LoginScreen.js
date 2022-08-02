@@ -4,40 +4,69 @@ import {
   View,
   Text,
   TextInput,
-  Button,
   ScrollView,
   Image,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+// Import react Native Elements
+import { Button } from "@rneui/base";
+import { Input } from "@rneui/themed";
 
 import { Linking, TouchableOpacity } from "react-native";
 // import { ScrollView } from "react-native-gesture-handler";
 
 export default function LoginScreen(props) {
+    //Initialisation des etats
   const [text, onChangeText] = React.useState("Useless Text");
   const [number, onChangeNumber] = React.useState(null);
 
+  //Initialisation des etats pour le formulaire
+  const [password, setPassword] = React.useState("");
+  const [email, setEmail] = React.useState("");
+
+  // Fonction Submit Sign-In
+
+  const submitSignIn = async () => {
+    var rawResult = await fetch(
+      "https://gooddaddybackend.herokuapp.com/users/sign-in",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `email=${email}&password=${password}`,
+      }
+    );
+     var result = await rawResult.json();
+    console.log(result);
+  };
+  
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Image source={require("../assets/favicon.png")} />
       <Text style={styles.title}>GOOD DADDY CRYPTO</Text>
-      <TextInput
-        placeholder="Username"
-        style={styles.input}
-        onChangeText={() => {}}
+      {/* // Input champs pour le mail */}
+      <Input
+        placeholder="user@mail.com"
+        containerStyle="{{marginBottom: 25, width: '70%'}}"
+        onChangeText={(value) => {setEmail(value); console.log(email)}}
+        value={email}
       />
-      <TextInput
-        placeholder="Mot de passe"
-        style={styles.input}
-        onChangeText={() => {}}
+      {/* Input champs pour le password  */}
+      <Input
+        placeholder="type your password"
+        containerStyle="{{marginBottom: 25, width: '70%'}}"
+        onChangeText={(value) => setPassword(value)}
+        value={password}
       />
+
       <TouchableOpacity onPress={() => {}}>
-        <Text style={styles.button}>SIGN-IN</Text>
+        <Button style={styles.button}
+        onPress={()=>{submitSignIn()}}>SIGN-IN</Button>
       </TouchableOpacity>
+
       <Text
-        style={{ color: "blue" }}
-        onPress={() => props.navigation.navigate('Register')}
+        style={styles.text}
+        onPress={() => props.navigation.navigate("Register")}
       >
         Nouveau compte ? Créer un compte !{" "}
       </Text>
@@ -58,6 +87,13 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: "50",
+  },
+
+  title: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: "60px",
+    marginBottom: "10%",
   },
 
   input: {

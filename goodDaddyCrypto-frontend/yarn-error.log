@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/alban/.nvm/versions/node/v16.16.0/bin/node /opt/homebrew/Cellar/yarn/1.22.19/libexec/bin/yarn.js add react-native-screens@~3.11.1 react-native-safe-area-context@4.2.4
+  /Users/alban/.nvm/versions/node/v16.16.0/bin/node /opt/homebrew/Cellar/yarn/1.22.19/libexec/bin/yarn.js add react-native-responsive-screen
 
 PATH: 
   /Users/alban/.nvm/versions/node/v16.16.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/alban/.fig/bin:/Users/alban/.local/bin
