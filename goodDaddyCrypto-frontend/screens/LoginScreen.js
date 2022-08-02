@@ -3,35 +3,45 @@ import {
   StyleSheet,
   View,
   Text,
-  SafeAreaView,
   TextInput,
   Button,
+  ScrollView,
+  Image,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-
+import { Linking, TouchableOpacity } from "react-native";
+// import { ScrollView } from "react-native-gesture-handler";
 
 export default function LoginScreen() {
   const [text, onChangeText] = React.useState("Useless Text");
   const [number, onChangeNumber] = React.useState(null);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Image source={require("../assets/favicon.png")} />
+      <Text style={styles.title}>GOOD DADDY CRYPTO</Text>
       <TextInput
+        placeholder="Username"
         style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
+        onChangeText={() => {}}
       />
       <TextInput
+        placeholder="Mot de passe"
         style={styles.input}
-        onChangeText={onChangeNumber}
-        value={number}
-        placeholder="useless placeholder"
-        keyboardType="numeric"
+        onChangeText={() => {}}
       />
-      <Button title="SIGN-IN" onPress={() => navigation.navigate('Dashboard')} />
-    </SafeAreaView>
+      <TouchableOpacity onPress={() => {}}>
+        <Text style={styles.button}>SIGN-IN</Text>
+      </TouchableOpacity>
+      <Text
+        style={{ color: "blue" }}
+        onPress={() => Linking.openURL("RegisterScreen")}
+      >
+        Nouveau compte ? Créer un compte !{" "}
+      </Text>
+    </ScrollView>
   );
 }
 
@@ -47,7 +57,12 @@ const styles = StyleSheet.create({
   textTitle: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 50,
+    fontSize: "50",
+  },
+
+  input: {
+    backgroundColor: "white",
+    color: "green",
   },
 
   text: {
@@ -62,6 +77,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 4,
     elevation: 3,
-    backgroundColor: "black",
+    backgroundColor: "#222121",
   },
 });

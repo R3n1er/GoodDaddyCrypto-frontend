@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/alban/.nvm/versions/node/v16.16.0/bin/node /opt/homebrew/Cellar/yarn/1.22.19/libexec/bin/yarn.js add react-native-svg@12.3.0
+  /Users/alban/.nvm/versions/node/v16.16.0/bin/node /opt/homebrew/Cellar/yarn/1.22.19/libexec/bin/yarn.js add react-native-screens@~3.11.1 react-native-safe-area-context@4.2.4
 
 PATH: 
   /Users/alban/.nvm/versions/node/v16.16.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/alban/.fig/bin:/Users/alban/.local/bin
@@ -14,7 +14,7 @@ Platform:
   darwin arm64
 
 Trace: 
-  Error: EACCES: permission denied, unlink '/Users/alban/Developer/Dev/front-good-daddy-crypto/goodDaddyCrypto-frontend/node_modules/.bin/browserslist-lint'
+  Error: EACCES: permission denied, unlink '/Users/alban/Developer/Dev/front-good-daddy-crypto/goodDaddyCrypto-frontend/node_modules/.bin/atob'
 
 npm manifest: 
   {

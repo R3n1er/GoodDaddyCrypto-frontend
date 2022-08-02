@@ -1,6 +1,6 @@
 import React from "react";
 
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, Button } from "react-native";
 
 // Import de la navigation
 
@@ -8,19 +8,17 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 export default function HomeScreen({ navigation }) {
-
-    return (
-      // View est équivalent à div
-      <View style={styles.container}>
-        <Text style={styles.textTitle}>Good Daddy Crypto</Text>
-        <Button
-          title="GO !"
-          styles={styles.button}
-          onPress={() => navigation.navigate("Login")}
-        />
-      </View>
-    );
-
+  return (
+    // View est équivalent à div
+    <View style={styles.container}>
+      <Text style={styles.textTitle}>Good Daddy Crypto</Text>
+      <Button
+        title="GO !"
+        styles={styles.button}
+        onPress={() => navigation.navigate("Login")}
+      />
+    </View>
+  );
 }
 
 // Style CSS 🎨
@@ -40,7 +38,7 @@ const styles = StyleSheet.create({
 
   text: {
     color: "white",
-    fontSize: "20",
+    fontSize: 20,
   },
 
   button: {
@@ -53,4 +51,3 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
   },
 });
-

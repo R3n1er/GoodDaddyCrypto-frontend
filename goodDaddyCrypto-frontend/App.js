@@ -31,7 +31,7 @@ const BottomNavigator = () => {
         tabBarIcon: ({ color }) => {
 
           let iconName;
-          // Routes des éléments du menu
+          // Routes des éléments du menu en correspondance avec les icones FontAwesome
           if (route.name == "StrategiesScreen") {
             iconName = "clipboard-check";
           } else if (route.name == "DashboardScreen") {
@@ -68,10 +68,9 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
-
         <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
       </Stack.Navigator>
     </NavigationContainer>
