@@ -6,42 +6,23 @@ import { StyleSheet, View, Text } from "react-native";
 // Import du CSS correspondant à ui-neumorphism
 
 export default function TransactionsScreen() {
-  return (
-    // View est équivalent à div
-    <View>
-      <Text>LOGIN</Text>
-    </View>
-  );
+
+    return(
+        // View est équivalent à div
+        <View> 
+            <Text>TRANSACTIONS</Text>
+        </View>
+
+    )
+
 }
 
-// Style CSS 🎨
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#222121",
-    color: "white",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  textTitle: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: "50",
-  },
+    container: {
+        flex: 1, 
+        backgroundColor: '#222121',
+        alignItems: 'center',
+        justifyContent: 'center'
 
-  text: {
-    color: "white",
-    fontSize: "20",
-  },
-
-  button: {
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 4,
-    elevation: 3,
-    backgroundColor: "black",
-  },
-});
-
+    }
+})

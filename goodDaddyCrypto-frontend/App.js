@@ -8,6 +8,15 @@ import { createStore, combineReducers } from "redux";
 import token from "./reducers/token";
 
 // Imports des screens
+<<<<<<< HEAD
+import  HomeScreen  from './screens/HomeScreen';
+
+import  DashboardScreen  from './screens/DashBoardScreen';
+import GuidesScreen from './screens/GuidesScreen';
+import StrategiesScreen from './screens/StrategiesScreen';
+import TransactionsScreen from './screens/TransactionsScreen';
+
+=======
 import HomeScreen from "./screens/HomeScreen";
 import DashboardScreen from "./screens/DashBoardScreen";
 import GuidesScreen from "./screens/GuidesScreen";
@@ -15,6 +24,7 @@ import StrategiesScreen from "./screens/StrategiesScreen";
 import TransactionsScreen from "./screens/TransactionsScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+>>>>>>> 9b30c05f3a78f1387305c1b13f2566cc53a22987
 
 //Imports de la navigation
 import { NavigationContainer } from "@react-navigation/native";
@@ -56,10 +66,17 @@ const BottomNavigator = () => {
         },
       }}
     >
+<<<<<<< HEAD
+      <Tab.Screen name="StrategiesScreen" component={StrategiesScreen} />
+      <Tab.Screen name="DashboardScreen" component={DashboardScreen} />
+      <Tab.Screen name="GuidesScreen" component={GuidesScreen} />
+      <Tab.Screen name="TransactionsScreen" component={TransactionsScreen} />
+=======
       <Tab.Screen name="Strategies" component={StrategiesScreen} />
       <Tab.Screen name="Dashboard" component={DashboardScreen} />
       <Tab.Screen name="Guides" component={GuidesScreen} />
       <Tab.Screen name="Transactions" component={TransactionsScreen} />
+>>>>>>> 9b30c05f3a78f1387305c1b13f2566cc53a22987
     </Tab.Navigator>
   );
 };
@@ -96,6 +113,8 @@ export default function App() {
     </Provider>
   );
 }
+<<<<<<< HEAD
+=======
 
 // Styles CSS
 const styles = StyleSheet.create({
@@ -106,3 +125,4 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+>>>>>>> 9b30c05f3a78f1387305c1b13f2566cc53a22987
