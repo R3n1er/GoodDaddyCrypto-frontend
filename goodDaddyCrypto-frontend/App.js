@@ -1,9 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Icon } from "react-native";
 
-// Import React Native elements
-import { FontAwesome, Icon } from '@rneui/themed';
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+
+//import redux pour le story
+import { Provider } from "react-redux";
+import { createStore, combineReducers } from "redux";
+import token from "./reducers/token";
 
 // Imports des screens
+<<<<<<< HEAD
 import  HomeScreen  from './screens/HomeScreen';
 
 import  DashboardScreen  from './screens/DashBoardScreen';
@@ -11,36 +16,46 @@ import GuidesScreen from './screens/GuidesScreen';
 import StrategiesScreen from './screens/StrategiesScreen';
 import TransactionsScreen from './screens/TransactionsScreen';
 
+=======
+import HomeScreen from "./screens/HomeScreen";
+import DashboardScreen from "./screens/DashBoardScreen";
+import GuidesScreen from "./screens/GuidesScreen";
+import StrategiesScreen from "./screens/StrategiesScreen";
+import TransactionsScreen from "./screens/TransactionsScreen";
+import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
+>>>>>>> 9b30c05f3a78f1387305c1b13f2566cc53a22987
 
 //Imports de la navigation
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
+//creation du store
+const store = createStore(combineReducers({ token }));
+
 // Création du composant BottomTabNavigator
 const BottomNavigator = () => {
-
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color }) => {
           let iconName;
-          // Routes des éléments du menu
-          if (route.name == "Strategie") {
-            iconName = "presentation";
-          } else if (route.name == "Dashboard") {
+          // Routes des éléments du menu en correspondance avec les icones FontAwesome
+          if (route.name == "StrategiesScreen") {
+            iconName = "clipboard-check";
+          } else if (route.name == "DashboardScreen") {
             iconName = "bitcoin";
-          } else if (route.name == "Guides") {
-            iconName = "webpage";
-          } else if (route.name == "Transactions") {
-            iconName = "c-add";
+          } else if (route.name == "GuidesScreen") {
+            iconName = "newspaper";
+          } else if (route.name == "TransactionsScreen") {
+            iconName = "plus-circle";
           }
           //Fonction de retour des icones de menu
-          return <FontAwesome name={iconName} size={25} color={color} />;
+          return <FontAwesomeIcon icon={iconName} size={25} color={color} />;
         },
       })}
       tabBarOptions={{
@@ -51,26 +66,63 @@ const BottomNavigator = () => {
         },
       }}
     >
+<<<<<<< HEAD
       <Tab.Screen name="StrategiesScreen" component={StrategiesScreen} />
       <Tab.Screen name="DashboardScreen" component={DashboardScreen} />
       <Tab.Screen name="GuidesScreen" component={GuidesScreen} />
       <Tab.Screen name="TransactionsScreen" component={TransactionsScreen} />
+=======
+      <Tab.Screen name="Strategies" component={StrategiesScreen} />
+      <Tab.Screen name="Dashboard" component={DashboardScreen} />
+      <Tab.Screen name="Guides" component={GuidesScreen} />
+      <Tab.Screen name="Transactions" component={TransactionsScreen} />
+>>>>>>> 9b30c05f3a78f1387305c1b13f2566cc53a22987
     </Tab.Navigator>
   );
-}
+};
 
 // on peut créer une page dans stratégie avec une fonction stratégie
 
 // Début return fonction App
 export default function App() {
-
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Home"
+          screenOptions={{ headerShown: false }}
+        >
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{ title: "Good Daddy Crypto" }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={RegisterScreen}
+            options={{ title: "Register" }}
+          />
+          <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{ title: "Login" }}
+          />
+          <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
-
 }
+<<<<<<< HEAD
+=======
+
+// Styles CSS
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
+>>>>>>> 9b30c05f3a78f1387305c1b13f2566cc53a22987

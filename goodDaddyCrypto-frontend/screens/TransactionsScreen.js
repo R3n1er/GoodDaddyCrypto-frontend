@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 // Import de librairie ui-neumorphism
 
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text } from "react-native";
 
 // Import du CSS correspondant à ui-neumorphism
 
