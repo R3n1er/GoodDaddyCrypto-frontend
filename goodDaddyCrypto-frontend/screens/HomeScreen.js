@@ -8,21 +8,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 export default function HomeScreen({ navigation }) {
-<<<<<<< HEAD
-
-    return(
-        // View est équivalent à div
-        <View style={styles.container}> 
-            <Text>HOME</Text>
-            <Button
-            title="GO !"
-            onPress={() => navigation.navigate('BottomNavigator')}
-            />
-        </View>
-
-    );
-
-=======
   return (
     // View est équivalent à div
     <View style={styles.container}>
@@ -34,7 +19,6 @@ export default function HomeScreen({ navigation }) {
       />
     </View>
   );
->>>>>>> 9b30c05f3a78f1387305c1b13f2566cc53a22987
 }
 
 // Style CSS 🎨
@@ -49,7 +33,7 @@ const styles = StyleSheet.create({
   textTitle: {
     color: "white",
     fontWeight: "bold",
-    fontSize: "50",
+    fontSize: 50,
   },
 
   text: {

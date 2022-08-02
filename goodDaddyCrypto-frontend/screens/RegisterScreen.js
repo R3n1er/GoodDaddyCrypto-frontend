@@ -89,15 +89,39 @@ const styles = StyleSheet.create({
   textTitle: {
     color: "white",
     fontWeight: "bold",
-    fontSize: "50",
+    fontSize: 50,
+  },
+
+  title: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 60,
+    marginBottom: "10%",
   },
 
   input: {
     backgroundColor: "white",
     color: "green",
-    textAlign: "center",
+  },
+
+  text: {
+    color: "white",
+    fontSize: "20",
+  },
+
+  button: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: "#222121",
   },
 });
+
+
+// REDUX
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -108,3 +132,4 @@ function mapDispatchToProps(dispatch) {
    }
    
 export default connect(null, mapDispatchToProps)(LoginScreen);
+
