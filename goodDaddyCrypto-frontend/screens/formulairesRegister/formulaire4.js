@@ -24,9 +24,11 @@ const Formulaire = () => {
         </Text>
         <Separator />
         <Text style={styles.title}>
-          Tu as investis un capital de départ de <span style={{fontWeight: bold}}>1000€</span> sur le
-          Bitcoin ₿. Sur une période d'un mois, le Bitcoin perd <span>45%</span>
-          de sa valeur.<span>Que fais-tu ?</span>
+          Tu as investis un capital de départ de{" "}
+          <span style={{ fontWeight: "bold" }}>1000€</span> sur le Bitcoin ₿.
+          Sur une période d'un mois, le Bitcoin perd{" "}
+          <span style={{ fontWeight: "bold" }}>45%</span>
+          de sa valeur.<span style={{ fontWeight: "bold" }}>Que fais-tu ?</span>
         </Text>
         <Separator />
       </View>
