@@ -1825,9 +1825,8 @@
     "color" "^3.1.3"
     "react-native-iphone-x-helper" "^1.3.0"
 
-"@rneui/base@^4.0.0-rc.6":
-  "integrity" "sha512-vIr+mrmYtSOaqsqwXQ6c1YMQM9aT462VfeiqOu28rsQZRebQffPc3yEolVjEbqYv1ID6ESQAPttzZ1qZSSe0NQ=="
-  "resolved" "https://registry.npmjs.org/@rneui/base/-/base-4.0.0-rc.6.tgz"
+"@rneui/base-edge@github:react-native-elements/react-native-elements#base":
+  "resolved" "git+ssh://git@github.com/react-native-elements/react-native-elements.git#9e64545c38652e7b99fce5313c82f45881c2c7e9"
   "version" "4.0.0-rc.6"
   dependencies:
     "@types/react-native-vector-icons" "^6.4.10"
@@ -1837,10 +1836,23 @@
     "react-native-ratings" "^8.1.0"
     "react-native-size-matters" "^0.4.0"
 
-"@rneui/themed@^4.0.0-rc.6":
-  "integrity" "sha512-iyH+KqbP8wzmrWgnyVtB3uIELZn0kZ8MIvTQ5atxLowO+vqSYSwmuhR2/MQQmpIwnOTMAlGql7Asq2o74Rs6jQ=="
-  "resolved" "https://registry.npmjs.org/@rneui/themed/-/themed-4.0.0-rc.6.tgz"
+"@rneui/base@^0.0.0-edge.2":
+  "integrity" "sha512-MFyiK0Kz23v5mwOUotZdD8cudREa0t9lFwb2+6MyyG1SN2I8CUyqqsZBBwUMInXbspeOtJGtWOPv61TM/2esFQ=="
+  "resolved" "https://registry.npmjs.org/@rneui/base/-/base-0.0.0-edge.2.tgz"
+  "version" "0.0.0-edge.2"
+  dependencies:
+    "@rneui/base-edge" "github:react-native-elements/react-native-elements#base"
+
+"@rneui/themed-edge@github:react-native-elements/react-native-elements#themed":
+  "resolved" "git+ssh://git@github.com/react-native-elements/react-native-elements.git#732877ca712ea3699af50ec6b36f85391f7a1572"
   "version" "4.0.0-rc.6"
+
+"@rneui/themed@^0.0.0-edge.2":
+  "integrity" "sha512-MnsZarge+2V1//ov9jCAxkKzjS5RejZf/eRpE9tVOmvDZeEO1Q/9LIV00ZJxEHnjJHpozs5UvBkwb8KAwFL/0Q=="
+  "resolved" "https://registry.npmjs.org/@rneui/themed/-/themed-0.0.0-edge.2.tgz"
+  "version" "0.0.0-edge.2"
+  dependencies:
+    "@rneui/themed-edge" "github:react-native-elements/react-native-elements#themed"
 
 "@segment/loosely-validate-event@^2.0.0":
   "integrity" "sha512-ZMCSfztDBqwotkl848ODgVcAmN4OItEWDCkshcKz0/W6gGSQayuuCtWV/MlodFivAZD793d6UgANd6wCXUfrIw=="
@@ -1930,9 +1942,9 @@
     "@types/react-native" "*"
 
 "@types/react-native@*":
-  "integrity" "sha512-K6ebyJYZiMZ0JsIfnX5/RbPxYuGt9ajH0kQk6An7upp9vrnU1T9Xg1cIWhnfYojAhqNxEo3okIcH0lR8+qzrmg=="
-  "resolved" "https://registry.npmjs.org/@types/react-native/-/react-native-0.69.4.tgz"
-  "version" "0.69.4"
+  "integrity" "sha512-mSUCuGUsW2kJlZiu4GmdYVDKZX/52iyC9rm6dxAmflJj1b7kSO/CMSDy5WbcfS8QerxTqbYGTrIwHD0GnXHzbQ=="
+  "resolved" "https://registry.npmjs.org/@types/react-native/-/react-native-0.69.5.tgz"
+  "version" "0.69.5"
   dependencies:
     "@types/react" "*"
 

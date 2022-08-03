@@ -98,7 +98,7 @@ export default function App() {
   );
 }
 
-// Styles CSS
+// Styles CSS🎨
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -107,3 +107,4 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+

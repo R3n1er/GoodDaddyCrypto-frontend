@@ -1,5 +1,7 @@
 // PAGE 222222222
 
+// PAGE FORMULAIRE 1
+
 import React from 'react';
 import {StyleSheet, Text, View, Button, Alert, SafeAreaView, TouchableOpacity} from 'react-native';
 
@@ -19,39 +21,28 @@ const Formulaire = () => {
                 </Text>
                 <Separator />
                 <Text style={styles.title}>
-                    Quel est ton niveau en connaissances Crypto ?
+                    Es-tu prêt à accepter des pertes de ton investissement initial ?
                 </Text>
                 <Separator />
             </View>
             <View>
                 <TouchableOpacity>
                 <Text style={styles.answer}>
-                    Option 1 
+                    Je suis OK avec cela
                 </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity>
                 <Text style={styles.answer}>
-                    Option 2 
+                    Pas sure
                 </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity>
                 <Text style={styles.answer}>
-                    Option 3 
+                    Je suis pas à l'aise avec cela
                 </Text>
                 </TouchableOpacity>
-
-                <TouchableOpacity>
-                <Text style={styles.answer}>
-                    Option 4
-                </Text>
-                </TouchableOpacity>
-
-                <Button
-                title="SUIVANT"
-                onPress={() => Alert.alert('testclick')}
-              />
             </View>
         </SafeAreaView>
     );
@@ -89,5 +80,3 @@ const styles = StyleSheet.create({
 });
 
 export default Formulaire;
-
-
