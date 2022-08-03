@@ -16,7 +16,7 @@ import { Button } from "@rneui/base";
 import {connect} from 'react-redux';
 
 // Initialisation des etats pour le formulaire
-function LoginScreen(props) {
+function RegisterScreen(props) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [telephone, setTelephone] = useState(null);
@@ -35,7 +35,7 @@ function LoginScreen(props) {
     );
     var response = await result.json();
     console.log(response);
-    props.addToken(reponse.userToken);
+    props.addToken(response.userToken);
   };
 
   return (
@@ -132,11 +132,11 @@ const styles = StyleSheet.create({
 
 function mapDispatchToProps(dispatch) {
     return {
-      addToken: function() {
+      addToken: function(token) {
           dispatch( {type: 'addToken', token:token} )
       }
     }
    }
    
-export default connect(null, mapDispatchToProps)(LoginScreen);
+export default connect(null, mapDispatchToProps)(RegisterScreen);
 
