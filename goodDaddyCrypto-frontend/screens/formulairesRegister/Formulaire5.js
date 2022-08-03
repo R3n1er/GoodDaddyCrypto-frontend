@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import {StyleSheet, Text, View, Button, Alert, SafeAreaView, TouchableOpacity, TextInput} from 'react-native';
+import {StyleSheet, Text, View, Button, Alert, SafeAreaView, TouchableOpacity, TextInput, Keyboard} from 'react-native';
 import { RadioButton } from 'react-native-paper';
 
 
-// SÉPARATEUR LIGNE
 
 const Separator = () => (
     <View style={styles.separator} />
@@ -18,7 +17,7 @@ const Formulaire = () => {
 
     return(
         <SafeAreaView style={styles.container}>
-        <View>
+        <TouchableOpacity activeOpacity={1} onPress={()=>Keyboard.dismiss()} style={styles.container}>
 
 
 
@@ -30,13 +29,17 @@ const Formulaire = () => {
                 <Text style={styles.title}>
                     QUEL EST TON SALAIRE NET ?
                 </Text>
+                <View style={{flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
                     <TextInput
                       style={styles.input}
                       onChangeText={onChangeNumber}
                       value={number}
                       placeholder="SALAIRE"
                       keyboardType="numeric"
+                      
                     />
+                    <Text>€</Text>
+                </View>
                 <Separator />
                 <Text style={styles.title}>
                     AVEZ-VOUS DES REVENUS COMPLÉMENTAIRES ?
@@ -50,7 +53,7 @@ const Formulaire = () => {
                     />
                 <Separator />
             </View>
-        </View>
+        </TouchableOpacity>
         </SafeAreaView>
     );
 };
@@ -68,6 +71,7 @@ const styles = StyleSheet.create({
       textAlign: 'center',
     },
       input: {
+        width:'80%',
       height: 40,
       margin: 12,
       borderWidth: 1,
