@@ -23,7 +23,7 @@ function LoginScreen(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Declaration de la fonction Submit Register
+// Declaration de la fonction Submit Register
   var submitRegister = async function () {
     var result = await fetch(
       "https://gooddaddybackend.herokuapp.com/users/register",
@@ -37,7 +37,7 @@ function LoginScreen(props) {
     console.log(response);
     props.addToken(reponse.userToken);
   };
-
+// Return the JSX
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Image source={require("../assets/favicon.png")} />
@@ -126,8 +126,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#222121",
   },
 });
-
-
 // REDUX
 
 function mapDispatchToProps(dispatch) {
