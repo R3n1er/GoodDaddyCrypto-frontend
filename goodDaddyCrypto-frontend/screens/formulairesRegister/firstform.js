@@ -1,5 +1,3 @@
-// PAGE FORMULAIRE 1
-
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -13,8 +11,6 @@ import {
 import Icon from "react-native-vector-icons/FontAwesome";
 // React Redux
 import { connect } from "react-redux";
-
-// SÉPARATEUR LIGNE
 
 const Separator = () => <View style={styles.separator} />;
 

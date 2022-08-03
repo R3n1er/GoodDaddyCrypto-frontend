@@ -59,10 +59,6 @@ export default function LoginScreen(props) {
       />
 
       <TouchableOpacity onPress={() => {}}>
-<<<<<<< HEAD
-        <Button style={styles.button}
-        onPress={()=>{submitSignIn();props.navigation.navigate("FirstForm")}}>SIGN-IN</Button>
-=======
         <Button
           style={styles.button}
           onPress={() => {
@@ -71,7 +67,6 @@ export default function LoginScreen(props) {
         >
           SIGN-IN
         </Button>
->>>>>>> ed5ce7667e935d55bdcd5ab4250cec2d921a1ca2
       </TouchableOpacity>
 
       <Text

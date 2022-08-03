@@ -1,7 +1,10 @@
 import React from "react";
 
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
+// React Native Elements
+
+import { ThemeProvider, Button, createTheme } from "@rneui/themed";
 // Import de la navigation
 
 import { NavigationContainer } from "@react-navigation/native";
@@ -9,7 +12,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 export default function HomeScreen({ navigation }) {
   return (
-    // View est équivalent à div
     <View style={styles.container}>
       <Text style={styles.textTitle}>Good Daddy Crypto</Text>
       <Button
@@ -40,14 +42,21 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 20,
   },
+});
 
-  button: {
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 4,
-    elevation: 3,
-    backgroundColor: "black",
+// Definition du theme ReactNativeElements avec ThemeProvider
+
+const theme = createTheme({
+  components: {
+    Button: {
+      raised: true,
+      alignItems: "center",
+      justifyContent: "center",
+      paddingVertical: 12,
+      paddingHorizontal: 32,
+      borderRadius: 4,
+      elevation: 3,
+      backgroundColor: "black",
+    },
   },
 });

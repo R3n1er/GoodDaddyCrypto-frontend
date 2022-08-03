@@ -8,7 +8,6 @@ const Separator = () => (
     <View style={styles.separator} />
   );
 
-
 const Formulaire = () => {
 
     const [checked, setChecked] = React.useState('first');
@@ -16,9 +15,6 @@ const Formulaire = () => {
     return(
         <SafeAreaView style={styles.container}>
         <View>
-
-
-
             <View>
                 <Text style={styles.profilRisque}>
                     Détermination de ton profil de risque

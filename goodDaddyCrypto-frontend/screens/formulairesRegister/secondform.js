@@ -1,7 +1,3 @@
-// PAGE 222222222
-
-// PAGE FORMULAIRE 1
-
 import React from "react";
 import {
   StyleSheet,
