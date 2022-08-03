@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   textTitle: {
     color: "white",
     fontWeight: "bold",
-    fontSize: "50",
+    fontSize: 50,
   },
 
   text: {

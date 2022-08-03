@@ -47,7 +47,7 @@ export default function LoginScreen(props) {
       {/* // Input champs pour le mail */}
       <Input
         placeholder="user@mail.com"
-        containerStyle="{{marginBottom: 25, width: '70%'}}"
+        containerStyle="{{marginBottom: 25, width: '70%', }}"
         onChangeText={(value) => {setEmail(value); console.log(email)}}
         value={email}
       />
@@ -86,13 +86,13 @@ const styles = StyleSheet.create({
   textTitle: {
     color: "white",
     fontWeight: "bold",
-    fontSize: "50",
+    fontSize: 50,
   },
-
+  
   title: {
     color: "white",
     fontWeight: "bold",
-    fontSize: "60px",
+    fontSize: 60,
     marginBottom: "10%",
   },
 
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
 
   text: {
     color: "white",
-    fontSize: "20",
+    fontSize: 20,
   },
 
   button: {

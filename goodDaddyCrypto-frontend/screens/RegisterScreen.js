@@ -4,12 +4,18 @@ import {
   View,
   Text,
   TextInput,
-  Button,
   ScrollView,
   Image,
 } from "react-native";
+
+// Import React Native Elements
+import { Input } from "@rneui/themed";
+import { Button } from "@rneui/base";
+
+// React Redux
 import {connect} from 'react-redux';
 
+// Initialisation des etats pour le formulaire
 function LoginScreen(props) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -17,6 +23,7 @@ function LoginScreen(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // Declaration de la fonction Submit Register
   var submitRegister = async function () {
     var result = await fetch(
       "https://gooddaddybackend.herokuapp.com/users/register",
@@ -35,33 +42,33 @@ function LoginScreen(props) {
     <ScrollView contentContainerStyle={styles.container}>
       <Image source={require("../assets/favicon.png")} />
       <Text style={styles.textTitle}>GOOD DADDY CRYPTO</Text>
-      <TextInput
+      <Input
         placeholder="Nom"
-        style={styles.input}
+        containerStyle="{{marginBottom: 25, width: '70%', }}"
         onChangeText={(value) => setLastName(value)}
         value={lastName}
       />
-      <TextInput
+      <Input
         placeholder="Prenom"
-        style={styles.input}
+        containerStyle="{{marginBottom: 25, width: '70%', }}"
         onChangeText={(value) => setFirstName(value)}
         value={firstName}
       />
-      <TextInput
+      <Input
         placeholder="telephone"
-        style={styles.input}
+        containerStyle="{{marginBottom: 25, width: '70%', }}"
         onChangeText={(value) => setTelephone(value)}
         value={telephone}
       />
-      <TextInput
+      <Input
         placeholder="email"
-        style={styles.input}
+        containerStyle="{{marginBottom: 25, width: '70%', }}"
         onChangeText={(value) => setEmail(value)}
         value={email}
       />
-      <TextInput
+      <Input
         placeholder="Mot de passe"
-        style={styles.input}
+        containerStyle="{{marginBottom: 25, width: '70%', }}"
         onChangeText={(value) => setPassword(value)}
         value={password}
       />
@@ -89,15 +96,39 @@ const styles = StyleSheet.create({
   textTitle: {
     color: "white",
     fontWeight: "bold",
-    fontSize: "50",
+    fontSize: 50,
+  },
+
+  title: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 60,
+    marginBottom: "10%",
   },
 
   input: {
     backgroundColor: "white",
     color: "green",
-    textAlign: "center",
+  },
+
+  text: {
+    color: "white",
+    fontSize: "20",
+  },
+
+  button: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: "#222121",
   },
 });
+
+
+// REDUX
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -108,3 +139,4 @@ function mapDispatchToProps(dispatch) {
    }
    
 export default connect(null, mapDispatchToProps)(LoginScreen);
+
