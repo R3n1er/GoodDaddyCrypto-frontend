@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
 import token from "./reducers/token";
+import points from "./reducers/points";
 
 // Imports des screens
 import HomeScreen from "./screens/HomeScreen";
@@ -25,7 +26,7 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 //creation du store
-const store = createStore(combineReducers({ token }));
+const store = createStore(combineReducers({ token, points }));
 
 // Création du composant BottomTabNavigator
 const BottomNavigator = () => {
@@ -97,7 +98,7 @@ export default function App() {
   );
 }
 
-// Styles CSS
+// Styles CSS🎨
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -106,3 +107,4 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+

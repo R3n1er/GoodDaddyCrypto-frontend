@@ -1,4 +1,3 @@
-// PAGE 222222222
 
 // PAGE FORMULAIRE 1
 
@@ -55,7 +54,7 @@ const Formulaire = () => {
 };
 
 
-
+// Styles CSS🎨
 const styles = StyleSheet.create({
     container: {
         flex: 1,
