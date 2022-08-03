@@ -1,4 +1,3 @@
-// PAGE 222222222
 
 import React from 'react';
 import {StyleSheet, Text, View, Button, Alert, SafeAreaView, TouchableOpacity} from 'react-native';
@@ -58,7 +57,7 @@ const Formulaire = () => {
 };
 
 
-
+// Styles CSS🎨
 const styles = StyleSheet.create({
     container: {
         flex: 1,
