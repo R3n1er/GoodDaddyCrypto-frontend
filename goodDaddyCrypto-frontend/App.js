@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
 import token from "./reducers/token";
-import points from "./reducers/points";
+import answers from "./reducers/answers";
 
 // Imports des screens
 import HomeScreen from "./screens/HomeScreen";
@@ -17,6 +17,10 @@ import TransactionsScreen from "./screens/TransactionsScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 
+// Imports des screensdu formulaire
+import FirstForm from "./screens/formulairesRegister/firstform";
+import SecondForm from "./screens/formulairesRegister/secondform";
+import ThirdForm from "./screens/formulairesRegister/thirdform";
 //Imports de la navigation
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -26,7 +30,7 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 //creation du store
-const store = createStore(combineReducers({ token, points }));
+const store = createStore(combineReducers({ token, answers }));
 
 // Création du composant BottomTabNavigator
 const BottomNavigator = () => {
@@ -90,6 +94,21 @@ export default function App() {
             name="Login"
             component={LoginScreen}
             options={{ title: "Login" }}
+          />
+          <Stack.Screen
+            name="FirstForm"
+            component={FirstForm}
+            options={{ title: "Premiere page formulaire" }}
+          />
+          <Stack.Screen
+            name="SecondForm"
+            component={SecondForm}
+            options={{ title: "Deuxieme page formulaire" }}
+          />
+          <Stack.Screen
+            name="ThirdForm"
+            component={ThirdForm}
+            options={{ title: "Troisieme page formulaire" }}
           />
           <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
         </Stack.Navigator>

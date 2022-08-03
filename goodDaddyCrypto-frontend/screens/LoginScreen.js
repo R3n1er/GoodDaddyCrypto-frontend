@@ -7,8 +7,6 @@ import {
   ScrollView,
   Image,
 } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // Import react Native Elements
 import { Button } from "@rneui/base";
 import { Input } from "@rneui/themed";
@@ -17,10 +15,7 @@ import { Linking, TouchableOpacity } from "react-native";
 // import { ScrollView } from "react-native-gesture-handler";
 
 export default function LoginScreen(props) {
-    //Initialisation des etats
-  const [text, onChangeText] = React.useState("Useless Text");
-  const [number, onChangeNumber] = React.useState(null);
-
+  
   //Initialisation des etats pour le formulaire
   const [password, setPassword] = React.useState("");
   const [email, setEmail] = React.useState("");
@@ -61,7 +56,7 @@ export default function LoginScreen(props) {
 
       <TouchableOpacity onPress={() => {}}>
         <Button style={styles.button}
-        onPress={()=>{submitSignIn()}}>SIGN-IN</Button>
+        onPress={()=>{submitSignIn();props.navigation.navigate("FirstForm")}}>SIGN-IN</Button>
       </TouchableOpacity>
 
       <Text
