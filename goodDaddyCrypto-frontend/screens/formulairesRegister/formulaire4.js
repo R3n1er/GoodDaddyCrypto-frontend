@@ -8,12 +8,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-// Import React Native Elements
-import { Input } from "@rneui/themed";
-import { Button } from "@rneui/base";
-import { ScrollView } from "react-native-gesture-handler";
+const Separator = () => (
+    <View style={styles.separator} />
+  );
 
-const Separator = () => <View style={styles.separator} />;
 
 const Formulaire = () => {
   return (
@@ -43,14 +41,62 @@ const Formulaire = () => {
           <Text style={styles.answer}>Option 3</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity>
-          <Text style={styles.answer}>Option 4</Text>
-        </TouchableOpacity>
+            <View>
+                <Text style={styles.profilRisque}>
+                    Détermination de ton profil de risque
+                </Text>
+                <Separator />
+                <Text style={styles.title}>
+                    Tu as investis <span style={{ fontWeight: "bold" }}>1000€</span> pour commencer, puis tous  les mois tu investis <span style={{ fontWeight: "bold" }}>150€.</span> En 1 mois le <span style={{ fontWeight: "bold" }}>Bitcoin</span> chute de 40%. Que fais-tu ?
+                </Text>
+                <Separator />
+            </View>
 
-        <Button title="SUIVANT" onPress={() => Alert.alert("testclick")} />
-      </View>
-    </ScrollView>
-  );
+            <View style={styles.container}>
+              <View style={styles.checkboxContainer}>
+                <RadioButton
+                  value="first"
+                  status={ checked === 'first' ? 'checked' : 'unchecked' }
+                  onPress={() => setChecked('first')}
+                />
+                <Text style={styles.label}><span style={checked === 'first' ? {color:'red'} : {color:'black'}}>TU VENDS TOUT</span></Text>
+              </View>
+            </View>
+            <View style={styles.container}>
+              <View style={styles.checkboxContainer}>
+                <RadioButton
+                  value="second"
+                  status={ checked === 'second' ? 'checked' : 'unchecked' }
+                  onPress={() => setChecked('second')}
+                />
+                <Text style={styles.label}><span style={checked === 'second' ? {color:'red'} : {color:'black'}}>TU VENDS 50% DU CAPITAL</span></Text>
+              </View>
+            </View>
+            <View style={styles.container}>
+              <View style={styles.checkboxContainer}>
+                <RadioButton
+                  value="third"
+                  status={ checked === 'third' ? 'checked' : 'unchecked' }
+                  onPress={() => setChecked('third')}
+                />
+                <Text style={styles.label}><span style={checked === 'third' ? {color:'red'} : {color:'black'}}>TU GARDES TON INVESTISSEMENT</span></Text>
+              </View>
+            </View>
+            <View style={styles.container}>
+              <View style={styles.checkboxContainer}>
+                <RadioButton
+                  value="fourth"
+                  status={ checked === 'fourth' ? 'checked' : 'unchecked' }
+                  onPress={() => setChecked('fourth')}
+                />
+                <Text style={styles.label}><span style={checked === 'fourth' ? {color:'red'} : {color:'black'}}>METTRE EN PAUSE L'INVESTISSEMENT</span></Text>
+              </View>
+            </View>
+            <View>
+            </View> 
+        </View>
+        </SafeAreaView>
+    );
 };
 
 // Styles CSS🎨

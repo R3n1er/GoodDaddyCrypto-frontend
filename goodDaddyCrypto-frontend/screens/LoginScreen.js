@@ -43,7 +43,11 @@ export default function LoginScreen(props) {
       <Input
         placeholder="user@mail.com"
         containerStyle="{{marginBottom: 25, width: '70%', }}"
-        onChangeText={(value) => {setEmail(value); console.log(email)}}
+        keyboardType="email-address"
+        onChangeText={(value) => {
+          setEmail(value);
+          console.log(email);
+        }}
         value={email}
       />
       {/* Input champs pour le password  */}
@@ -55,8 +59,19 @@ export default function LoginScreen(props) {
       />
 
       <TouchableOpacity onPress={() => {}}>
+<<<<<<< HEAD
         <Button style={styles.button}
         onPress={()=>{submitSignIn();props.navigation.navigate("FirstForm")}}>SIGN-IN</Button>
+=======
+        <Button
+          style={styles.button}
+          onPress={() => {
+            submitSignIn();
+          }}
+        >
+          SIGN-IN
+        </Button>
+>>>>>>> ed5ce7667e935d55bdcd5ab4250cec2d921a1ca2
       </TouchableOpacity>
 
       <Text
