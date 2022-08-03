@@ -2,23 +2,6 @@ import React, { useState } from "react";
 import {StyleSheet, Text, View, Button, Alert, SafeAreaView, TouchableOpacity} from 'react-native';
 import { RadioButton } from 'react-native-paper';
 
-/* <Text style={styles.title}>
-          Tu as investis un capital de départ de{" "}
-          <span style={{ fontWeight: "bold" }}>1000€</span> sur le Bitcoin ₿.
-          Sur une période d'un mois, le Bitcoin perd{" "}
-          <span style={{ fontWeight: "bold" }}>45%</span>
-          de sa valeur.<span style={{ fontWeight: "bold" }}>Que fais-tu ?</span>
-        </Text>
-*/
-
-// PAGE 222222222
-
-// PAGE FORMULAIRE 1
-
-
-
-// SÉPARATEUR LIGNE
-
 const Separator = () => (
     <View style={styles.separator} />
   );
@@ -31,8 +14,6 @@ const Formulaire = () => {
     return(
         <SafeAreaView style={styles.container}>
         <View>
-
-
 
             <View>
                 <Text style={styles.profilRisque}>

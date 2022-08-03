@@ -57,12 +57,14 @@ function RegisterScreen(props) {
       <Input
         placeholder="telephone"
         containerStyle="{{marginBottom: 25, width: '70%', }}"
+        keyboardType="numeric"
         onChangeText={(value) => setTelephone(value)}
         value={telephone}
       />
       <Input
         placeholder="email"
         containerStyle="{{marginBottom: 25, width: '70%', }}"
+        keyboardType="email-address"
         onChangeText={(value) => setEmail(value)}
         value={email}
       />
