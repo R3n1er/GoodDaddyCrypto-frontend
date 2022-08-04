@@ -62,9 +62,15 @@ const LoginScreen = (props) => {
       />
 
       <TouchableOpacity onPress={() => {}}>
-        <Button style={styles.button}
-        onPress={()=>{submitSignIn();
-        props.navigation.navigate("FirstForm")}}>SIGN-IN</Button>
+        <Button
+          style={styles.button}
+          onPress={() => {
+            submitSignIn();
+            props.navigation.navigate("FirstForm");
+          }}
+        >
+          SIGN-IN
+        </Button>
       </TouchableOpacity>
 
       <Text

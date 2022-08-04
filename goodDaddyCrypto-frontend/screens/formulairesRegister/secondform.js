@@ -22,6 +22,7 @@ const Separator = () => <View style={styles.separator} />;
 const secondform = (props) => {
   return (
     <SafeAreaView style={styles.container}>
+      {/* // Go back button */}
       <View style={styles.buttonReturn}>
         <TouchableOpacity
           style={{
@@ -48,28 +49,53 @@ const secondform = (props) => {
           <Separator />
         </View>
         <View>
+          {/* Choix 1 */}
           <TouchableOpacity>
-            <Text style={styles.answer}
+            <Text
+              style={styles.answer}
               onPress={() => {
                 props.addAnswer(1, 2);
                 props.navigation.navigate("ThirdForm");
-              }}>Je suis OK avec cela</Text>
+              }}
+            >
+              Je ne suis pas à l'aise avec cela{" "}
+            </Text>
           </TouchableOpacity>
-
+          {/* Choix 2 */}
           <TouchableOpacity>
-            <Text style={styles.answer}
+            <Text
+              style={styles.answer}
               onPress={() => {
                 props.addAnswer(2, 2);
                 props.navigation.navigate("ThirdForm");
-              }}>Pas sure</Text>
+              }}
+            >
+              Pas sure
+            </Text>
           </TouchableOpacity>
-
+          {/* Choix 3 */}
           <TouchableOpacity>
-            <Text style={styles.answer}
+            <Text
+              style={styles.answer}
               onPress={() => {
                 props.addAnswer(3, 2);
                 props.navigation.navigate("ThirdForm");
-              }}>Je suis pas à l'aise avec cela</Text>
+              }}
+            >
+              Je ne voudrais pas perdre plus de la moitié de mon capital
+            </Text>
+          </TouchableOpacity>
+          {/* Choix 4 */}
+          <TouchableOpacity>
+            <Text
+              style={styles.answer}
+              onPress={() => {
+                props.addAnswer(3, 2);
+                props.navigation.navigate("ThirdForm");
+              }}
+            >
+              Je suis ok avec cela !
+            </Text>
           </TouchableOpacity>
         </View>
       </View>

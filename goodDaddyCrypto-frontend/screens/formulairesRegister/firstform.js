@@ -21,6 +21,7 @@ const Separator = () => <View style={styles.separator} />;
 const firstform = (props) => {
   return (
     <SafeAreaView style={styles.container}>
+      {/* // Bouton Go Back */}
       <View style={styles.buttonReturn}>
         <TouchableOpacity
           style={{
