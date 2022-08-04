@@ -1,13 +1,12 @@
-export default function(answersList=[], action){
+export default function(answers=[], action){
     if(action.type == 'addAnswer'){
-        var answersListCopy = [...answersList];
-        if(answersListCopy.length > (action.questionNumber-1))  {
-            answersListCopy.pop();
+        var answersCopy = [...answers];
+        if(answersCopy.length > (action.questionNumber-1))  {
+            answersCopy.pop();
         }
-        answersListCopy.push(action.answer);
-        console.log(answersListCopy)
-        return answersListCopy
+        answersCopy.push(action.answer);
+        return answersCopy
     } else {
-        return answersList
+        return answers
     }
 }

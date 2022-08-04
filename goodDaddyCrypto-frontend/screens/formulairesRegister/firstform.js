@@ -51,7 +51,7 @@ const firstform = (props) => {
             <Text
               onPress={() => {
                 props.addAnswer(1, 1);
-                props.navigation.navigate("SecondForm");
+                props.navigation.navigate("ResultForm");
               }}
               style={styles.answer}
             >

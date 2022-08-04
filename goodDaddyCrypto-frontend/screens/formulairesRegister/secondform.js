@@ -13,7 +13,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { useNavigation } from "@react-navigation/native";
 // React Redux
 import { connect } from "react-redux";
 
@@ -22,7 +21,6 @@ import { connect } from "react-redux";
 const Separator = () => <View style={styles.separator} />;
 
 const secondform = (props) => {
-  const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.buttonReturn}>

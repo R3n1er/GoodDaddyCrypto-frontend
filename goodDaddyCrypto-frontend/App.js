@@ -21,6 +21,7 @@ import RegisterScreen from "./screens/RegisterScreen";
 import FirstForm from "./screens/formulairesRegister/firstform";
 import SecondForm from "./screens/formulairesRegister/secondform";
 import ThirdForm from "./screens/formulairesRegister/thirdform";
+import ResultForm from "./screens/formulairesRegister/resultform";
 //Imports de la navigation
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -109,6 +110,11 @@ export default function App() {
             name="ThirdForm"
             component={ThirdForm}
             options={{ title: "Troisieme page formulaire" }}
+          />
+          <Stack.Screen
+            name="ResultForm"
+            component={ResultForm}
+            options={{ title: "Derniere page formulaire" }}
           />
           <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
         </Stack.Navigator>

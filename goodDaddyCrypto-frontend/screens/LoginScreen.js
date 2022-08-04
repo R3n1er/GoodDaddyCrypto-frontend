@@ -11,10 +11,12 @@ import {
 import { Button } from "@rneui/base";
 import { Input } from "@rneui/themed";
 
+import {connect} from 'react-redux';
 import { Linking, TouchableOpacity } from "react-native";
 // import { ScrollView } from "react-native-gesture-handler";
 
-export default function LoginScreen(props) {
+
+const LoginScreen = (props) => {
   
   //Initialisation des etats pour le formulaire
   const [password, setPassword] = React.useState("");
@@ -33,6 +35,7 @@ export default function LoginScreen(props) {
     );
      var result = await rawResult.json();
     console.log(result);
+    props.addToken(result.userToken);
   };
   
 
@@ -59,19 +62,9 @@ export default function LoginScreen(props) {
       />
 
       <TouchableOpacity onPress={() => {}}>
-<<<<<<< HEAD
         <Button style={styles.button}
-        onPress={()=>{submitSignIn();props.navigation.navigate("FirstForm")}}>SIGN-IN</Button>
-=======
-        <Button
-          style={styles.button}
-          onPress={() => {
-            submitSignIn();
-          }}
-        >
-          SIGN-IN
-        </Button>
->>>>>>> ed5ce7667e935d55bdcd5ab4250cec2d921a1ca2
+        onPress={()=>{submitSignIn();
+        props.navigation.navigate("FirstForm")}}>SIGN-IN</Button>
       </TouchableOpacity>
 
       <Text
@@ -126,3 +119,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#222121",
   },
 });
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addToken: function(token) {
+        dispatch( {type: 'addToken', token:token} )
+    }
+  }
+ }
+ 
+export default connect(null, mapDispatchToProps)(LoginScreen);
+
