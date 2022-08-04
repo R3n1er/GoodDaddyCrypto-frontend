@@ -40,7 +40,23 @@ function RegisterScreen(props) {
 // Return the JSX
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Image source={require("../assets/favicon.png")} />
+      {/* // Button go back */}
+      <View style={styles.buttonReturn}>
+        <TouchableOpacity
+          style={{
+            flexDirection: "row",
+            height: 50,
+            width: 120,
+            alignItems: "center",
+          }}
+          onPress={() => props.navigation.navigate("LoginScreen")}
+        >
+          <Icon name="chevron-left" size={20} />
+          <Text> RETOUR </Text>
+        </TouchableOpacity>
+
+        {/* // Bandeau titre */}
+      </View>
       <Text style={styles.textTitle}>GOOD DADDY CRYPTO</Text>
       <Input
         placeholder="Nom"
@@ -117,7 +133,10 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: "20",
   },
-
+  buttonReturn: {
+    flex: 2,
+    justifyContent: "center",
+  },
   button: {
     alignItems: "center",
     justifyContent: "center",
