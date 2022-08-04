@@ -10,13 +10,16 @@ import {
 // Import Icon FontAwesome
 import Icon from "react-native-vector-icons/FontAwesome";
 
-import ProgressBar from '../../Components/ProgressBar';
+// React Redux
+import { connect } from "react-redux";
 
-const Separator = () => (
-    <View style={styles.separator} />
-  );
+// Import ProgressBar Component
+import ProgressBar from "../../Components/ProgressBar";
 
-const Formulaire = (props) => {
+// SÉPARATEUR LIGNE
+const Separator = () => <View style={styles.separator} />;
+
+const fourthform = (props) => {
   return (
     <SafeAreaView style={styles.container}>
       {/* // Bouton Go Back */}
@@ -34,7 +37,7 @@ const Formulaire = (props) => {
           <Text> RETOUR </Text>
         </TouchableOpacity>
       </View>
-
+      {/* // End of GoBack Button */}
       <View>
         <Text style={styles.profilRisque}>
           Détermination de ton profil de risque
@@ -46,110 +49,11 @@ const Formulaire = (props) => {
         </Text>
         <Separator />
       </View>
-      <View>
-        <TouchableOpacity>
-          <Text style={styles.answer}>Option 1</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity>
-          <Text style={styles.answer}>Option 2</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity>
-          <Text style={styles.answer}>Option 3</Text>
-        </TouchableOpacity>
-
-        <View>
-          <Text style={styles.profilRisque}>
-            Détermination de ton profil de risque
-          </Text>
-          <Separator />
-          <Text style={styles.title}>
-            Tu as investis 1000€ pour commencer, puis tous les mois tu investis
-            150€. En 1 mois le Bitcoin chute de 40%. Que fais-tu ?
-          </Text>
-          <Separator />
-        </View>
-
-        <View style={styles.container}>
-          <View style={styles.checkboxContainer}>
-            <RadioButton
-              value="first"
-              status={checked === "first" ? "checked" : "unchecked"}
-              onPress={() => setChecked("first")}
-            />
-            <Text style={styles.label}>
-              <span
-                style={
-                  checked === "first" ? { color: "red" } : { color: "black" }
-                }
-              >
-                TU VENDS TOUT
-              </span>
-            </Text>
-          </View>
-        </View>
-        <View style={styles.container}>
-          <View style={styles.checkboxContainer}>
-            <RadioButton
-              value="second"
-              status={checked === "second" ? "checked" : "unchecked"}
-              onPress={() => setChecked("second")}
-            />
-            <Text style={styles.label}>
-              <span
-                style={
-                  checked === "second" ? { color: "red" } : { color: "black" }
-                }
-              >
-                TU VENDS 50% DU CAPITAL
-              </span>
-            </Text>
-          </View>
-        </View>
-        <View style={styles.container}>
-          <View style={styles.checkboxContainer}>
-            <RadioButton
-              value="third"
-              status={checked === "third" ? "checked" : "unchecked"}
-              onPress={() => setChecked("third")}
-            />
-            <Text style={styles.label}>
-              <span
-                style={
-                  checked === "third" ? { color: "red" } : { color: "black" }
-                }
-              >
-                TU GARDES TON INVESTISSEMENT
-              </span>
-            </Text>
-          </View>
-        </View>
-        <View style={styles.container}>
-          <View style={styles.checkboxContainer}>
-            <RadioButton
-              value="fourth"
-              status={checked === "fourth" ? "checked" : "unchecked"}
-              onPress={() => setChecked("fourth")}
-            />
-            <Text style={styles.label}>
-              <span
-                style={
-                  checked === "fourth" ? { color: "red" } : { color: "black" }
-                }
-              >
-                METTRE EN PAUSE L'INVESTISSEMENT
-              </span>
-            </Text>
-          </View>
-        </View>
-        <View></View>
-      </View>
-      <Text> { <ProgressBar></ProgressBar> } </Text>
+{/* // Ajout du composant Progress Bar */}
+      <ProgressBar></ProgressBar>
     </SafeAreaView>
   );
 };
-
 // Styles CSS🎨
 const styles = StyleSheet.create({
   container: {
@@ -178,6 +82,26 @@ const styles = StyleSheet.create({
     borderBottomColor: "#737373",
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
+  buttonReturn: {
+    flex: 2,
+    justifyContent: "center",
+  },
+  page: {
+    flex: 4,
+  },
 });
 
-export default Formulaire;
+// Fonction dispatch to Store
+function mapDispatchToProps(dispatch) {
+  return {
+    addAnswer: function (answer, questionNumber) {
+      dispatch({
+        type: "addAnswer",
+        answer: answer,
+        questionNumber: questionNumber,
+      });
+    },
+  };
+}
+export default connect(null, mapDispatchToProps)(fourthform);
+

@@ -88,6 +88,7 @@ function RegisterScreen(props) {
       <Input
         placeholder="Mot de passe"
         containerStyle="{{marginBottom: 25, width: '70%', }}"
+        secureTextEntry={true}
         onChangeText={(value) => setPassword(value)}
         value={password}
       />

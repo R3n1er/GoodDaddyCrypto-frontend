@@ -7,9 +7,11 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
-
+// Import ProgressBar Component
 import ProgressBar from "../../Components/ProgressBar";
 
+// React Redux
+import { connect } from "react-redux";
 
 // Import React Native Elements
 import { CheckBox, Button } from "@rneui/themed";
@@ -17,7 +19,7 @@ import { ScrollView } from "react-native-gesture-handler";
 
 const Separator = () => <View style={styles.separator} />;
 
-const Formulaire = (props) => {
+const thirdform = (props) => {
   // Initialisation des etats des checkboxs
   const [check1, setCheck1] = useState(false);
   const [check2, setCheck2] = useState(false);
@@ -46,185 +48,80 @@ const Formulaire = (props) => {
       </View>
 
       <View>
+        <Text style={styles.profilRisque}>
+          Détermination de ton profil de risque
+        </Text>
+        <Separator />
+        <Text style={styles.title}>
+          Pour un investissement intial de 1000 €, quelle perte maximale peux-tu
+          accepter ?
+        </Text>
+        <Separator />
+      </View>
+      {/* // Début du choix des checkBox et application de Flexbox*/}
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "center",
+          textAlign: "center",
+        }}
+      >
+        {/* Debut liste de choix  */}
         <View>
-          <Text style={styles.profilRisque}>
-            Détermination de ton profil de risque
-          </Text>
-          <Separator />
-          <Text style={styles.title}>
-            Pour un investissement intial de 1000 €, quelle perte maximale
-            peux-tu accepter ?
-          </Text>
-          <Separator />
-        </View>
-        {/* // Début du choix des checkBox et application de Flexbox*/}
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "center",
-            textAlign: "center",
-          }}
-        >
-          {/* // VIEW CheckBox de Gauche */}
-          <View>
-            {/* // Choix1 */}
-            <CheckBox
-              center
-              title="100 €"
-              checkedIcon="dot-circle-o"
-              uncheckedIcon="circle-o"
-              checked={check1}
-              onPress={() => setCheck1(!check1)}
-            />
-            {/* //Choix 2 */}
-            <CheckBox
-              center
-              title="200 €"
-              checkedTitle="OK MAFIA"
-              checkedIcon="dot-circle-o"
-              uncheckedIcon="circle-o"
-              checked={check2}
-              onPress={() => setCheck2(!check2)}
-            />
-            {/* //Choix 3 */}
-            <CheckBox
-              center
-              title="300 €"
-              checkedIcon="dot-circle-o"
-              uncheckedIcon="circle-o"
-              checked={check3}
-              onPress={() => setCheck3(!check3)}
-            />
-          </View>
-          {/* // View pour les checkboxs à droite */}
-          <View>
-            {/* // Choix4 */}
-            <CheckBox
-              center
-              title="400 €"
-              checkedIcon="dot-circle-o"
-              uncheckedIcon="circle-o"
-              checked={check4}
-              onPress={() => setCheck4(!check4)}
-            />
-            {/* // Choix5 */}
-            <CheckBox
-              center
-              title="500 €"
-              checkedIcon="dot-circle-o"
-              uncheckedIcon="circle-o"
-              checked={check5}
-              onPress={() => setCheck5(!check5)}
-            />
-            {/* // Choix6 */}
-            <CheckBox
-              center
-              title="600 €"
-              checkedIcon="dot-circle-o"
-              uncheckedIcon="circle-o"
-              checked={check6}
-              onPress={() => setCheck6(!check6)}
-            />
-          </View>
+          {/* Choix 1 */}
+          <TouchableOpacity>
+            <Text
+              style={styles.answer}
+              onPress={() => {
+                props.addAnswer(1, 2);
+                props.navigation.navigate("FourthForm");
+              }}
+            >
+              100€
+            </Text>
+          </TouchableOpacity>
+          {/* Choix 2 */}
+          <TouchableOpacity>
+            <Text
+              style={styles.answer}
+              onPress={() => {
+                props.addAnswer(2, 2);
+                props.navigation.navigate("FourthForm");
+              }}
+            >
+              200€{" "}
+            </Text>
+          </TouchableOpacity>
+          {/* Choix 3 */}
+          <TouchableOpacity>
+            <Text
+              style={styles.answer}
+              onPress={() => {
+                props.addAnswer(3, 2);
+                props.navigation.navigate("FourthForm");
+              }}
+            >
+              300€{" "}
+            </Text>
+          </TouchableOpacity>
+          {/* Choix 4 */}
+          <TouchableOpacity>
+            <Text
+              style={styles.answer}
+              onPress={() => {
+                props.addAnswer(3, 2);
+                props.navigation.navigate("FourthForm");
+              }}
+            >
+              400€{" "}
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
-      {/* // Button suivant */}
-      <View>
-        <TouchableOpacity onPress={() => {}}>
-          <Button
-            style={styles.button}
-            tittle="SUIVANT"
-            onPress={() => {
-              props.navigation.navigate("FourthForm");
-            }}
-          />
-        </TouchableOpacity>
-      </View>
+
       {<ProgressBar></ProgressBar>}
     </SafeAreaView>
   );
-  // ************* OLD CODE***************
-  // const [checked, setChecked] = React.useState('first');
-
-  // return (
-  //   <SafeAreaView style={styles.container}>
-  //     <View>
-  //       <View>
-  //         <Text style={styles.profilRisque}>
-  //           Détermination de ton profil de risque
-  //         </Text>
-  //         <Separator />
-  //         <Text style={styles.title}>
-  //           Pour un investissement intial de 1000 €, quel perte maximale
-  //           peux-tu accepter ?
-  //         </Text>
-  //         <Separator />
-  //       </View>
-  //       {/* // Début des choix en checkbox */}
-  //       <View style={styles.container}>
-  //         <View style={styles.checkboxContainer}>
-  //           <CheckBox
-  //             value="first"
-  //             status={checked === "first" ? "checked" : "unchecked"}
-  //             onPress={() => setChecked("first")}
-  //           />
-  //           <Text style={styles.label}>100 €</Text>
-  //         </View>
-  //       </View>
-  //       <View style={styles.container}>
-  //         <View style={styles.checkboxContainer}>
-  //           <RadioButton
-  //             value="second"
-  //             status={checked === "second" ? "checked" : "unchecked"}
-  //             onPress={() => setChecked("second")}
-  //           />
-  //           <Text style={styles.label}>200 €</Text>
-  //         </View>
-  //       </View>
-  //       <View style={styles.container}>
-  //         <View style={styles.checkboxContainer}>
-  //           <RadioButton
-  //             value="third"
-  //             status={checked === "third" ? "checked" : "unchecked"}
-  //             onPress={() => setChecked("third")}
-  //           />
-  //           <Text style={styles.label}>300 €</Text>
-  //         </View>
-  //       </View>
-  //       <View style={styles.container}>
-  //         <View style={styles.checkboxContainer}>
-  //           <RadioButton
-  //             value="fourth"
-  //             status={checked === "fourth" ? "checked" : "unchecked"}
-  //             onPress={() => setChecked("fourth")}
-  //           />
-  //           <Text style={styles.label}>400 €</Text>
-  //         </View>
-  //       </View>
-  //       <View style={styles.container}>
-  //         <View style={styles.checkboxContainer}>
-  //           <RadioButton
-  //             value="fifth"
-  //             status={checked === "fifth" ? "checked" : "unchecked"}
-  //             onPress={() => setChecked("fifth")}
-  //           />
-  //           <Text style={styles.label}>500 €</Text>
-  //         </View>
-  //       </View>
-  //       <View style={styles.container}>
-  //         <View style={styles.checkboxContainer}>
-  //           <RadioButton
-  //             value="sixth"
-  //             status={checked === "sixth" ? "checked" : "unchecked"}
-  //             onPress={() => setChecked("sixth")}
-  //           />
-  //           <Text style={styles.label}>600 €</Text>
-  //         </View>
-  //       </View>
-  //       <View></View>
-  //     </View>
-  //   </SafeAreaView>
-  // );
 };
 
 // Styles CSS 🖼
@@ -243,6 +140,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginVertical: 8,
   },
+  answer: {
+    textAlign: "center",
+    marginVertical: 8,
+    fontSize: 16,
+    backgroundColor: "yellow",
+    borderRadius: 12,
+  },
   checkboxContainer: {
     flexDirection: "row",
     marginBottom: 20,
@@ -260,4 +164,17 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Formulaire;
+// Fonction dispatch to Store
+function mapDispatchToProps(dispatch) {
+  return {
+    addAnswer: function (answer, questionNumber) {
+      dispatch({
+        type: "addAnswer",
+        answer: answer,
+        questionNumber: questionNumber,
+      });
+    },
+  };
+}
+
+export default connect(null, mapDispatchToProps)(thirdform);
