@@ -8,6 +8,9 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
+import ProgressBar from "../../Components/ProgressBar";
+
+
 // Import React Native Elements
 import { CheckBox, Button } from "@rneui/themed";
 import { ScrollView } from "react-native-gesture-handler";
@@ -137,6 +140,7 @@ const Formulaire = (props) => {
           />
         </TouchableOpacity>
       </View>
+      {<ProgressBar></ProgressBar>}
     </SafeAreaView>
   );
   // ************* OLD CODE***************
