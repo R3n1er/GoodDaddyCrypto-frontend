@@ -1,5 +1,3 @@
-// PAGE FORMULAIRE 1
-
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -9,14 +7,31 @@ import {
   Alert,
   SafeAreaView,
   TouchableOpacity,
+  Animated,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import Constants from 'expo-constants';
 // React Redux
 import { connect } from "react-redux";
 
-// SÉPARATEUR LIGNE
+import ProgressBarre from '../Components/ProgressBar';
 
 const Separator = () => <View style={styles.separator} />;
+
+const progressBarre = () => {
+  return (
+    <View style={styles.boxBarre}>
+   <Text>
+     Loading.....
+   </Text>
+   <View style={styles.progressBar}>
+     <Animated.View style={[StyleSheet.absoluteFill,{backgroundColor: "grey", width: '10%'}]}/>
+   </View>
+   <Text>10%</Text> 
+ </View>
+ 
+  );
+}
 
 const firstform = (props) => {
   return (
@@ -96,6 +111,7 @@ const firstform = (props) => {
           </TouchableOpacity>
         </View>
       </View>
+      <View> { ProgressBarre } </View>
     </SafeAreaView>
   );
 };
@@ -106,6 +122,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     marginHorizontal: 16,
+  },
+  boxBarre: {
+    flex: 1,
+    flexDirection: "column", //column direction
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#ecf0f1',
+    padding: 8,
   },
   profilRisque: {
     fontSize: 28,
@@ -149,4 +174,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(firstform);
+export default connect(null, mapDispatchToProps)(firstform)(progressBarre);

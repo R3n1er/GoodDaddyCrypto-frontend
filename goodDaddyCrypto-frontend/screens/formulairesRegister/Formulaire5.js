@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import {StyleSheet, Text, View, Button, Alert, SafeAreaView, TouchableOpacity, TextInput, Keyboard} from 'react-native';
 
+import ProgressBarre from '../Components/ProgressBar';
+
 
 
 const Separator = () => (
@@ -53,6 +55,7 @@ const Formulaire = () => {
                 <Separator />
             </View>
         </TouchableOpacity>
+        <View> { ProgressBarre } </View>
         </SafeAreaView>
     );
 };

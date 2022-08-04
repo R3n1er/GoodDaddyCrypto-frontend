@@ -1,7 +1,3 @@
-// PAGE 222222222
-
-// PAGE FORMULAIRE 1
-
 import React from "react";
 import {
   StyleSheet,
@@ -13,6 +9,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+
+import ProgressBarre from '../Components/ProgressBar';
+
 // React Redux
 import { connect } from "react-redux";
 
@@ -74,6 +73,7 @@ const secondform = (props) => {
           </TouchableOpacity>
         </View>
       </View>
+      <View> { ProgressBarre } </View>
     </SafeAreaView>
   );
 };

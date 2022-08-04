@@ -8,6 +8,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 
+import ProgressBarre from '../Components/ProgressBar';
+
 const Separator = () => (
     <View style={styles.separator} />
   );
@@ -95,7 +97,8 @@ const Formulaire = () => {
             <View>
             </View> 
         </View>
-        </SafeAreaView>
+        <View> { ProgressBarre } </View>
+        </ScrollView>
     );
 };
 
