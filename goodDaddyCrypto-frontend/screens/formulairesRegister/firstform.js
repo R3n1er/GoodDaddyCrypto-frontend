@@ -14,28 +14,31 @@ import Constants from 'expo-constants';
 // React Redux
 import { connect } from "react-redux";
 
-import ProgressBarre from '../Components/ProgressBar';
+// // Import du composant progressBar
+
+// import ProgressBarre from '../Components/ProgressBar';
 
 const Separator = () => <View style={styles.separator} />;
 
-const progressBarre = () => {
-  return (
-    <View style={styles.boxBarre}>
-   <Text>
-     Loading.....
-   </Text>
-   <View style={styles.progressBar}>
-     <Animated.View style={[StyleSheet.absoluteFill,{backgroundColor: "grey", width: '10%'}]}/>
-   </View>
-   <Text>10%</Text> 
- </View>
+// const progressBarre = () => {
+//   return (
+//     <View style={styles.boxBarre}>
+//    <Text>
+//      Loading.....
+//    </Text>
+//    <View style={styles.progressBar}>
+//      <Animated.View style={[StyleSheet.absoluteFill,{backgroundColor: "grey", width: '10%'}]}/>
+//    </View>
+//    <Text>10%</Text> 
+//  </View>
  
-  );
-}
+//   );
+// }
 
 const firstform = (props) => {
   return (
     <SafeAreaView style={styles.container}>
+      {/* // Bouton Go Back */}
       <View style={styles.buttonReturn}>
         <TouchableOpacity
           style={{
@@ -111,7 +114,7 @@ const firstform = (props) => {
           </TouchableOpacity>
         </View>
       </View>
-      <View> { ProgressBarre } </View>
+      {/* <View> {progressBarre} </View> */}
     </SafeAreaView>
   );
 };
@@ -174,4 +177,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(firstform)(progressBarre);
+export default connect(null, mapDispatchToProps)(firstform);

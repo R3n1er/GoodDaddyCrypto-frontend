@@ -63,6 +63,7 @@ export default function LoginScreen(props) {
           style={styles.button}
           onPress={() => {
             submitSignIn();
+            props.navigation.navigate("FirstForm");
           }}
         >
           SIGN-IN

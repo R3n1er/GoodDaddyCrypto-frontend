@@ -6,14 +6,15 @@ import {
   TextInput,
   ScrollView,
   Image,
+  TouchableOpacity,
 } from "react-native";
 
 // Import React Native Elements
 import { Input } from "@rneui/themed";
 import { Button } from "@rneui/base";
-
+import Icon from "react-native-vector-icons/FontAwesome";
 // React Redux
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 
 // Initialisation des etats pour le formulaire
 function RegisterScreen(props) {
@@ -23,8 +24,8 @@ function RegisterScreen(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-// Declaration de la fonction Submit Register
-  var submitRegister = async function () {
+  // Declaration de la fonction Submit Register
+  var submitRegister = async function (props) {
     var result = await fetch(
       "https://gooddaddybackend.herokuapp.com/users/register",
       {
@@ -37,7 +38,7 @@ function RegisterScreen(props) {
     console.log(response);
     props.addToken(response.userToken);
   };
-// Return the JSX
+  // Return the JSX
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* // Button go back */}
@@ -49,7 +50,7 @@ function RegisterScreen(props) {
             width: 120,
             alignItems: "center",
           }}
-          onPress={() => props.navigation.navigate("LoginScreen")}
+          onPress={() => console.log(props.navigation.navigate("Login"))}
         >
           <Icon name="chevron-left" size={20} />
           <Text> RETOUR </Text>
@@ -150,12 +151,11 @@ const styles = StyleSheet.create({
 // REDUX
 
 function mapDispatchToProps(dispatch) {
-    return {
-      addToken: function(token) {
-          dispatch( {type: 'addToken', token:token} )
-      }
-    }
-   }
-   
-export default connect(null, mapDispatchToProps)(RegisterScreen);
+  return {
+    addToken: function (token) {
+      dispatch({ type: "addToken", token: token });
+    },
+  };
+}
 
+export default connect(null, mapDispatchToProps)(RegisterScreen);

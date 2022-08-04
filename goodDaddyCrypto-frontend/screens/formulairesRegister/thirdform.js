@@ -3,19 +3,18 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
-  Alert,
   SafeAreaView,
   TouchableOpacity,
 } from "react-native";
-// import { RadioButton } from 'react-native-paper';
+import Icon from "react-native-vector-icons/FontAwesome";
 
 // Import React Native Elements
-import { CheckBox, Icon } from "@rneui/themed";
+import { CheckBox, Button } from "@rneui/themed";
+import { ScrollView } from "react-native-gesture-handler";
 
 const Separator = () => <View style={styles.separator} />;
 
-const Formulaire = () => {
+const Formulaire = (props) => {
   // Initialisation des etats des checkboxs
   const [check1, setCheck1] = useState(false);
   const [check2, setCheck2] = useState(false);
@@ -26,8 +25,23 @@ const Formulaire = () => {
 
   // RETURN DU JSX
   return (
-    <SafeAreaView style={styles.container}>
-      {/* // VIEW CheckBox de Gauche */}
+    <SafeAreaView contentContainerstyle={styles.container}>
+      {/* // Bouton Go Back */}
+      <View style={styles.buttonReturn}>
+        <TouchableOpacity
+          style={{
+            flexDirection: "row",
+            height: 50,
+            width: 120,
+            alignItems: "center",
+          }}
+          onPress={() => props.navigation.navigate("SecondForm")}
+        >
+          <Icon name="chevron-left" size={20} />
+          <Text> RETOUR </Text>
+        </TouchableOpacity>
+      </View>
+
       <View>
         <View>
           <Text style={styles.profilRisque}>
@@ -35,91 +49,96 @@ const Formulaire = () => {
           </Text>
           <Separator />
           <Text style={styles.title}>
-            Pour un investissement intial de{" "}
-            <span style={{ fontWeight: "bold" }}>1000 €</span>,{" "}
-            <span style={{ fontWeight: "bold" }}>
-              quelle perte maximale peux-tu accepter ?
-            </span>
+            Pour un investissement intial de 1000 €, quelle perte maximale
+            peux-tu accepter ?
           </Text>
           <Separator />
         </View>
-        {/* // Début du choi des checkBox */}
-        <View>
-          {/* // Choix1 */}
-          <CheckBox
-            center
-            title="100 €"
-            checkedIcon="dot-circle-o"
-            uncheckedIcon="circle-o"
-            checked={check1}
-            onPress={() => setChecked(!check1)}
-          />
-          {/* //Choix 2 */}
-          <CheckBox
-            center
-            title="200 €"
-            checkedIcon="dot-circle-o"
-            uncheckedIcon="circle-o"
-            checked={check2}
-            onPress={() => setChecked(!check2)}
-          />
-          {/* //Choix 3 */}
-          <CheckBox
-            center
-            title="300 €"
-            checkedIcon="dot-circle-o"
-            uncheckedIcon="circle-o"
-            checked={check3}
-            onPress={() => setChecked(!check3)}
-          />
+        {/* // Début du choix des checkBox et application de Flexbox*/}
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            textAlign: "center",
+          }}
+        >
+          {/* // VIEW CheckBox de Gauche */}
+          <View>
+            {/* // Choix1 */}
+            <CheckBox
+              center
+              title="100 €"
+              checkedIcon="dot-circle-o"
+              uncheckedIcon="circle-o"
+              checked={check1}
+              onPress={() => setCheck1(!check1)}
+            />
+            {/* //Choix 2 */}
+            <CheckBox
+              center
+              title="200 €"
+              checkedTitle="OK MAFIA"
+              checkedIcon="dot-circle-o"
+              uncheckedIcon="circle-o"
+              checked={check2}
+              onPress={() => setCheck2(!check2)}
+            />
+            {/* //Choix 3 */}
+            <CheckBox
+              center
+              title="300 €"
+              checkedIcon="dot-circle-o"
+              uncheckedIcon="circle-o"
+              checked={check3}
+              onPress={() => setCheck3(!check3)}
+            />
+          </View>
+          {/* // View pour les checkboxs à droite */}
+          <View>
+            {/* // Choix4 */}
+            <CheckBox
+              center
+              title="400 €"
+              checkedIcon="dot-circle-o"
+              uncheckedIcon="circle-o"
+              checked={check4}
+              onPress={() => setCheck4(!check4)}
+            />
+            {/* // Choix5 */}
+            <CheckBox
+              center
+              title="500 €"
+              checkedIcon="dot-circle-o"
+              uncheckedIcon="circle-o"
+              checked={check5}
+              onPress={() => setCheck5(!check5)}
+            />
+            {/* // Choix6 */}
+            <CheckBox
+              center
+              title="600 €"
+              checkedIcon="dot-circle-o"
+              uncheckedIcon="circle-o"
+              checked={check6}
+              onPress={() => setCheck6(!check6)}
+            />
+          </View>
         </View>
-      </View>
-      {/* // View pour les checkboxs à droite */}
-      <View>
-        {/* // Choix4 */}
-        <CheckBox
-          center
-          title="400 €"
-          checkedIcon="dot-circle-o"
-          uncheckedIcon="circle-o"
-          checked={check4}
-          onPress={() => setChecked(!check4)}
-        />
-        {/* // Choix5 */}
-        <CheckBox
-          center
-          title="500 €"
-          checkedIcon="dot-circle-o"
-          uncheckedIcon="circle-o"
-          checked={check5}
-          onPress={() => setChecked(!check5)}
-        />
-        {/* // Choix6 */}
-        <CheckBox
-          center
-          title="600 €"
-          checkedIcon="dot-circle-o"
-          uncheckedIcon="circle-o"
-          checked={check6}
-          onPress={() => setChecked(!check6)}
-        />
       </View>
       {/* // Button suivant */}
       <View>
         <TouchableOpacity onPress={() => {}}>
           <Button
             style={styles.button}
+            tittle="SUIVANT"
             onPress={() => {
-              fourthform();
+              props.navigation.navigate("FourthForm");
             }}
-          >
-            SUIVANT
-          </Button>
+          />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
-
   // ************* OLD CODE***************
   // const [checked, setChecked] = React.useState('first');
 
@@ -205,7 +224,6 @@ const Formulaire = () => {
 };
 
 // Styles CSS 🖼
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

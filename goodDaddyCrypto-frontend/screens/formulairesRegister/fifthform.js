@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 import {StyleSheet, Text, View, Button, Alert, SafeAreaView, TouchableOpacity, TextInput, Keyboard} from 'react-native';
-import { RadioButton } from 'react-native-paper';
-
-import ProgressBarre from '../Components/ProgressBar';
-
 
 
 const Separator = () => (
