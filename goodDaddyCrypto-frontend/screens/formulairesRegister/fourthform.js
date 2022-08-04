@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 // Import Icon FontAwesome
 import Icon from "react-native-vector-icons/FontAwesome";
 
@@ -21,7 +22,7 @@ const Separator = () => <View style={styles.separator} />;
 
 const fourthform = (props) => {
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView ContentContainerstyle={styles.container}>
       {/* // Bouton Go Back */}
       <View style={styles.buttonReturn}>
         <TouchableOpacity
@@ -44,14 +45,68 @@ const fourthform = (props) => {
         </Text>
         <Separator />
         <Text style={styles.title}>
-          Tu as investis un capital de départ de 1000€ sur le Bitcoin ₿. Sur une
-          période d'un mois, le Bitcoin perd 45% de sa valeur.Que fais-tu ?
+          Tu as investi 1000€ de capital pour débuter, puis tous les mois tu
+          investis 150€. 6 mois après, le Bitcoin perd 40% de sa valeur en 1
+          mois. Que fais-tu ?
         </Text>
         <Separator />
       </View>
-{/* // Ajout du composant Progress Bar */}
+      {/* Debut liste de choix  */}
+      <View>
+        {/* Choix 1 */}
+        <TouchableOpacity>
+          <Text
+            style={styles.answer}
+            onPress={() => {
+              props.addAnswer(1, 2);
+              props.navigation.navigate("FifthForm");
+            }}
+          >
+            Tu vends tout !{" "}
+          </Text>
+        </TouchableOpacity>
+        {/* Choix 2 */}
+        <TouchableOpacity>
+          <Text
+            style={styles.answer}
+            onPress={() => {
+              props.addAnswer(2, 2);
+              props.navigation.navigate("FifthForm");
+            }}
+          >
+            Tu vend 50% de ton portefeuille pour te protéger
+          </Text>
+        </TouchableOpacity>
+        {/* Choix 3 */}
+        <TouchableOpacity>
+          <Text
+            style={styles.answer}
+            onPress={() => {
+              props.addAnswer(3, 2);
+              props.navigation.navigate("FifthForm");
+            }}
+          >
+            Tu ne vends pas, mais tu mets en pause des investissements
+            récurrents en attendant une nouvelle hausse du marché.
+          </Text>
+        </TouchableOpacity>
+        {/* Choix 4 */}
+        <TouchableOpacity>
+          <Text
+            style={styles.answer}
+            onPress={() => {
+              props.addAnswer(3, 2);
+              props.navigation.navigate("FifthForm");
+            }}
+          >
+            Tu conserves ton investissement et tu poursuis mensuellement ton
+            investissement récurrent
+          </Text>
+        </TouchableOpacity>
+      </View>
+      {/* // Ajout du composant Progress Bar */}
       <ProgressBar></ProgressBar>
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 // Styles CSS🎨
