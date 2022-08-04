@@ -16,11 +16,13 @@ import { CheckBox, Icon } from "@rneui/themed";
 const Separator = () => <View style={styles.separator} />;
 
 const Formulaire = () => {
-  // Itiniatilisationd des etats des checkboxs
+  // Initialisation des etats des checkboxs
   const [check1, setCheck1] = useState(false);
   const [check2, setCheck2] = useState(false);
   const [check3, setCheck3] = useState(false);
   const [check4, setCheck4] = useState(false);
+  const [check5, setCheck5] = useState(false);
+  const [check6, setCheck6] = useState(false);
 
   // RETURN DU JSX
   return (
@@ -50,7 +52,7 @@ const Formulaire = () => {
             checkedIcon="dot-circle-o"
             uncheckedIcon="circle-o"
             checked={check1}
-            onPress={() => setChecked(!check2)}
+            onPress={() => setChecked(!check1)}
           />
           {/* //Choix 2 */}
           <CheckBox
@@ -64,17 +66,47 @@ const Formulaire = () => {
           {/* //Choix 3 */}
           <CheckBox
             center
-            title="200 €"
+            title="300 €"
             checkedIcon="dot-circle-o"
             uncheckedIcon="circle-o"
             checked={check3}
-            onPress={() => setChecked(!check2)}
+            onPress={() => setChecked(!check3)}
           />
         </View>
       </View>
+      {/* // View pour les checkboxs à droite */}
+      <View>
+        {/* // Choix4 */}
+        <CheckBox
+          center
+          title="400 €"
+          checkedIcon="dot-circle-o"
+          uncheckedIcon="circle-o"
+          checked={check4}
+          onPress={() => setChecked(!check4)}
+        />
+        {/* // Choix5 */}
+        <CheckBox
+          center
+          title="500 €"
+          checkedIcon="dot-circle-o"
+          uncheckedIcon="circle-o"
+          checked={check5}
+          onPress={() => setChecked(!check5)}
+        />
+        {/* // Choix6 */}
+        <CheckBox
+          center
+          title="600 €"
+          checkedIcon="dot-circle-o"
+          uncheckedIcon="circle-o"
+          checked={check6}
+          onPress={() => setChecked(!check6)}
+        />
+      </View>
     </SafeAreaView>
   );
-
+  
   // ************* OLD CODE***************
   // const [checked, setChecked] = React.useState('first');
 
