@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, Animated } from 'react-native';
 import Constants from 'expo-constants';
  
  
-const ProgressBarre = () => {
+const ProgressBar = () => {
  return (
    <View style={styles.boxBarre}>
   <Text>
@@ -18,7 +18,7 @@ const ProgressBarre = () => {
  );
 }
  
-export default ProgressBarre;
+export default ProgressBar;
  
 const styles = StyleSheet.create({
   boxBarre: {

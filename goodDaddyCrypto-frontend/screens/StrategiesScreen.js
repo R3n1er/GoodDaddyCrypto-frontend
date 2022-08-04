@@ -1,13 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
 
-export default function StrategieScreen() {
+// React Redux
+import { connect } from "react-redux";
+
+function StrategiesScreen(props) {
+  var getStrategies = async () => {
+    console.log(props.userToken);
+    var rawResult = await fetch(
+      `https://gooddaddybackend.herokuapp.com/investment/getStrategy?userToken=${props.userToken}`
+    );
+    var result = await rawResult.json();
+    console.log(result);
+  };
+
+  useEffect(() => {
+    getStrategies();
+  }, []);
+
   return (
-    // View est équivalent à div
-    <View>
-      <Text>STRATEGIE SCREEN</Text>
-    </View>
+    <ScrollView contentContainerStyle={styles.container}>
+      <View>
+        <View style={{flexDirection:"row"}}>
+          <Image
+            style={styles.logo}
+            source={require("../assets/Bitcoin.svg.png")}
+          />
+          <Text style={{ color: "white", textAlignVertical:"center", marginLeft: 30 }}>200e par mois</Text>
+        </View>
+      </View>
+      <View></View>
+    </ScrollView>
   );
 }
 
@@ -20,25 +44,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  textTitle: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: "50",
-  },
-
-  text: {
-    color: "white",
-    fontSize: "20",
-  },
-
-  button: {
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 4,
-    elevation: 3,
-    backgroundColor: "black",
-  },
+  logo: {
+    width: 50,
+    height: 50,
+  }
 });
 
+function mapStateToProps(state) {
+  return { userToken: state.token };
+}
+
+export default connect(mapStateToProps, null)(StrategiesScreen);

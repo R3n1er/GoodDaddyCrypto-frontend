@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Icon } from "react-native";
 
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { FontAwesome } from '@expo/vector-icons'; 
 
 //import redux pour le story
 import { Provider } from "react-redux";
@@ -21,6 +21,8 @@ import RegisterScreen from "./screens/RegisterScreen";
 import FirstForm from "./screens/formulairesRegister/firstform";
 import SecondForm from "./screens/formulairesRegister/secondform";
 import ThirdForm from "./screens/formulairesRegister/thirdform";
+import FourthForm from "./screens/formulairesRegister/fourthform";
+import FifthForm from "./screens/formulairesRegister/fifthform";
 import ResultForm from "./screens/formulairesRegister/resultform";
 //Imports de la navigation
 import { NavigationContainer } from "@react-navigation/native";
@@ -41,17 +43,17 @@ const BottomNavigator = () => {
         tabBarIcon: ({ color }) => {
           let iconName;
           // Routes des éléments du menu en correspondance avec les icones FontAwesome
-          if (route.name == "StrategiesScreen") {
-            iconName = "clipboard-check";
-          } else if (route.name == "DashboardScreen") {
+          if (route.name == "Strategies") {
+            iconName = "clipboard";
+          } else if (route.name == "Dashboard") {
             iconName = "bitcoin";
-          } else if (route.name == "GuidesScreen") {
-            iconName = "newspaper";
-          } else if (route.name == "TransactionsScreen") {
+          } else if (route.name == "Guides") {
+            iconName = "newspaper-o";
+          } else if (route.name == "Transactions") {
             iconName = "plus-circle";
           }
           //Fonction de retour des icones de menu
-          return <FontAwesomeIcon icon={iconName} size={25} color={color} />;
+          return <FontAwesome name={iconName} size={25} color={color} />;
         },
       })}
       tabBarOptions={{
@@ -64,8 +66,8 @@ const BottomNavigator = () => {
     >
       <Tab.Screen name="Strategies" component={StrategiesScreen} />
       <Tab.Screen name="Dashboard" component={DashboardScreen} />
-      <Tab.Screen name="Guides" component={GuidesScreen} />
       <Tab.Screen name="Transactions" component={TransactionsScreen} />
+      <Tab.Screen name="Guides" component={GuidesScreen} />
     </Tab.Navigator>
   );
 };
@@ -112,9 +114,19 @@ export default function App() {
             options={{ title: "Troisieme page formulaire" }}
           />
           <Stack.Screen
+            name="FourthForm"
+            component={FourthForm}
+            options={{ title: "Quatrieme page formulaire" }}
+          />
+          <Stack.Screen
+            name="FifthForm"
+            component={FifthForm}
+            options={{ title: "Cinquieme page formulaire" }}
+          />
+          <Stack.Screen
             name="ResultForm"
             component={ResultForm}
-            options={{ title: "Derniere page formulaire" }}
+            options={{ title: "Resultats formulaire" }}
           />
           <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
         </Stack.Navigator>

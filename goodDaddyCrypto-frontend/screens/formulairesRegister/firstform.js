@@ -14,24 +14,9 @@ import Constants from 'expo-constants';
 // React Redux
 import { connect } from "react-redux";
 
-import ProgressBarre from '../Components/ProgressBar';
+import ProgressBar from '../../Components/ProgressBar';
 
 const Separator = () => <View style={styles.separator} />;
-
-const progressBarre = () => {
-  return (
-    <View style={styles.boxBarre}>
-   <Text>
-     Loading.....
-   </Text>
-   <View style={styles.progressBar}>
-     <Animated.View style={[StyleSheet.absoluteFill,{backgroundColor: "grey", width: '10%'}]}/>
-   </View>
-   <Text>10%</Text> 
- </View>
- 
-  );
-}
 
 const firstform = (props) => {
   return (
@@ -66,7 +51,8 @@ const firstform = (props) => {
             <Text
               onPress={() => {
                 props.addAnswer(1, 1);
-                props.navigation.navigate("ResultForm");
+                //props.navigation.navigate("SecondForm");
+                props.navigation.navigate("BottomNavigator", { screen: "Strategies" });
               }}
               style={styles.answer}
             >
@@ -111,7 +97,7 @@ const firstform = (props) => {
           </TouchableOpacity>
         </View>
       </View>
-      <View> { ProgressBarre } </View>
+      <Text> { <ProgressBar></ProgressBar> } </Text>
     </SafeAreaView>
   );
 };
@@ -174,4 +160,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(firstform)(progressBarre);
+export default connect(null, mapDispatchToProps)(firstform);

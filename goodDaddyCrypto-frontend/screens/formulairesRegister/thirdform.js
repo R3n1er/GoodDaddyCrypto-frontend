@@ -110,7 +110,7 @@ const Formulaire = () => {
           <Button
             style={styles.button}
             onPress={() => {
-              fourthform();
+              props.navigation.navigate("FourthForm");
             }}
           >
             SUIVANT
