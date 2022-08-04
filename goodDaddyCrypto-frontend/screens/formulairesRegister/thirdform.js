@@ -70,6 +70,7 @@ const Formulaire = (props) => {
               title="100 €"
               checkedIcon="dot-circle-o"
               uncheckedIcon="circle-o"
+              inactiveColor={'red'}
               checked={check1}
               onPress={() => setCheck1(!check1)}
             />
