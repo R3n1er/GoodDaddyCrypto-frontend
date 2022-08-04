@@ -10,6 +10,9 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
+
+import ProgressBarre from '../Components/ProgressBar';
+
 // React Redux
 import { connect } from "react-redux";
 
@@ -72,6 +75,7 @@ const secondform = (props) => {
           </TouchableOpacity>
         </View>
       </View>
+      <View> { ProgressBarre } </View>
     </SafeAreaView>
   );
 };
