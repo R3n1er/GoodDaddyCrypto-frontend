@@ -104,9 +104,22 @@ const Formulaire = () => {
           onPress={() => setChecked(!check6)}
         />
       </View>
+      {/* // Button suivant */}
+      <View>
+        <TouchableOpacity onPress={() => {}}>
+          <Button
+            style={styles.button}
+            onPress={() => {
+              fourthform();
+            }}
+          >
+            SUIVANT
+          </Button>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
-  
+
   // ************* OLD CODE***************
   // const [checked, setChecked] = React.useState('first');
 
