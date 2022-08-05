@@ -23,7 +23,7 @@ const Separator = () => <View style={styles.separator} />;
 
 const fourthform = (props) => {
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       {/* // Bouton Go Back */}
       <View style={styles.buttonReturn}>
         <TouchableOpacity
@@ -109,7 +109,7 @@ const fourthform = (props) => {
       </View>
       {/* // Ajout du composant Progress Bar */}
       <ProgressBar></ProgressBar>
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 // Styles CSS🎨

@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
+import { ScrollView } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 // Import ProgressBar Component
@@ -20,7 +21,7 @@ const Separator = () => <View style={styles.separator} />;
 const ThirdForm = (props) => {
   // RETURN DU JSX
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       {/* // Bouton Go Back */}
       <View style={styles.buttonReturn}>
         <TouchableOpacity
@@ -99,7 +100,7 @@ const ThirdForm = (props) => {
               <Text
                 style={styles.answer}
                 onPress={() => {
-                  props.addAnswer(3, 3);
+                  props.addAnswer(4, 3);
                   props.navigation.navigate("FourthForm");
                 }}
               >
@@ -110,7 +111,7 @@ const ThirdForm = (props) => {
         </View>
       </View>
       {<ProgressBar></ProgressBar>}
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 

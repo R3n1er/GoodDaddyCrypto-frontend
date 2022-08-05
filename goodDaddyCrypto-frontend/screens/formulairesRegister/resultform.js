@@ -29,24 +29,77 @@ const resultform = (props) => {
   };
 
   useEffect(() => {
-    // var answersTab = props.answers;
     console.log(props.answers)
     var answersTab = props.answers;
     var note = 0;
     for (let i = 0; i < answersTab.length; i++) {
-      note += answersTab[i];
+      if(i==0){
+        if (answersTab[i] == 1) {
+          note += 0;
+        }
+        else if (answersTab[i] == 2) {
+          note += 10;
+        }else if (answersTab[i] == 3) {
+          note += 30;
+        }else if (answersTab[i] == 4) {
+          note += 40;
+        }
+      }
+      else if(i==1){
+        if (answersTab[i] == 1) {
+          note += 0;
+        }
+        else if (answersTab[i] == 2) {
+          note += 10;
+        }else if (answersTab[i] == 3) {
+          note += 30;
+        }else if (answersTab[i] == 4) {
+          note += 40;
+        }
+
+      }
+      else if(i==2){
+        if (answersTab[i] == 1) {
+          note += 10;
+        }
+        else if (answersTab[i] == 2) {
+          note += 20;
+        }else if (answersTab[i] == 3) {
+          note += 30;
+        }else if (answersTab[i] == 4) {
+          note += 40;
+        }
+
+      }
+      else if(i==3){
+        if (answersTab[i] == 1) {
+          note += 0;
+        }
+        else if (answersTab[i] == 2) {
+          note += 10;
+        }else if (answersTab[i] == 3) {
+          note += 20;
+        }else if (answersTab[i] == 4) {
+          note += 30;
+        }
+
+      }
+      else {
+        console.log('erreur : trop de questions')
+      }
     }
     note = note / 4;
-    if (Math.round(note) == 1) {
+    console.log("La note du user est de : " + note)
+    if (Math.round(note) == 10) {
       setProfilInvestor("INVESTISSEUR DEBUTANT");
     }
-    if (Math.round(note) == 2) {
+    if (Math.round(note) == 20) {
       setProfilInvestor("INVESTISSEUR DEBUTANT PLUS");
     }
-    if (Math.round(note) == 3) {
-      setProfilInvestor("INVESTISSEUR MODERE");
+    if (Math.round(note) == 30) {
+      setProfilInvestor("INVESTISSEUR INTERMEDIAIRE");
     }
-    if (Math.round(note) == 4) {
+    if (Math.round(note) == 40) {
       setProfilInvestor("INVESTISSEUR CONFIRME");
     }
   }, []);

@@ -96,7 +96,7 @@ function RegisterScreen(props) {
         title="REGISTER"
         type="solid"
         onPress={() => {
-          props.navigation.navigate("Register");
+          props.navigation.navigate("FirstForm");
           submitRegister();
         }}
       />

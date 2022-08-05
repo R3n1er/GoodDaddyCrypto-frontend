@@ -55,7 +55,7 @@ const strategyProposal = (props) => {
           ]);
           console.log("cas 2");
           break;
-        case "INVESTISSEUR MODERE":
+        case "INVESTISSEUR INTERMEDIAIRE":
           setStrategy([
             { amountPaid: 15*salary/100, frequency: "par mois", asset: "BTC" },
             { amountPaid: 5*salary/100, frequency: "par mois", asset: "BTC" }

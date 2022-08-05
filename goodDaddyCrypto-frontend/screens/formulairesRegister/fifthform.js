@@ -12,9 +12,9 @@ import {
 } from "react-native";
 
 import { connect } from "react-redux";
-import ProgressBar from "../../Components/ProgressBar";
 // Import Icon FontAwesome
 import Icon from "react-native-vector-icons/FontAwesome";
+import { ScrollView } from "react-native-gesture-handler";
 
 const Separator = () => <View style={styles.separator} />;
 
@@ -23,7 +23,7 @@ const FifthForm = (props) => {
   const [salary, setSalary] = useState(0);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.buttonReturn}>
         <TouchableOpacity
           style={{
@@ -93,7 +93,7 @@ const FifthForm = (props) => {
           ></Button>
         </View>
       </TouchableOpacity>
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 

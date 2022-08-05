@@ -1,7 +1,7 @@
 export default function(answers=[], action){
     if(action.type == 'addAnswer'){
         var answersCopy = [...answers];
-        if(answersCopy.length > (action.questionNumber-1))  {
+        while(answersCopy.length > (action.questionNumber-1))  {
             answersCopy.pop();
         }
         answersCopy.push(action.answer);
