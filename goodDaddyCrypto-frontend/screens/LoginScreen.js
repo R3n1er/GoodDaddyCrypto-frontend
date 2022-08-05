@@ -36,6 +36,9 @@ const LoginScreen = (props) => {
      var result = await rawResult.json();
     console.log(result);
     props.addToken(result.userToken);
+    if(result.userToken != null) {
+      props.navigation.navigate("FirstForm");
+    }
   };
   
 
@@ -68,7 +71,6 @@ const LoginScreen = (props) => {
           style={styles.button}
           onPress={() => {
             submitSignIn();
-            props.navigation.navigate("FirstForm");
           }}
         >
           SIGN-IN

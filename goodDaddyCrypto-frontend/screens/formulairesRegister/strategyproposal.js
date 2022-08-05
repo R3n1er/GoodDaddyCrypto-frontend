@@ -24,7 +24,7 @@ const strategyProposal = (props) => {
       {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `userToken=${props.userToken}&amountPaid=${amountPaid}&frequency=${frequency}&asset=${asset}`,
+        body: `userToken=${props.userToken}&amountPaid=${strategy[0].amountPaid}&frequency=${strategy[0].frequency}&asset=${strategy[0].asset}`,
       }
     );
     var result = await rawResult.json();
@@ -119,6 +119,7 @@ const strategyProposal = (props) => {
         <View style={{ marginTop: 50 }}>
           <Button
             onPress={() => {
+              addStrategy();
               props.navigation.navigate("BottomNavigator", {
                 screen: "Strategies",
               });
