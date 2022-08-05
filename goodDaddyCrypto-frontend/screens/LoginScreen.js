@@ -45,7 +45,7 @@ const LoginScreen = (props) => {
       {/* // Input champs pour le mail */}
       <Input
         placeholder="user@mail.com"
-        containerStyle="{{marginBottom: 25, width: '70%', }}"
+        containerStyle={{marginBottom: 25, width: '70%', color:"white" }}
         keyboardType="email-address"
         onChangeText={(value) => {
           setEmail(value);
@@ -56,7 +56,7 @@ const LoginScreen = (props) => {
       {/* Input champs pour le password  */}
       <Input
         placeholder="type your password"
-        containerStyle="{{marginBottom: 25, width: '70%'}}"
+        containerStyle={{marginBottom: 25, width: '70%',  color:"white"}}
         onChangeText={(value) => setPassword(value)}
         value={password}
       />

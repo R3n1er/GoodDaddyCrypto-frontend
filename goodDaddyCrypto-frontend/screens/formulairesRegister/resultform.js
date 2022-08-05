@@ -30,7 +30,7 @@ const resultform = (props) => {
 
   useEffect(() => {
     // var answersTab = props.answers;
-    var answersTab = [1, 1, 4, 3];
+    var answersTab = props.answers;
     var note = 0;
     for (let i = 0; i < answersTab.length; i++) {
       note += answersTab[i];
@@ -60,7 +60,7 @@ const resultform = (props) => {
             width: 120,
             alignItems: "center",
           }}
-          onPress={() => props.navigation.navigate("FirstForm")}
+          onPress={() => props.navigation.navigate("FifthForm")}
         >
           <Icon name="chevron-left" size={20} />
           <Text> RETOUR </Text>

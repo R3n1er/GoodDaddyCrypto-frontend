@@ -13,15 +13,31 @@ import {
 
 import { connect } from "react-redux";
 import ProgressBar from "../../Components/ProgressBar";
+// Import Icon FontAwesome
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const Separator = () => <View style={styles.separator} />;
 
 const FifthForm = (props) => {
-  const [text, onChangeText] = React.useState("REVENUS");
-  const [salary, setSalary] = React.useState(null);
+  const [incomes, setIncomes] = useState(0);
+  const [salary, setSalary] = useState(0);
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.buttonReturn}>
+        <TouchableOpacity
+          style={{
+            flexDirection: "row",
+            height: 50,
+            width: 120,
+            alignItems: "center",
+          }}
+          onPress={() => props.navigation.navigate("ThirdForm")}
+        >
+          <Icon name="chevron-left" size={20} />
+          <Text> RETOUR </Text>
+        </TouchableOpacity>
+      </View>
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => Keyboard.dismiss()}
@@ -53,8 +69,8 @@ const FifthForm = (props) => {
           </Text>
           <TextInput
             style={styles.input}
-            onChangeText={onChangeText}
-            value={text}
+            onChangeText={setIncomes}
+            value={incomes}
             placeholder="REVENUS"
             keyboardType="numeric"
           />
@@ -62,7 +78,7 @@ const FifthForm = (props) => {
           <Button
             onPress={() => {
               props.navigation.navigate("ResultForm");
-              props.addSalary(salary);
+              props.addSalary(parseInt(salary) + parseInt(incomes));
             }}
             title="Confirmer"
           ></Button>
@@ -75,7 +91,7 @@ const FifthForm = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 6,
     justifyContent: "center",
     marginHorizontal: 16,
   },
@@ -101,11 +117,16 @@ const styles = StyleSheet.create({
     borderBottomColor: "#737373",
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
+  buttonReturn: {
+    flex: 2,
+    justifyContent: "center",
+  },
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     addSalary: function (salary) {
+      console.log(salary);
       dispatch({
         type: "addSalary",
         salary: salary,

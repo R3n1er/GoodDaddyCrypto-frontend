@@ -37,6 +37,8 @@ const secondform = (props) => {
           <Text> RETOUR </Text>
         </TouchableOpacity>
       </View>
+      {/* // End go back button */}
+
       <View style={styles.page}>
         <View>
           <Text style={styles.profilRisque}>
@@ -48,6 +50,7 @@ const secondform = (props) => {
           </Text>
           <Separator />
         </View>
+        {/* Debut liste de choix  */}
         <View>
           {/* Choix 1 */}
           <TouchableOpacity>
@@ -99,11 +102,12 @@ const secondform = (props) => {
           </TouchableOpacity>
         </View>
       </View>
-      <ProgressBar></ProgressBar>
+      { <ProgressBar></ProgressBar> } 
     </SafeAreaView>
   );
 };
 
+// Styles CSS🎨
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   StyleSheet,
   Text,
@@ -6,21 +6,18 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from "react-native";
+
 import Icon from "react-native-vector-icons/FontAwesome";
 
-// Import React Native Elements
-import { CheckBox, Button } from "@rneui/themed";
+// Import ProgressBar Component
+import ProgressBar from "../../Components/ProgressBar";
+
+// React Redux
+import { connect } from "react-redux";
 
 const Separator = () => <View style={styles.separator} />;
 
 const ThirdForm = (props) => {
-  // Initialisation des etats des checkboxs
-  const [check1, setCheck1] = useState(false);
-  const [check2, setCheck2] = useState(false);
-  const [check3, setCheck3] = useState(false);
-  const [check4, setCheck4] = useState(false);
-  const [check5, setCheck5] = useState(false);
-  const [check6, setCheck6] = useState(false);
 
   // RETURN DU JSX
   return (
@@ -42,118 +39,77 @@ const ThirdForm = (props) => {
       </View>
 
       <View>
+        <Text style={styles.profilRisque}>
+          Détermination de ton profil de risque
+        </Text>
+        <Separator />
+        <Text style={styles.title}>
+          Pour un investissement intial de 1000 €, quelle perte maximale peux-tu
+          accepter ?
+        </Text>
+        <Separator />
+      </View>
+      {/* // Début du choix des checkBox et application de Flexbox*/}
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "center",
+          textAlign: "center",
+        }}
+      >
+        {/* Debut liste de choix  */}
         <View>
-          <Text style={styles.profilRisque}>
-            Détermination de ton profil de risque
-          </Text>
-          <Separator />
-          <Text style={styles.title}>
-            Pour un investissement intial de 1000 €, quelle perte maximale
-            peux-tu accepter ?
-          </Text>
-          <Separator />
-        </View>
-        {/* // Début du choix des checkBox et application de Flexbox*/}
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "center",
-            textAlign: "center",
-          }}
-        >
-          {/* // VIEW CheckBox de Gauche */}
-          <View>
-            {/* // Choix1 */}
-            <CheckBox
-              center
-              title="100 €"
-              checkedIcon="dot-circle-o"
-              uncheckedIcon="circle-o"
-              checked={check1}
-              onPress={() => setCheck1(!check1)}
-            />
-            {/* //Choix 2 */}
-            <CheckBox
-              center
-              title="200 €"
-              checkedTitle="OK MAFIA"
-              checkedIcon="dot-circle-o"
-              uncheckedIcon="circle-o"
-              checked={check2}
-              onPress={() => setCheck2(!check2)}
-            />
-            {/* //Choix 3 */}
-            <CheckBox
-              center
-              title="300 €"
-              checkedIcon="dot-circle-o"
-              uncheckedIcon="circle-o"
-              checked={check3}
-              onPress={() => setCheck3(!check3)}
-            />
-          </View>
-          {/* // View pour les checkboxs à droite */}
-          <View>
-            {/* // Choix4 */}
-            <CheckBox
-              center
-              title="400 €"
-              checkedIcon="dot-circle-o"
-              uncheckedIcon="circle-o"
-              checked={check4}
-              onPress={() => setCheck4(!check4)}
-            />
-            {/* // Choix5 */}
-            <CheckBox
-              center
-              title="500 €"
-              checkedIcon="dot-circle-o"
-              uncheckedIcon="circle-o"
-              checked={check5}
-              onPress={() => setCheck5(!check5)}
-            />
-            {/* // Choix6 */}
-            <CheckBox
-              center
-              title="600 €"
-              checkedIcon="dot-circle-o"
-              uncheckedIcon="circle-o"
-              checked={check6}
-              onPress={() => setCheck6(!check6)}
-            />
-          </View>
+          {/* Choix 1 */}
+          <TouchableOpacity>
+            <Text
+              style={styles.answer}
+              onPress={() => {
+                props.addAnswer(1, 2);
+                props.navigation.navigate("FourthForm");
+              }}
+            >
+              100€
+            </Text>
+          </TouchableOpacity>
+          {/* Choix 2 */}
+          <TouchableOpacity>
+            <Text
+              style={styles.answer}
+              onPress={() => {
+                props.addAnswer(2, 2);
+                props.navigation.navigate("FourthForm");
+              }}
+            >
+              200€{" "}
+            </Text>
+          </TouchableOpacity>
+          {/* Choix 3 */}
+          <TouchableOpacity>
+            <Text
+              style={styles.answer}
+              onPress={() => {
+                props.addAnswer(3, 2);
+                props.navigation.navigate("FourthForm");
+              }}
+            >
+              300€{" "}
+            </Text>
+          </TouchableOpacity>
+          {/* Choix 4 */}
+          <TouchableOpacity>
+            <Text
+              style={styles.answer}
+              onPress={() => {
+                props.addAnswer(3, 2);
+                props.navigation.navigate("FourthForm");
+              }}
+            >
+              400€{" "}
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
-      {/* // Button suivant */}
-      <View>
-        <TouchableOpacity onPress={() => {}}>
-          <Button
-            style={styles.button}
-            tittle="SUIVANT"
-            onPress={() => {
-              props.navigation.navigate("FifthForm");
-              if (check1) {
-                props.addAnswer(1,3);
-              }
-              else if (check2) {
-                props.addAnswer(2,3);
-              }
-              else if (check3) {
-                props.addAnswer(3,3);
-              }
-              else if (check4) {
-                props.addAnswer(4,3);
-              }
-              else if (check5) {
-                props.addAnswer(5,3);
-              }
-              else if (check6) {
-                props.addAnswer(6,3);
-              }
-            }}
-          />
-        </TouchableOpacity>
-      </View>
+      {<ProgressBar></ProgressBar>}
     </SafeAreaView>
   );
 };
@@ -174,6 +130,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginVertical: 8,
   },
+  answer: {
+    textAlign: "center",
+    marginVertical: 8,
+    fontSize: 16,
+    backgroundColor: "yellow",
+    borderRadius: 12,
+  },
   checkboxContainer: {
     flexDirection: "row",
     marginBottom: 20,
@@ -191,6 +154,7 @@ const styles = StyleSheet.create({
   },
 });
 
+// Fonction dispatch to Store
 function mapDispatchToProps(dispatch) {
   return {
     addAnswer: function (answer, questionNumber) {
