@@ -52,8 +52,7 @@ const firstform = (props) => {
             <Text
               onPress={() => {
                 props.addAnswer(1, 1);
-                //props.navigation.navigate("SecondForm");
-                props.navigation.navigate("BottomNavigator", { screen: "Strategies" });
+                props.navigation.navigate("ResultForm");
               }}
               style={styles.answer}
             >
@@ -98,7 +97,7 @@ const firstform = (props) => {
           </TouchableOpacity>
         </View>
       </View>
-      <Text> { <ProgressBar></ProgressBar> } </Text>
+      <ProgressBar></ProgressBar>
     </SafeAreaView>
   );
 };

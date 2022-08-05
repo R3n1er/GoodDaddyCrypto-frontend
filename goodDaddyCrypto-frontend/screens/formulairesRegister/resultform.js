@@ -40,7 +40,7 @@ const resultform = (props) => {
       setProfilInvestor("INVESTISSEUR DEBUTANT");
     }
     if (Math.round(note) == 2) {
-      setProfilInvestor("INVESTISSEUR DEBUTANT +");
+      setProfilInvestor("INVESTISSEUR DEBUTANT PLUS");
     }
     if (Math.round(note) == 3) {
       setProfilInvestor("INVESTISSEUR MODERE");
@@ -77,7 +77,7 @@ const resultform = (props) => {
         <View style={{ marginTop: 50 }}>
           <Button
             onPress={() => {
-              props.navigation.navigate("Login");
+              props.navigation.navigate("StrategyProposal");
               submitTypeInvestor();
             }}
             title="CE PROFIL ME CONVIENT"

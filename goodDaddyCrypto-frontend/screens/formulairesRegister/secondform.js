@@ -99,7 +99,7 @@ const secondform = (props) => {
           </TouchableOpacity>
         </View>
       </View>
-      <Text> { <ProgressBar></ProgressBar> } </Text>
+      <ProgressBar></ProgressBar>
     </SafeAreaView>
   );
 };

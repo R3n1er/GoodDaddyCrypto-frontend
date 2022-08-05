@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
 import token from "./reducers/token";
 import answers from "./reducers/answers";
+import salary from "./reducers/salary";
 
 // Imports des screens
 import HomeScreen from "./screens/HomeScreen";
@@ -24,6 +25,7 @@ import ThirdForm from "./screens/formulairesRegister/thirdform";
 import FourthForm from "./screens/formulairesRegister/fourthform";
 import FifthForm from "./screens/formulairesRegister/fifthform";
 import ResultForm from "./screens/formulairesRegister/resultform";
+import StrategyProposal from "./screens/formulairesRegister/strategyproposal";
 //Imports de la navigation
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -33,7 +35,7 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 //creation du store
-const store = createStore(combineReducers({ token, answers }));
+const store = createStore(combineReducers({ token, answers, salary }));
 
 // Création du composant BottomTabNavigator
 const BottomNavigator = () => {
@@ -127,6 +129,11 @@ export default function App() {
             name="ResultForm"
             component={ResultForm}
             options={{ title: "Resultats formulaire" }}
+          />
+          <Stack.Screen
+            name="StrategyProposal"
+            component={StrategyProposal}
+            options={{ title: "Proposition Strategie" }}
           />
           <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
         </Stack.Navigator>

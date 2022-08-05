@@ -16,7 +16,7 @@ const Separator = () => (
     <View style={styles.separator} />
   );
 
-const Formulaire = (props) => {
+const FourthForm = (props) => {
   return (
     <SafeAreaView style={styles.container}>
       {/* // Bouton Go Back */}
@@ -145,7 +145,7 @@ const Formulaire = (props) => {
         </View>
         <View></View>
       </View>
-      <Text> { <ProgressBar></ProgressBar> } </Text>
+      <ProgressBar></ProgressBar>
     </SafeAreaView>
   );
 };
@@ -180,4 +180,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Formulaire;
+export default FourthForm;
