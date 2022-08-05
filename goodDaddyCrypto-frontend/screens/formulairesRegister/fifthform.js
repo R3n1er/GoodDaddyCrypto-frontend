@@ -32,7 +32,7 @@ const FifthForm = (props) => {
             width: 120,
             alignItems: "center",
           }}
-          onPress={() => props.navigation.navigate("ThirdForm")}
+          onPress={() => props.navigation.navigate("FourthForm")}
         >
           <Icon name="chevron-left" size={20} />
           <Text> RETOUR </Text>
@@ -41,7 +41,7 @@ const FifthForm = (props) => {
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => Keyboard.dismiss()}
-        style={styles.container}
+        style={{flex: 5}}
       >
         <View>
           <Text style={styles.profilRisque}>Demande des gains mensuels</Text>
@@ -67,6 +67,13 @@ const FifthForm = (props) => {
           <Text style={styles.title}>
             AVEZ-VOUS DES REVENUS COMPLÉMENTAIRES ?
           </Text>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
           <TextInput
             style={styles.input}
             onChangeText={setIncomes}
@@ -74,6 +81,8 @@ const FifthForm = (props) => {
             placeholder="REVENUS"
             keyboardType="numeric"
           />
+          <Text>€</Text>
+          </View>
           <Separator />
           <Button
             onPress={() => {
@@ -84,7 +93,6 @@ const FifthForm = (props) => {
           ></Button>
         </View>
       </TouchableOpacity>
-      <ProgressBar></ProgressBar>
     </SafeAreaView>
   );
 };

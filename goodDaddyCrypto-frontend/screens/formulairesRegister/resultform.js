@@ -30,6 +30,7 @@ const resultform = (props) => {
 
   useEffect(() => {
     // var answersTab = props.answers;
+    console.log(props.answers)
     var answersTab = props.answers;
     var note = 0;
     for (let i = 0; i < answersTab.length; i++) {

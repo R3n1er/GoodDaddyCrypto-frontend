@@ -18,10 +18,9 @@ import { connect } from "react-redux";
 const Separator = () => <View style={styles.separator} />;
 
 const ThirdForm = (props) => {
-
   // RETURN DU JSX
   return (
-    <SafeAreaView contentContainerstyle={styles.container}>
+    <SafeAreaView style={styles.container}>
       {/* // Bouton Go Back */}
       <View style={styles.buttonReturn}>
         <TouchableOpacity
@@ -37,76 +36,77 @@ const ThirdForm = (props) => {
           <Text> RETOUR </Text>
         </TouchableOpacity>
       </View>
-
-      <View>
-        <Text style={styles.profilRisque}>
-          Détermination de ton profil de risque
-        </Text>
-        <Separator />
-        <Text style={styles.title}>
-          Pour un investissement intial de 1000 €, quelle perte maximale peux-tu
-          accepter ?
-        </Text>
-        <Separator />
-      </View>
-      {/* // Début du choix des checkBox et application de Flexbox*/}
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "center",
-          textAlign: "center",
-        }}
-      >
-        {/* Debut liste de choix  */}
+      <View style={{ flex: 5 }}>
         <View>
-          {/* Choix 1 */}
-          <TouchableOpacity>
-            <Text
-              style={styles.answer}
-              onPress={() => {
-                props.addAnswer(1, 2);
-                props.navigation.navigate("FourthForm");
-              }}
-            >
-              100€
-            </Text>
-          </TouchableOpacity>
-          {/* Choix 2 */}
-          <TouchableOpacity>
-            <Text
-              style={styles.answer}
-              onPress={() => {
-                props.addAnswer(2, 2);
-                props.navigation.navigate("FourthForm");
-              }}
-            >
-              200€{" "}
-            </Text>
-          </TouchableOpacity>
-          {/* Choix 3 */}
-          <TouchableOpacity>
-            <Text
-              style={styles.answer}
-              onPress={() => {
-                props.addAnswer(3, 2);
-                props.navigation.navigate("FourthForm");
-              }}
-            >
-              300€{" "}
-            </Text>
-          </TouchableOpacity>
-          {/* Choix 4 */}
-          <TouchableOpacity>
-            <Text
-              style={styles.answer}
-              onPress={() => {
-                props.addAnswer(3, 2);
-                props.navigation.navigate("FourthForm");
-              }}
-            >
-              400€{" "}
-            </Text>
-          </TouchableOpacity>
+          <Text style={styles.profilRisque}>
+            Détermination de ton profil de risque
+          </Text>
+          <Separator />
+          <Text style={styles.title}>
+            Pour un investissement intial de 1000 €, quelle perte maximale
+            peux-tu accepter ?
+          </Text>
+          <Separator />
+        </View>
+        {/* // Début du choix des checkBox et application de Flexbox*/}
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            textAlign: "center",
+          }}
+        >
+          {/* Debut liste de choix  */}
+          <View>
+            {/* Choix 1 */}
+            <TouchableOpacity>
+              <Text
+                style={styles.answer}
+                onPress={() => {
+                  props.addAnswer(1, 3);
+                  props.navigation.navigate("FourthForm");
+                }}
+              >
+                100€
+              </Text>
+            </TouchableOpacity>
+            {/* Choix 2 */}
+            <TouchableOpacity>
+              <Text
+                style={styles.answer}
+                onPress={() => {
+                  props.addAnswer(2, 3);
+                  props.navigation.navigate("FourthForm");
+                }}
+              >
+                200€{" "}
+              </Text>
+            </TouchableOpacity>
+            {/* Choix 3 */}
+            <TouchableOpacity>
+              <Text
+                style={styles.answer}
+                onPress={() => {
+                  props.addAnswer(3, 3);
+                  props.navigation.navigate("FourthForm");
+                }}
+              >
+                300€{" "}
+              </Text>
+            </TouchableOpacity>
+            {/* Choix 4 */}
+            <TouchableOpacity>
+              <Text
+                style={styles.answer}
+                onPress={() => {
+                  props.addAnswer(3, 3);
+                  props.navigation.navigate("FourthForm");
+                }}
+              >
+                400€{" "}
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
       {<ProgressBar></ProgressBar>}
@@ -151,6 +151,10 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     borderBottomColor: "#737373",
     borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  buttonReturn: {
+    flex: 2,
+    justifyContent: "center",
   },
 });
 

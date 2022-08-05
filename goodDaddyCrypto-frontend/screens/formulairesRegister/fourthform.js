@@ -23,7 +23,7 @@ const Separator = () => <View style={styles.separator} />;
 
 const fourthform = (props) => {
   return (
-    <ScrollView ContentContainerstyle={styles.container}>
+    <SafeAreaView style={styles.container}>
       {/* // Bouton Go Back */}
       <View style={styles.buttonReturn}>
         <TouchableOpacity
@@ -40,6 +40,7 @@ const fourthform = (props) => {
         </TouchableOpacity>
       </View>
       {/* // End of GoBack Button */}
+      <View style={{flex:5}}>
       <View>
         <Text style={styles.profilRisque}>
           Détermination de ton profil de risque
@@ -63,7 +64,7 @@ const fourthform = (props) => {
               props.navigation.navigate("FifthForm");
             }}
           >
-            Tu vends tout !{" "}
+            Tu vends tout !
           </Text>
         </TouchableOpacity>
         {/* Choix 2 */}
@@ -96,7 +97,7 @@ const fourthform = (props) => {
           <Text
             style={styles.answer}
             onPress={() => {
-              props.addAnswer(3, 4);
+              props.addAnswer(4, 4);
               props.navigation.navigate("FifthForm");
             }}
           >
@@ -105,9 +106,10 @@ const fourthform = (props) => {
           </Text>
         </TouchableOpacity>
       </View>
+      </View>
       {/* // Ajout du composant Progress Bar */}
       <ProgressBar></ProgressBar>
-    </ScrollView>
+    </SafeAreaView>
   );
 };
 // Styles CSS🎨

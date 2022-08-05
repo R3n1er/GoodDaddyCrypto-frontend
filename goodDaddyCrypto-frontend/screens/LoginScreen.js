@@ -45,7 +45,8 @@ const LoginScreen = (props) => {
       {/* // Input champs pour le mail */}
       <Input
         placeholder="user@mail.com"
-        containerStyle={{marginBottom: 25, width: '70%', color:"white" }}
+        containerStyle={{marginBottom: 25, width: '70%', color:"white", textInputStyle:"white" }}
+        style={{color:"white"}}
         keyboardType="email-address"
         onChangeText={(value) => {
           setEmail(value);
@@ -57,6 +58,7 @@ const LoginScreen = (props) => {
       <Input
         placeholder="type your password"
         containerStyle={{marginBottom: 25, width: '70%',  color:"white"}}
+        style={{color:"white"}}
         onChangeText={(value) => setPassword(value)}
         value={password}
       />
@@ -104,17 +106,10 @@ const styles = StyleSheet.create({
     fontSize: 60,
     marginBottom: "10%",
   },
-
-  input: {
-    backgroundColor: "white",
-    color: "green",
-  },
-
   text: {
     color: "white",
     fontSize: 20,
   },
-
   button: {
     alignItems: "center",
     justifyContent: "center",
