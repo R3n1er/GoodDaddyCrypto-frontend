@@ -88,18 +88,18 @@ const resultform = (props) => {
         console.log('erreur : trop de questions')
       }
     }
-    note = note / 4;
+    note = note / 40;
     console.log("La note du user est de : " + note)
-    if (Math.round(note) == 10) {
+    if (Math.round(note) == 1) {
       setProfilInvestor("INVESTISSEUR DEBUTANT");
     }
-    if (Math.round(note) == 20) {
+    if (Math.round(note) == 2) {
       setProfilInvestor("INVESTISSEUR DEBUTANT PLUS");
     }
-    if (Math.round(note) == 30) {
+    if (Math.round(note) == 3) {
       setProfilInvestor("INVESTISSEUR INTERMEDIAIRE");
     }
-    if (Math.round(note) == 40) {
+    if (Math.round(note) == 4) {
       setProfilInvestor("INVESTISSEUR CONFIRME");
     }
   }, []);
