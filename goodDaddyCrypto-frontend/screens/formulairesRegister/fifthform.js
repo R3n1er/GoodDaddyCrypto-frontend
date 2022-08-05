@@ -28,7 +28,8 @@ const fifthform = (props) => {
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => Keyboard.dismiss()}
-        style={styles.container}
+        
+        // style={styles.container}
       >
         <View>
           <Text style={styles.profilRisque}>Demande des gains mensuels</Text>
@@ -71,7 +72,9 @@ const fifthform = (props) => {
           <Separator />
         </View>
       </TouchableOpacity>
-      {<ProgressBar></ProgressBar>}
+     
+        <ProgressBar></ProgressBar>
+    
     </SafeAreaView>
   );
 };

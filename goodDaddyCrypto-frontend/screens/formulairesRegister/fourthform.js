@@ -58,11 +58,11 @@ const fourthform = (props) => {
           <Text
             style={styles.answer}
             onPress={() => {
-              props.addAnswer(1, 2);
+              props.addAnswer(1, 3);
               props.navigation.navigate("FifthForm");
             }}
           >
-            Tu vends tout !{" "}
+            Tu vends tout !
           </Text>
         </TouchableOpacity>
         {/* Choix 2 */}
@@ -70,7 +70,7 @@ const fourthform = (props) => {
           <Text
             style={styles.answer}
             onPress={() => {
-              props.addAnswer(2, 2);
+              props.addAnswer(2, 3);
               props.navigation.navigate("FifthForm");
             }}
           >
@@ -82,7 +82,7 @@ const fourthform = (props) => {
           <Text
             style={styles.answer}
             onPress={() => {
-              props.addAnswer(3, 2);
+              props.addAnswer(3, 3);
               props.navigation.navigate("FifthForm");
             }}
           >
@@ -95,7 +95,7 @@ const fourthform = (props) => {
           <Text
             style={styles.answer}
             onPress={() => {
-              props.addAnswer(3, 2);
+              props.addAnswer(4, 3);
               props.navigation.navigate("FifthForm");
             }}
           >
