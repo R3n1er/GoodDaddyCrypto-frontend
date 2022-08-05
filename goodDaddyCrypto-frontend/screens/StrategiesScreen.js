@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
 
@@ -6,6 +6,12 @@ import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
 import { connect } from "react-redux";
 
 function StrategiesScreen(props) {
+
+  //initialisations des etats
+  const [amountPaid, setAmountPaid] =  useState(0);
+  const [frequency, setFrequency] = useState("par mois");
+
+
   var getStrategies = async () => {
     console.log(props.userToken);
     var rawResult = await fetch(
@@ -13,6 +19,8 @@ function StrategiesScreen(props) {
     );
     var result = await rawResult.json();
     console.log(result);
+    setAmountPaid(result.strategies[0].amountPaid);
+    setFrequency(result.strategies[0].frequency);
   };
 
   useEffect(() => {
@@ -27,7 +35,7 @@ function StrategiesScreen(props) {
             style={styles.logo}
             source={require("../assets/Bitcoin.svg.png")}
           />
-          <Text style={{ color: "white", textAlignVertical:"center", marginLeft: 30 }}>200e par mois</Text>
+          <Text style={{ color: "white", textAlignVertical:"center", marginLeft: 30 }}>{amountPaid}e {frequency}</Text>
         </View>
       </View>
       <View></View>
