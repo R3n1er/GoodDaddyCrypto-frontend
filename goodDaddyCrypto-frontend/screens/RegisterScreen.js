@@ -6,6 +6,7 @@ import {
   TextInput,
   ScrollView,
   Image,
+  SafeAreaView,
   TouchableOpacity,
 } from "react-native";
 
@@ -40,7 +41,8 @@ function RegisterScreen(props) {
   };
   // Return the JSX
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <SafeAreaView style={styles.container}>
+    <ScrollView style={styles.scrollView}>
       {/* // Button go back */}
       <View style={styles.buttonReturn}>
         <TouchableOpacity
@@ -64,12 +66,14 @@ function RegisterScreen(props) {
         containerStyle="{{marginBottom: 25, width: '70%', }}"
         onChangeText={(value) => setLastName(value)}
         value={lastName}
+        style={{color:"white"}}
       />
       <Input
         placeholder="Prenom"
         containerStyle="{{marginBottom: 25, width: '70%', }}"
         onChangeText={(value) => setFirstName(value)}
         value={firstName}
+        style={{color:"white"}}
       />
       <Input
         placeholder="telephone"
@@ -77,6 +81,7 @@ function RegisterScreen(props) {
         keyboardType="numeric"
         onChangeText={(value) => setTelephone(value)}
         value={telephone}
+        style={{color:"white"}}
       />
       <Input
         placeholder="email"
@@ -91,6 +96,7 @@ function RegisterScreen(props) {
         secureTextEntry={true}
         onChangeText={(value) => setPassword(value)}
         value={password}
+        style={{color:"white"}}
       />
       <Button
         title="REGISTER"
@@ -101,6 +107,7 @@ function RegisterScreen(props) {
         }}
       />
     </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -117,6 +124,8 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 50,
+    marginBottom: 50,
+    marginTop:50
   },
 
   title: {
@@ -147,6 +156,9 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     elevation: 3,
     backgroundColor: "#222121",
+  },
+  scrollView: {
+    marginHorizontal: 20,
   },
 });
 // REDUX

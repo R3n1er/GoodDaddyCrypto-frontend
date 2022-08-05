@@ -19,8 +19,8 @@ import { ScrollView } from "react-native-gesture-handler";
 const Separator = () => <View style={styles.separator} />;
 
 const FifthForm = (props) => {
-  const [incomes, setIncomes] = useState(0);
-  const [salary, setSalary] = useState(0);
+  const [incomes, setIncomes] = useState("");
+  const [salary, setSalary] = useState("");
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
