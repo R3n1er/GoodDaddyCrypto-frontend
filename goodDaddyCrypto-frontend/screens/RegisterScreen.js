@@ -42,71 +42,72 @@ function RegisterScreen(props) {
   // Return the JSX
   return (
     <SafeAreaView style={styles.container}>
-    <ScrollView style={styles.scrollView}>
-      {/* // Button go back */}
-      <View style={styles.buttonReturn}>
-        <TouchableOpacity
-          style={{
-            flexDirection: "row",
-            height: 50,
-            width: 120,
-            alignItems: "center",
-          }}
-          onPress={() => console.log(props.navigation.navigate("Login"))}
-        >
-          <Icon name="chevron-left" size={20} />
-          <Text> RETOUR </Text>
-        </TouchableOpacity>
+      <ScrollView style={styles.scrollView}>
+        {/* // Button go back */}
+        <View style={styles.buttonReturn}>
+          <TouchableOpacity
+            style={{
+              flexDirection: "row",
+              height: 50,
+              width: 120,
+              alignItems: "center",
+            }}
+            onPress={() => console.log(props.navigation.navigate("Login"))}
+          >
+            <Icon name="chevron-left" size={20} />
+            <Text> RETOUR </Text>
+          </TouchableOpacity>
 
-        {/* // Bandeau titre */}
-      </View>
-      <Text style={styles.textTitle}>GOOD DADDY CRYPTO</Text>
-      <Input
-        placeholder="Nom"
-        containerStyle="{{marginBottom: 25, width: '70%', }}"
-        onChangeText={(value) => setLastName(value)}
-        value={lastName}
-        style={{color:"white"}}
-      />
-      <Input
-        placeholder="Prenom"
-        containerStyle="{{marginBottom: 25, width: '70%', }}"
-        onChangeText={(value) => setFirstName(value)}
-        value={firstName}
-        style={{color:"white"}}
-      />
-      <Input
-        placeholder="telephone"
-        containerStyle="{{marginBottom: 25, width: '70%', }}"
-        keyboardType="numeric"
-        onChangeText={(value) => setTelephone(value)}
-        value={telephone}
-        style={{color:"white"}}
-      />
-      <Input
-        placeholder="email"
-        containerStyle="{{marginBottom: 25, width: '70%', }}"
-        keyboardType="email-address"
-        onChangeText={(value) => setEmail(value)}
-        value={email}
-      />
-      <Input
-        placeholder="Mot de passe"
-        containerStyle="{{marginBottom: 25, width: '70%', }}"
-        secureTextEntry={true}
-        onChangeText={(value) => setPassword(value)}
-        value={password}
-        style={{color:"white"}}
-      />
-      <Button
-        title="REGISTER"
-        type="solid"
-        onPress={() => {
-          props.navigation.navigate("FirstForm");
-          submitRegister();
-        }}
-      />
-    </ScrollView>
+          {/* // Bandeau titre */}
+        </View>
+        <Text style={styles.textTitle}>GOOD DADDY CRYPTO</Text>
+        <Input
+          placeholder="Nom"
+          containerStyle="{{marginBottom: 25, width: '70%', }}"
+          onChangeText={(value) => setLastName(value)}
+          value={lastName}
+          style={{ color: "white" }}
+        />
+        <Input
+          placeholder="Prenom"
+          containerStyle="{{marginBottom: 25, width: '70%', }}"
+          onChangeText={(value) => setFirstName(value)}
+          value={firstName}
+          style={{ color: "white" }}
+        />
+        <Input
+          placeholder="telephone"
+          containerStyle="{{marginBottom: 25, width: '70%', }}"
+          keyboardType="numeric"
+          onChangeText={(value) => setTelephone(value)}
+          value={telephone}
+          style={{ color: "white" }}
+        />
+        <Input
+          placeholder="email"
+          containerStyle="{{marginBottom: 25, width: '70%', }}"
+          keyboardType="email-address"
+          onChangeText={(value) => setEmail(value)}
+          style={{ color: "white" }}
+          value={email}
+        />
+        <Input
+          placeholder="Mot de passe"
+          containerStyle="{{marginBottom: 25, width: '70%', }}"
+          secureTextEntry={true}
+          onChangeText={(value) => setPassword(value)}
+          value={password}
+          style={{ color: "white" }}
+        />
+        <Button
+          title="REGISTER"
+          type="solid"
+          onPress={() => {
+            props.navigation.navigate("FirstForm");
+            submitRegister();
+          }}
+        />
+      </ScrollView>
     </SafeAreaView>
   );
 }
