@@ -121,7 +121,7 @@ const strategyProposal = (props) => {
             onPress={() => {
               addStrategy();
               props.navigation.navigate("BottomNavigator", {
-                screen: "Strategies",
+                screen: "Dashboard",
               });
             }}
             title="ACCEPTER"

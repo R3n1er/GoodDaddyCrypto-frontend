@@ -17,6 +17,7 @@ import StrategiesScreen from "./screens/StrategiesScreen";
 import TransactionsScreen from "./screens/TransactionsScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import strategyproposal from "./screens/formulairesRegister/strategyproposal";
 
 // Imports des screensdu formulaire
 import FirstForm from "./screens/formulairesRegister/firstform";
@@ -66,7 +67,7 @@ const BottomNavigator = () => {
         },
       }}
     >
-      <Tab.Screen name="Strategies" component={StrategiesScreen} />
+      <Tab.Screen name="Strategies" component={strategyproposal} />
       <Tab.Screen name="Dashboard" component={DashboardScreen} />
       <Tab.Screen name="Transactions" component={TransactionsScreen} />
       <Tab.Screen name="Guides" component={GuidesScreen} />
