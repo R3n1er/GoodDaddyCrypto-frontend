@@ -17,7 +17,8 @@ import StrategiesScreen from "./screens/StrategiesScreen";
 import TransactionsScreen from "./screens/TransactionsScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
-import strategyproposal from "./screens/formulairesRegister/strategyproposal";
+import WalletBtcScreen from "./screens/wallets/btcWalletScreen";
+import WalletEthScreen from "./screens/wallets/ethWalletScreen";
 
 // Imports des screensdu formulaire
 import FirstForm from "./screens/formulairesRegister/firstform";
@@ -67,8 +68,8 @@ const BottomNavigator = () => {
         },
       }}
     >
-      <Tab.Screen name="Strategies" component={strategyproposal} />
       <Tab.Screen name="Dashboard" component={DashboardScreen} />
+      <Tab.Screen name="Strategies" component={StrategiesScreen} />
       <Tab.Screen name="Transactions" component={TransactionsScreen} />
       <Tab.Screen name="Guides" component={GuidesScreen} />
     </Tab.Navigator>
@@ -137,9 +138,14 @@ export default function App() {
             options={{ title: "Proposition Strategie" }}
           />
           <Stack.Screen
-            name="BtcWallet"
-            component={BtcWallet}
-            options={{ title: "BTC Wallet" }}
+            name="WalletBtc"
+            component={WalletBtcScreen}
+            options={{ title: "Proposition Strategie" }}
+          />
+          <Stack.Screen
+            name="WalletEth"
+            component={WalletEthScreen}
+            options={{ title: "Proposition Strategie" }}
           />
           <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
         </Stack.Navigator>
