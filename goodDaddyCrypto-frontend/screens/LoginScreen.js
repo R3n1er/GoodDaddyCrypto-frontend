@@ -21,7 +21,6 @@ const LoginScreen = (props) => {
   const [email, setEmail] = React.useState("");
 
   // Fonction Submit Sign-In
-
   const submitSignIn = async () => {
     var rawResult = await fetch(
       "https://gooddaddybackend.herokuapp.com/users/sign-in",
@@ -36,8 +35,11 @@ const LoginScreen = (props) => {
     props.addToken(result.userToken);
     if (result.userToken != null) {
       props.navigation.navigate("BottomNavigator", {
-        screen: "Strategies",
+        screen: "WalletBtc",
       });
+      // props.navigation.navigate("BottomNavigator", {
+      //   screen: "Strategies",
+      // });
     }
   };
 
