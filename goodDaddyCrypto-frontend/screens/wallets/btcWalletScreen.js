@@ -41,3 +41,5 @@ const btcWallet = (props) => {
     </SafeAreaView>
   );
 };
+
+export default btcWallet;

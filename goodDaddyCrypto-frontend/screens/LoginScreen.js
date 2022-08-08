@@ -11,13 +11,11 @@ import {
 import { Button } from "@rneui/base";
 import { Input } from "@rneui/themed";
 
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 import { Linking, TouchableOpacity } from "react-native";
 // import { ScrollView } from "react-native-gesture-handler";
 
-
 const LoginScreen = (props) => {
-  
   //Initialisation des etats pour le formulaire
   const [password, setPassword] = React.useState("");
   const [email, setEmail] = React.useState("");
@@ -33,14 +31,15 @@ const LoginScreen = (props) => {
         body: `email=${email}&password=${password}`,
       }
     );
-     var result = await rawResult.json();
+    var result = await rawResult.json();
     console.log(result);
     props.addToken(result.userToken);
-    if(result.userToken != null) {
-      props.navigation.navigate("FirstForm");
+    if (result.userToken != null) {
+      props.navigation.navigate("BottomNavigator", {
+        screen: "Strategies",
+      });
     }
   };
-  
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -48,8 +47,13 @@ const LoginScreen = (props) => {
       {/* // Input champs pour le mail */}
       <Input
         placeholder="user@mail.com"
-        containerStyle={{marginBottom: 25, width: '70%', color:"white", textInputStyle:"white" }}
-        style={{color:"white"}}
+        containerStyle={{
+          marginBottom: 25,
+          width: "70%",
+          color: "white",
+          textInputStyle: "white",
+        }}
+        style={{ color: "white" }}
         keyboardType="email-address"
         onChangeText={(value) => {
           setEmail(value);
@@ -60,8 +64,8 @@ const LoginScreen = (props) => {
       {/* Input champs pour le password  */}
       <Input
         placeholder="type your password"
-        containerStyle={{marginBottom: 25, width: '70%',  color:"white"}}
-        style={{color:"white"}}
+        containerStyle={{ marginBottom: 25, width: "70%", color: "white" }}
+        style={{ color: "white" }}
         onChangeText={(value) => setPassword(value)}
         value={password}
       />
@@ -85,7 +89,7 @@ const LoginScreen = (props) => {
       </Text>
     </ScrollView>
   );
-}
+};
 
 // Style CSS 🎨
 const styles = StyleSheet.create({
@@ -101,7 +105,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 50,
   },
-  
+
   title: {
     color: "white",
     fontWeight: "bold",
@@ -125,11 +129,10 @@ const styles = StyleSheet.create({
 
 function mapDispatchToProps(dispatch) {
   return {
-    addToken: function(token) {
-        dispatch( {type: 'addToken', token:token} )
-    }
-  }
- }
- 
-export default connect(null, mapDispatchToProps)(LoginScreen);
+    addToken: function (token) {
+      dispatch({ type: "addToken", token: token });
+    },
+  };
+}
 
+export default connect(null, mapDispatchToProps)(LoginScreen);
