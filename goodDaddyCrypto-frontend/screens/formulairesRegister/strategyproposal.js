@@ -132,6 +132,7 @@ const strategyProposal = (props) => {
   );
 };
 
+// Styles CSS 🖼
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -156,6 +157,7 @@ const styles = StyleSheet.create({
   },
 });
 
+// Fonction REDUX
 function mapStateToProps(state) {
   return { userToken: state.token, salary: state.salary };
 }
