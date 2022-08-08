@@ -5,7 +5,7 @@ import { StyleSheet, View, Text, Button, ScrollView } from "react-native";
 
 // Import du CSS correspondant à ui-neumorphism
 
-export default function DashBoardScreen() {
+export default function DashBoardScreen(props) {
   const [totalInvestment, setTotalInvestment] = useState(0);
 
   useEffect(async () => {
@@ -25,7 +25,7 @@ export default function DashBoardScreen() {
       <Button
           style={styles.button}
           onPress={() => {
-            props.navigation.navigate("WalletBtc")
+            props.navigation.navigate("WalletBtc");
           }}
           title="WALLET BTC"
         >

@@ -2,7 +2,6 @@ import React from 'react';
 import {StyleSheet, Text, View, Button, Alert, SafeAreaView} from 'react-native';
 
 // SÉPARATEUR LIGNE
-
 const Separator = () => (
     <View style={styles.separator} />
   );

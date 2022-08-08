@@ -17,10 +17,12 @@ import StrategiesScreen from "./screens/StrategiesScreen";
 import TransactionsScreen from "./screens/TransactionsScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+
+// Import des screens de Wallets
 import WalletBtcScreen from "./screens/wallets/btcWalletScreen";
 import WalletEthScreen from "./screens/wallets/ethWalletScreen";
 
-// Imports des screensdu formulaire
+// Imports des screens du formulaire
 import FirstForm from "./screens/formulairesRegister/firstform";
 import SecondForm from "./screens/formulairesRegister/secondform";
 import ThirdForm from "./screens/formulairesRegister/thirdform";
@@ -142,11 +144,11 @@ export default function App() {
             component={WalletBtcScreen}
             options={{ title: "Proposition Strategie" }}
           />
-          <Stack.Screen
+          {/* <Stack.Screen
             name="WalletEth"
             component={WalletEthScreen}
             options={{ title: "Proposition Strategie" }}
-          />
+          /> */}
           <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
         </Stack.Navigator>
       </NavigationContainer>
