@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 // Import de librairie ui-neumorphism
 
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Text, Button, ScrollView } from "react-native";
 
 // Import du CSS correspondant à ui-neumorphism
 
@@ -17,7 +17,7 @@ export default function DashBoardScreen() {
     console.log(result);
     setStrategies(result.strategies)
   }, []);
-  
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text>DASHBOARD</Text>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { StyleSheet, View, SafeAreaView, TouchableOpacity } from "react-native";
 // Import React Native Elements
-import { Text, Card, Button, Image, Icon } from "@rneui/themed";
+import { Text, Card, Button, Image } from "@rneui/themed";
 
 // Icones
 import Icon from "react-native-vector-icons/FontAwesome";

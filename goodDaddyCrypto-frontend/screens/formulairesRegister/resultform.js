@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import { Text, Card, Button, Image, Icon } from "@rneui/themed";
+import { Text, Card, Button, Image } from "@rneui/themed";
 
 import Icon from "react-native-vector-icons/FontAwesome";
 // React Redux
