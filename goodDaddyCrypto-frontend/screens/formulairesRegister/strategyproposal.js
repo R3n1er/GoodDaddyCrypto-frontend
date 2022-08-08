@@ -7,11 +7,16 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Image,
+  ScrollView,
 } from "react-native";
 // Icones
 import Icon from "react-native-vector-icons/FontAwesome";
 // React Redux
 import { connect } from "react-redux";
+
+// IMPORT DE REACT NATIVE PAPER POUR LA CARD 
+
+import { Card } from 'react-native-paper';
 
 const strategyProposal = (props) => {
   // INITIALISATION DES ETATS
@@ -58,7 +63,7 @@ const strategyProposal = (props) => {
         case "INVESTISSEUR INTERMEDIAIRE":
           setStrategy([
             { amountPaid: 15*salary/100, frequency: "par mois", asset: "BTC" },
-            { amountPaid: 5*salary/100, frequency: "par mois", asset: "BTC" }
+            { amountPaid: 5*salary/100, frequency: "par mois", asset: "ETH" }
           ]);
           console.log("cas 3");
           break;
@@ -101,11 +106,42 @@ const strategyProposal = (props) => {
             En fonction de ton profil de risque on te propose d'investir :
           </Text>
         </View>
-        <View style={{ flexDirection: "row", marginTop: 30, marginLeft: 50 }}>
+        {/* SCROLLVIEW BITCOIN - ETHEREUM */}
+        <ScrollView>
+        <View style={{ flexDirection: "row", marginTop: 30, marginLeft: 5 }}>
+          <Card style={styles.card}>
+            <Text style={styles.paragraph}>
+              {strategy[0].amountPaid} € {strategy[0].frequency}
+            </Text>
+            <Image 
+              style={styles.logo}
+              source={require("../../assets/Bitcoin.svg.png")} />
+            <Text style={styles.paragraph}>
+              {strategy[0].asset}
+            </Text>
+          </Card>
+        </View>
+
+        <View style={{ flexDirection: "row", marginTop: 30, marginLeft: 5 }}>
+          <Card style={styles.card}>
+            <Text style={styles.paragraph}>
+            {strategy[0].amountPaid} € {strategy[0].frequency}
+            </Text>
+            <Image 
+              style={styles.logo}
+              source={require("../../assets/ethereum.png")} />
+            <Text style={styles.paragraph}>
+            {strategy[1].asset}
+            </Text>
+          </Card>
+        </View>
+        </ScrollView>
+
+        {/* <View style={{ flexDirection: "row", marginTop: 30, marginLeft: 50 }}>
           <Image
             style={styles.logo}
             source={require("../../assets/Bitcoin.svg.png")}
-          />
+          /><Text style={{}}>BTC</Text>
           <Text
             style={{
               color: "black",
@@ -115,7 +151,7 @@ const strategyProposal = (props) => {
           >
             {strategy[0].amountPaid}e {strategy[0].frequency}
           </Text>
-        </View>
+        </View> */}
         <View style={{ marginTop: 50 }}>
           <Button
             onPress={() => {
@@ -149,10 +185,22 @@ const styles = StyleSheet.create({
   page: {
     flex: 4,
   },
-
+  paragraph: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    padding: 20
+  },
+  card: {
+    flex:1,
+    alignItems: "center",
+    width:350,
+  },
   logo: {
+    alignSelf: "center",
     width: 50,
     height: 50,
+    justifyContent: "center",
   },
 });
 
