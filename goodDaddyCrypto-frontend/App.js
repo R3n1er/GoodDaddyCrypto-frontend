@@ -136,6 +136,11 @@ export default function App() {
             component={StrategyProposal}
             options={{ title: "Proposition Strategie" }}
           />
+          <Stack.Screen
+            name="BtcWallet"
+            component={BtcWallet}
+            options={{ title: "BTC Wallet" }}
+          />
           <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
         </Stack.Navigator>
       </NavigationContainer>
