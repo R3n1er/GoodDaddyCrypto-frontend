@@ -32,7 +32,7 @@ const btcWallet = (props) => {
       {/* // Ici information sur la valeur du portefeuille */}
       <View>
         <Card>
-          <Text>Valeur de ton portefeuille {asset}</Text>
+          <Text>Valeur de ton portefeuille {assetName}</Text>
           <Text>800 €</Text>
           <Text>soit 0,051 {assetSymbol}</Text>
         </Card>
