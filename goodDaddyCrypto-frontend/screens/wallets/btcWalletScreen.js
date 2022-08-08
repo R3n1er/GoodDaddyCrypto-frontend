@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { StyleSheet, View, SafeAreaView, TouchableOpacity } from "react-native";
 // Import React Native Elements
-import { Text, Card, Button, Image, Icon } from "@rneui/themed";
+import { Text, Card, Button, Image } from "@rneui/themed";
 
 // Icones
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -12,6 +12,8 @@ import { connect } from "react-redux";
 const btcWallet = (props) => {
   const assetName = 'Bitcoin';
   const assetSymbol= 'BTC';
+  const assetLogo =
+    "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/f231d7382689406f9a50dde841418c64.png";
 
   return (
     <SafeAreaView style={styles.container}>
@@ -20,7 +22,7 @@ const btcWallet = (props) => {
         <Card.Title>Prix actuel du {assetName}</Card.Title>
         <Image
           source={
-            "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/f231d7382689406f9a50dde841418c64.png"
+            {assetLogo}
           }
         />
         <Card.Divider />
@@ -72,3 +74,5 @@ const styles = StyleSheet.create({
     height: 50,
   },
 });
+
+export default btcWallet;
