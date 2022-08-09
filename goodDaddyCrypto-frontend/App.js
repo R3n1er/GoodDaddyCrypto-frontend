@@ -73,11 +73,11 @@ const BottomNavigator = () => {
       <Tab.Screen name="Dashboard" component={DashboardStack} />
       <Tab.Screen name="Strategies" component={StrategiesScreen} />
       <Tab.Screen name="Transactions" component={TransactionsScreen} />
-      <Tab.Screen name="Guides" component={GuidesScreen} />
+      <Tab.Screen name="GuidesScreen" component={GuidesScreen} />
     </Tab.Navigator>
   );
 };
-// Menu stach pour le menu Dashboard
+// Menu stack pour le menu Dashboard
 function DashboardStack(){
   return (
     <Stack.Navigator>
@@ -166,6 +166,11 @@ export default function App() {
             component={WalletEthScreen}
             options={{ title: "Wallet Ethereum" }}
           />
+          {/* <Stack.screen
+            name="Guides"
+            component={GuidesScreen}
+            options={{ title: "Guides Débutant Crypto "}}
+          /> */}
           <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
         </Stack.Navigator>
       </NavigationContainer>
