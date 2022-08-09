@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -24,6 +24,7 @@ function RegisterScreen(props) {
   const [telephone, setTelephone] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userToken, setUserToken] = useState("");
 
   // Declaration de la fonction Submit Register
   var submitRegister = async function (props) {
@@ -37,8 +38,13 @@ function RegisterScreen(props) {
     );
     var response = await result.json();
     console.log(response);
-    props.addToken(response.userToken);
+    setUserToken(response.userToken);
   };
+
+  useEffect(() => {
+    props.addToken(userToken)
+  }, [userToken])
+  
   // Return the JSX
   return (
     <SafeAreaView style={styles.container}>

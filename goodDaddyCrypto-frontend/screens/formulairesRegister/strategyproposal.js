@@ -24,16 +24,17 @@ const strategyProposal = (props) => {
 
   // FONCTION POUR ENVOYER LA STRATEGIE EN BDD UNE FOIS VALIDEE PAR LE USER
   var addStrategy = async () => {
+    for (let i=0; i<strategy.length; i++) {
     var rawResult = await fetch(
       "https://gooddaddybackend.herokuapp.com/investment/addStrategy",
       {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `userToken=${props.userToken}&amountPaid=${strategy[0].amountPaid}&frequency=${strategy[0].frequency}&asset=${strategy[0].asset}`,
+        body: `userToken=${props.userToken}&amountPaid=${strategy[i].amountPaid}&frequency=${strategy[i].frequency}&asset=${strategy[i].asset}`,
       }
     );
     var result = await rawResult.json();
-    console.log(result);
+  }
   };
 
   // FONCTION POUR RECUPERER LE TYPE INVESTISSEUR DU USER ET LANCER LE CALCUL DE L'INVESTISSEMENT

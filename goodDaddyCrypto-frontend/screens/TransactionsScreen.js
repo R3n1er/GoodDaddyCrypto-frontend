@@ -6,10 +6,11 @@ import {
   StyleSheet,
   View,
   Text,
-  ScrollView,
   Modal,
   Pressable,
   TextInput,
+  SafeAreaView,
+  ScrollView
 } from "react-native";
 
 import { Dropdown } from "react-native-element-dropdown";
@@ -18,41 +19,55 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { connect } from "react-redux";
 
 function TransactionsScreen(props) {
-
-
+  // ETAT POUR STOCKER LES OPERATIONS
   const [operations, setOperations] = useState([]);
+  //ETATS POUR CHAMPS SAISIE D'UNE NOUVELLE OPERATION/AFFICHER LA MODALE
   const [modalVisible, setModalVisible] = useState(false);
   const [amountOfToken, setAmountOfToken] = useState("");
   const [amountPaid, setAmountPaid] = useState("");
 
-
+  // ETATS POUR DATE PICKER
   const [date, setDate] = useState(new Date());
-  const [mode, setMode] = useState('date');
+  const [mode, setMode] = useState("date");
   const [show, setShow] = useState(false);
-
-
-  const [value, setValue] = useState(null);
+  //ETATS POUR DROPDOWN POUR CHOISIR ASSETS
+  const [asset, setAsset] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
   const dataDropdown = [
     { label: "Bitcoin", value: "BTC" },
     { label: "Ethereum", value: "ETH" },
   ];
+  //ETATS POUR DROPDOWN POUR CHOISIR TYPE OPERATION
+  const [typeOperation, setTypeOperation] = useState(null);
+  const [isFocus2, setIsFocus2] = useState(false);
+  const dataDropdown2 = [
+    { label: "Debit", value: "DEBIT" },
+    { label: "Credit", value: "CREDIT" },
+  ];
+
   // RECUPERE LES OPERATIONS A L'INITIALISATION DU SCREEN
   useEffect(() => {
-    async function fetchData() {
-      var rawResult = await fetch(
-        `https://gooddaddybackend.herokuapp.com/operation/getOperation?userToken=${props.userToken}`
-      );
-      var result = await rawResult.json();
-      setOperations(result.operations);
-    }
-    fetchData();
+    getOperations();
   }, []);
 
+  async function getOperations() {
+    var rawResult = await fetch(
+      `https://gooddaddybackend.herokuapp.com/operation/getOperation?userToken=${props.userToken}`
+    );
+    var result = await rawResult.json();
+    setOperations(result.operations);
+  }
+  //AFFICHAGE DES OPERATIONS VIA UN TABLEAU DE CARDS
   var operationsList = operations.map((ope, i) => {
     return (
       <Card title="HELLO WORLD" key={i} style={{ backgroundColor: "black" }}>
-        <View style={{ flexDirection: "column", marginBottom: 20, backgroundColor: "black"}}>
+        <View
+          style={{
+            flexDirection: "column",
+            marginBottom: 20,
+            backgroundColor: "black",
+          }}
+        >
           <Text style={styles.text}>Date : {ope.date}</Text>
           <Text style={styles.text}>Type Operation : {ope.typeOperation}</Text>
           <Text style={styles.text}>
@@ -66,26 +81,40 @@ function TransactionsScreen(props) {
     );
   });
 
+  const addOperation = async () => {
+    var rawResult = await fetch(
+      "https://gooddaddybackend.herokuapp.com/operation/addOperation",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `userToken=${props.userToken}&date=${date}&typeOperation=${typeOperation}&amountOfToken=${amountOfToken}&amountPaid=${amountPaid}&asset=${asset}`,
+      }
+    );
+    var result = await rawResult.json();
+    getOperations();
+  };
+
+  // FONCTIONS POUR LE DATE PICKER
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;
     setShow(false);
     setDate(currentDate);
   };
-
   const showMode = (currentMode) => {
     if (Platform.OS === "android") {
       setShow(false);
-      // for iOS, add a button that closes the picker
     }
     setMode(currentMode);
   };
   const showDatepicker = () => {
     showMode("date");
-    setShow(true)
+    setShow(true);
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    
+    <SafeAreaView style={styles.container}>
+    <ScrollView>
       <Modal
         animationType="slide"
         style={styles.centeredView}
@@ -111,6 +140,24 @@ function TransactionsScreen(props) {
               )}
             </View>
             <Dropdown
+              style={[styles.dropdown, isFocus2 && { borderColor: "blue" }]}
+              placeholderStyle={styles.placeholderStyle}
+              selectedTextStyle={styles.selectedTextStyle}
+              inputSearchStyle={styles.inputSearchStyle}
+              data={dataDropdown2}
+              maxHeight={300}
+              labelField="label"
+              valueField="value"
+              placeholder={!isFocus2 ? "Type operation" : "..."}
+              value={typeOperation}
+              onFocus={() => setIsFocus2(true)}
+              onBlur={() => setIsFocus2(false)}
+              onChange={(item) => {
+                setTypeOperation(item.value);
+                setIsFocus2(false);
+              }}
+            />
+            <Dropdown
               style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
               placeholderStyle={styles.placeholderStyle}
               selectedTextStyle={styles.selectedTextStyle}
@@ -120,11 +167,11 @@ function TransactionsScreen(props) {
               labelField="label"
               valueField="value"
               placeholder={!isFocus ? "Choisir un asset" : "..."}
-              value={value}
+              value={asset}
               onFocus={() => setIsFocus(true)}
               onBlur={() => setIsFocus(false)}
               onChange={(item) => {
-                setValue(item.value);
+                setAsset(item.value);
                 setIsFocus(false);
               }}
             />
@@ -144,13 +191,22 @@ function TransactionsScreen(props) {
             />
             <Pressable
               style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}
+              onPress={() => {
+                setModalVisible(!modalVisible);
+                addOperation();
+                setAsset(null);
+                setDate(new Date());
+                setAmountOfToken("");
+                setAmountPaid("");
+                setTypeOperation(null);
+              }}
             >
               <Text style={styles.textStyle}>CONFIRMER</Text>
             </Pressable>
           </View>
         </View>
       </Modal>
+      
       <Text
         style={{
           color: "white",
@@ -159,6 +215,7 @@ function TransactionsScreen(props) {
         TRANSACTIONS
       </Text>
       {operationsList}
+    </ScrollView>
       <Button
         style={styles.button}
         onPress={() => {
@@ -166,7 +223,7 @@ function TransactionsScreen(props) {
         }}
         title="AJOUTER OPERATION"
       ></Button>
-    </ScrollView>
+    </SafeAreaView>
   );
 }
 
