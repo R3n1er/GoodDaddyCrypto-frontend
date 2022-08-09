@@ -26,7 +26,7 @@ function StrategiesScreen(props) {
       assetLogo = require("../assets/Bitcoin.svg.png")
     }
     else if (strat.asset == "ETH") {
-      assetLogo = require("../assets/ethereum.png")
+      assetLogo = require("../assets/Ethereum.png")
     }
     return (
       <View 
