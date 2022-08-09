@@ -5,39 +5,49 @@ import { StyleSheet, View, SafeAreaView, TouchableOpacity } from "react-native";
 import { Text, Card, Button, Image } from "@rneui/themed";
 
 // Import de la fonction GetCrypto Current Price
-import {getCryptoPriceData} from '../../services/GetCryptoPriceService';
+// import {getCryptoPriceData} from '../../services/GetCryptoPriceService';
 
 // Icones
 import Icon from "react-native-vector-icons/FontAwesome";
 // React Redux
 import { connect } from "react-redux";
 
-// import {walletChart} from "../../Components/walletChart";
-
+// AXIOS pour requette API
 import axios from "axios";
 
-
 const btcWallet = (props) => {
+  // Declaration variable d'etat pour afficher le prix
+
+  const [showprice, setShowPrice] = useState(0);
+
+  // Declaration de variables
   const assetName = "Bitcoin";
   const assetSymbol = "BTC";
   const cryptoAssetId = "bitcoin";
-  const assetLogo = "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/f231d7382689406f9a50dde841418c64.png"
+  const assetLogo =
+    "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/f231d7382689406f9a50dde841418c64.png";
 
-  // Fonction pour récupérer le prix d'un asset avec API Coingecko
-  const getCryptoPriceData = async () => {
-    try {
+  
+ // Use effect
+useEffect(()=>{
+// Fonction pour récupérer le prix d'un asset avec API Coingecko
+  async function getCryptoPriceData() {
+    try{
       // This is where the api call will go
-      const response = await axios.get(
-        `https://api.coingecko.com/api/v3/simple/price?ids=${cryptoAssetId}&vs_currencies=usd`
-      );
-      // Gestion du success
-      console.log(response);
-      return response.bitcoin.us;
-    } catch (error) {
-      // gestion des erreurs
-      console.error(error);
+    const response = await axios.get(
+      `https://api.coingecko.com/api/v3/simple/price?ids=${cryptoAssetId}&vs_currencies=eur`
+    );
+    // Gestion du success
+    // Retour de la fonction
+    console.log("typeof response", typeof response.data.bitcoin.eur);
+
+    setShowPrice(response.data.bitcoin.eur);
+    }catch(err){
+      console.log(err)
     }
-  };
+  }
+  getCryptoPriceData();
+},[])
 
   return (
     <SafeAreaView style={styles.container}>
@@ -50,7 +60,7 @@ const btcWallet = (props) => {
         <Card.Divider />
         {/*//get current Price of asset with API */}
         <Text>
-          1 {assetSymbol} = {getCryptoPriceData}
+          1 {assetSymbol} = {showprice} €
         </Text>
       </Card>
       {/* // Insert du graphique ici 
