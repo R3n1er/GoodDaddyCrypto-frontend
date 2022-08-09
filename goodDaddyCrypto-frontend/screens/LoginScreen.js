@@ -21,7 +21,6 @@ const LoginScreen = (props) => {
   const [email, setEmail] = React.useState("");
 
   // Fonction Submit Sign-In
-
   const submitSignIn = async () => {
     var rawResult = await fetch(
       "https://gooddaddybackend.herokuapp.com/users/sign-in",

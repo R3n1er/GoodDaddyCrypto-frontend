@@ -14,7 +14,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 // React Redux
 import { connect } from "react-redux";
 
-const btcWallet = (props) => {
+const ethWallet = (props) => {
   const asset = BTC;
 
   return (
@@ -42,4 +42,36 @@ const btcWallet = (props) => {
   );
 };
 
-export default btcWallet;
+// Styles CSS 🖼
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#222121",
+    color: "white",
+    alignItems: "center",
+    justifyContent: "center",
+    marginHorizontal: 16,
+  },
+  title: {
+    fontWeight: "bold",
+    fontSize: 30,
+  },
+  profilRisque: {
+    fontSize: 28,
+    textAlign: "center",
+  },
+  buttonReturn: {
+    flex: 2,
+    justifyContent: "center",
+  },
+  page: {
+    flex: 4,
+  },
+
+  logo: {
+    width: 50,
+    height: 50,
+  },
+});
+
+export default ethWallet;
