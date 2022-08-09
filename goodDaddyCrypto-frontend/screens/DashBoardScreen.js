@@ -8,14 +8,14 @@ function DashBoardScreen(props) {
   const [operations, setOperations] = useState([]);
   const [totalInvestmentAsset, setTotalInvestmentAsset] = useState(0);
   const [totalInvestmentDollar, setTotalInvestmentDollar] = useState(0);
+  const [bitcoinToDollarToday, setBitcoinToDollarToday] = useState(0);
 
   useEffect(() => {
-    async function fetchData() {
+    async function getOperations() {
       var rawResult = await fetch(
         `https://gooddaddybackend.herokuapp.com/operation/getOperation?userToken=${props.userToken}`
       );
       var result = await rawResult.json();
-      console.log(result);
       setOperations(result.operations);
 
       var totalAsset = 0;
@@ -27,22 +27,46 @@ function DashBoardScreen(props) {
         } else if (result.operations[i].typeOperation == "DEBIT") {
           totalAsset -= result.operations[i].amountOfToken;
           totalDollar -= result.operations[i].amountPaid;
-        } else [console.log("Type operation inconnu")];
+        } else {
+          console.log("Type operation inconnu");
+        }
       }
       setTotalInvestmentAsset(totalAsset);
       setTotalInvestmentDollar(totalDollar);
-      console.log(totalAsset);
-      console.log(totalDollar);
     }
-    fetchData();
+
+    async function getBitcoinToDollar() {
+      var rawResult = await fetch(
+        `https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd`
+      );
+      var result = await rawResult.json();
+      console.log(result.bitcoin.usd);
+      setBitcoinToDollarToday(result.bitcoin.usd);
+    }
+
+    getOperations();
+    getBitcoinToDollar();
   }, []);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={{ color: "white" }}>DASHBOARD</Text>
+
       <Text style={{ color: "white" }}>
-        Investissement total : {totalInvestmentDollar} $ {totalInvestmentAsset}{" "}
-        BTC
+        total asset possédé : {totalInvestmentAsset} BTC
+      </Text>
+      <Text style={{ color: "white" }}>
+        valeur du portefeuille : {totalInvestmentAsset * bitcoinToDollarToday} $
+      </Text>
+      <Text style={{ color: "white" }}>
+        Investi : {totalInvestmentDollar} $
+      </Text>
+      <Text style={{ color: "white" }}>
+        Gain: {totalInvestmentAsset * bitcoinToDollarToday - totalInvestmentDollar} $
+      </Text>
+      <Text style={{ color: "white" }}>
+        Performance:{" "}
+        {Math.round((totalInvestmentAsset * bitcoinToDollarToday - totalInvestmentDollar)*100/totalInvestmentDollar)} %
       </Text>
       <Button
         style={styles.button}
