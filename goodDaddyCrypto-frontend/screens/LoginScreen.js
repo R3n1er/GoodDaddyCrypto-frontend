@@ -36,7 +36,7 @@ const LoginScreen = (props) => {
     props.addToken(result.userToken);
     if (result.userToken != null) {
       props.navigation.navigate("BottomNavigator", {
-        screen: "Strategies",
+        screen: "Dashboard",
       });
     }
   };
