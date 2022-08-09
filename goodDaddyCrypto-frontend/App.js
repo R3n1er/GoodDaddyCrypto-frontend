@@ -142,13 +142,13 @@ export default function App() {
           <Stack.Screen
             name="WalletBtc"
             component={WalletBtcScreen}
-            options={{ title: "Proposition Strategie" }}
+            options={{ title: "Wallet Bitcoin" }}
           />
-          {/* <Stack.Screen
+          <Stack.Screen
             name="WalletEth"
             component={WalletEthScreen}
-            options={{ title: "Proposition Strategie" }}
-          /> */}
+            options={{ title: "Wallet Ethereum" }}
+          />
           <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
         </Stack.Navigator>
       </NavigationContainer>

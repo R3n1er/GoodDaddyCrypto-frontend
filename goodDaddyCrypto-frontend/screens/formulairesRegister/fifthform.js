@@ -57,7 +57,7 @@ const FifthForm = (props) => {
             <TextInput
               style={styles.input}
               onChangeText={setSalary}
-              value={salary}
+              value={salary.toString()}
               placeholder="SALAIRE"
               keyboardType="numeric"
             />
@@ -77,7 +77,7 @@ const FifthForm = (props) => {
           <TextInput
             style={styles.input}
             onChangeText={setIncomes}
-            value={incomes}
+            value={incomes.toString()}
             placeholder="REVENUS"
             keyboardType="numeric"
           />
