@@ -70,13 +70,30 @@ const BottomNavigator = () => {
         },
       }}
     >
-      <Tab.Screen name="Dashboard" component={DashboardScreen} />
+      <Tab.Screen name="Dashboard" component={DashboardStack} />
       <Tab.Screen name="Strategies" component={StrategiesScreen} />
       <Tab.Screen name="Transactions" component={TransactionsScreen} />
       <Tab.Screen name="Guides" component={GuidesScreen} />
     </Tab.Navigator>
   );
 };
+// Menu stach pour le menu Dashboard
+function DashboardStack(){
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="DashboardStack"
+        component={DashboardScreen}
+        options={{ title: "Good Daddy Crypto" }}
+      />
+      <Stack.Screen
+        name="WalletBtc"
+        component={WalletBtcScreen}
+        options={{ title: "Wallet Bitcoin" }}
+      />
+    </Stack.Navigator>
+  );
+}
 
 // on peut créer une page dans stratégie avec une fonction stratégie
 
