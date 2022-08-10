@@ -14,7 +14,7 @@ import {
 } from "react-native";
 
 import { Dropdown } from "react-native-element-dropdown";
-import { Card } from "react-native-elements";
+import { Card } from "@rneui/themed";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { connect } from "react-redux";
 

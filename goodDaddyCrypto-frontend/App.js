@@ -73,7 +73,7 @@ const BottomNavigator = () => {
       <Tab.Screen name="Dashboard" component={DashboardStack} />
       <Tab.Screen name="Strategies" component={StrategiesScreen} />
       <Tab.Screen name="Transactions" component={TransactionsScreen} />
-      <Tab.Screen name="GuidesScreen" component={GuidesScreen} />
+      <Tab.Screen name="Guides" component={GuidesScreen} />
     </Tab.Navigator>
   );
 };

@@ -37,9 +37,9 @@ useEffect(()=>{
   getGuide()
 },[])
 
-let guideToDisplay = guide.map(guide=>{
+let guideToDisplay = guide.map((guide,i)=>{
   return (
-    <Card>
+    <Card key={i}>
               <Card.Title title={guide.title} />
                 <Card.Content>
                   <Paragraph>{guide.content}</Paragraph>
