@@ -130,7 +130,7 @@ const strategyProposal = (props) => {
             </Text>
             <Image 
               style={styles.logo}
-              source={require("../../assets/ethereum.png")} />
+              source={require("../../assets/Ethereum.png")} />
             <Text style={styles.paragraph}>
             {strategy[0].asset}
             </Text>

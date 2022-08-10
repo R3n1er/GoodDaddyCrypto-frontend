@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-import { StyleSheet, View, SafeAreaView, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  View,
+  SafeAreaView,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
 // Import React Native Elements
 import { Text, Card, Button, Image } from "@rneui/themed";
-
-// Import de la fonction GetCrypto Current Price
-// import {getCryptoPriceData} from '../../services/GetCryptoPriceService';
 
 // Icones
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -15,10 +18,13 @@ import { connect } from "react-redux";
 // AXIOS pour requette API
 import axios from "axios";
 
+//// **********DEBUT CREATION DU COMPOSANT***********
 const btcWallet = (props) => {
-  // Declaration variable d'etat pour afficher le prix
-
+  // Declaration variable d'etat pour afficher le current price
   const [showprice, setShowPrice] = useState(0);
+
+  // Declaration variable d'etat pour récupérer le prix en fonction de la période d'intervalle sellectionnée
+  const [getPricePeriod, setPricePeriod] = useState(null);
 
   // Declaration de variables
   const assetName = "Bitcoin";
@@ -27,27 +33,29 @@ const btcWallet = (props) => {
   const assetLogo =
     "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/f231d7382689406f9a50dde841418c64.png";
 
-  
- // Use effect
-useEffect(()=>{
-// Fonction pour récupérer le prix d'un asset avec API Coingecko
-  async function getCryptoPriceData() {
-    try{
-      // This is where the api call will go
-    const response = await axios.get(
-      `https://api.coingecko.com/api/v3/simple/price?ids=${cryptoAssetId}&vs_currencies=eur`
-    );
-    // Gestion du success
-    // Retour de la fonction
-    console.log("typeof response", typeof response.data.bitcoin.eur);
+  // UseEffect for Show Bitcoin Price
+  useEffect(() => {
+    // ********Fonction pour récupérer le prix d'un asset avec API Coingecko***********
+    async function getCryptoPriceData() {
+      try {
+        // This is where the api call will go
+        const response = await axios.get(
+          `https://api.coingecko.com/api/v3/simple/price?ids=${cryptoAssetId}&vs_currencies=eur`
+        );
+        // Gestion du success
+        // Retour de la fonction
+        console.log("typeof response", typeof response.data.bitcoin.eur);
 
-    setShowPrice(response.data.bitcoin.eur);
-    }catch(err){
-      console.log(err)
+        setShowPrice(response.data.bitcoin.eur);
+      } catch (err) {
+        console.log(err);
+      }
     }
-  }
-  getCryptoPriceData();
-},[])
+    getCryptoPriceData();
+  }, []);
+
+  // Use Effect for getPriceInterval
+  useEffect(() => {});
 
   return (
     <SafeAreaView style={styles.container}>
@@ -65,10 +73,7 @@ useEffect(()=>{
       </Card>
       {/* // Insert du graphique ici 
       Le graphique doit afficher l'évolution du portefeuille dans le temps en fonction de amount of token et price$*/}
-      <View>
-        <Text>ICI LA PLACE DU GRAPHIQUE</Text>
-        {/* <walletChart /> */}
-      </View>
+      
       {/* // Ici information sur la valeur du portefeuille */}
       <View>
         <Card>
