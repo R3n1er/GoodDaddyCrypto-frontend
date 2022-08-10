@@ -56,7 +56,6 @@ const LoginScreen = (props) => {
         keyboardType="email-address"
         onChangeText={(value) => {
           setEmail(value);
-          console.log(email);
         }}
         value={email}
       />
@@ -64,6 +63,8 @@ const LoginScreen = (props) => {
       <Input
         placeholder="type your password"
         containerStyle={{ marginBottom: 25, width: "70%", color: "white" }}
+        
+        secureTextEntry={true}
         style={{ color: "white" }}
         onChangeText={(value) => setPassword(value)}
         value={password}

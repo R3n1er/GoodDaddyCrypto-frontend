@@ -10,7 +10,7 @@ import {
   Pressable,
   TextInput,
   SafeAreaView,
-  ScrollView
+  ScrollView,
 } from "react-native";
 
 import { Dropdown } from "react-native-element-dropdown";
@@ -59,6 +59,7 @@ function TransactionsScreen(props) {
   }
   //AFFICHAGE DES OPERATIONS VIA UN TABLEAU DE CARDS
   var operationsList = operations.map((ope, i) => {
+    var dateOpe = new Date(ope.date).toLocaleDateString("fr");
     return (
       <Card title="HELLO WORLD" key={i} style={{ backgroundColor: "black" }}>
         <View
@@ -68,7 +69,7 @@ function TransactionsScreen(props) {
             backgroundColor: "black",
           }}
         >
-          <Text style={styles.text}>Date : {ope.date}</Text>
+          <Text style={styles.text}>Date : {dateOpe}</Text>
           <Text style={styles.text}>Type Operation : {ope.typeOperation}</Text>
           <Text style={styles.text}>
             Quantité Asset echangée : {ope.amountOfToken}
@@ -82,12 +83,14 @@ function TransactionsScreen(props) {
   });
 
   const addOperation = async () => {
+    var dateOpe = date.setUTCHours(0,0,0,0);
+    dateOpe = new Date(dateOpe).toISOString() ;
     var rawResult = await fetch(
       "https://gooddaddybackend.herokuapp.com/operation/addOperation",
       {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `userToken=${props.userToken}&date=${date}&typeOperation=${typeOperation}&amountOfToken=${amountOfToken}&amountPaid=${amountPaid}&asset=${asset}`,
+        body: `userToken=${props.userToken}&date=${dateOpe}&typeOperation=${typeOperation}&amountOfToken=${amountOfToken}&amountPaid=${amountPaid}&asset=${asset}`,
       }
     );
     var result = await rawResult.json();
@@ -112,110 +115,119 @@ function TransactionsScreen(props) {
   };
 
   return (
-    
     <SafeAreaView style={styles.container}>
-    <ScrollView>
-      <Modal
-        animationType="slide"
-        style={styles.centeredView}
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(!modalVisible);
-        }}
-      >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>AJOUTER UNE OPERATION</Text>
-            <View>
-              <Button onPress={showDatepicker} title={date.toLocaleString()} />
-              {show && (
-                <DateTimePicker
-                  testID="dateTimePicker"
-                  value={date}
-                  mode={mode}
-                  is24Hour={true}
-                  onChange={onChange}
+      <ScrollView>
+        <Modal
+          animationType="slide"
+          style={styles.centeredView}
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            setModalVisible(!modalVisible);
+          }}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>AJOUTER UNE OPERATION</Text>
+              <View>
+                <Button
+                  onPress={showDatepicker}
+                  title={date.toLocaleDateString("fr")}
                 />
-              )}
+                {show && (
+                  <DateTimePicker
+                    testID="dateTimePicker"
+                    value={date}
+                    mode={mode}
+                    is24Hour={true}
+                    onChange={onChange}
+                  />
+                )}
+              </View>
+              <Dropdown
+                style={[styles.dropdown, isFocus2 && { borderColor: "blue" }]}
+                placeholderStyle={styles.placeholderStyle}
+                selectedTextStyle={styles.selectedTextStyle}
+                inputSearchStyle={styles.inputSearchStyle}
+                data={dataDropdown2}
+                maxHeight={300}
+                labelField="label"
+                valueField="value"
+                placeholder={!isFocus2 ? "Type operation" : "..."}
+                value={typeOperation}
+                onFocus={() => setIsFocus2(true)}
+                onBlur={() => setIsFocus2(false)}
+                onChange={(item) => {
+                  setTypeOperation(item.value);
+                  setIsFocus2(false);
+                }}
+              />
+              <Dropdown
+                style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
+                placeholderStyle={styles.placeholderStyle}
+                selectedTextStyle={styles.selectedTextStyle}
+                inputSearchStyle={styles.inputSearchStyle}
+                data={dataDropdown}
+                maxHeight={300}
+                labelField="label"
+                valueField="value"
+                placeholder={!isFocus ? "Choisir un asset" : "..."}
+                value={asset}
+                onFocus={() => setIsFocus(true)}
+                onBlur={() => setIsFocus(false)}
+                onChange={(item) => {
+                  setAsset(item.value);
+                  setIsFocus(false);
+                }}
+              />
+              <TextInput
+                style={styles.input}
+                onChangeText={setAmountOfToken}
+                value={amountOfToken.toString()}
+                placeholder="Amount of tokens traded"
+                keyboardType="numeric"
+              />
+              <TextInput
+                style={styles.input}
+                onChangeText={setAmountPaid}
+                value={amountPaid.toString()}
+                placeholder="Amount of dollars traded"
+                keyboardType="numeric"
+              />
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => {
+                  if (
+                    (asset != null) &
+                    (amountOfToken != "") &
+                    (amountPaid != "") &
+                    (typeOperation != null)
+                  ) {
+                    setModalVisible(!modalVisible);
+                    addOperation();
+                    setAsset(null);
+                    setDate(new Date());
+                    setAmountOfToken("");
+                    setAmountPaid("");
+                    setTypeOperation(null);
+                  }
+                }}
+              >
+                <Text style={styles.textStyle}>CONFIRMER</Text>
+              </Pressable>
             </View>
-            <Dropdown
-              style={[styles.dropdown, isFocus2 && { borderColor: "blue" }]}
-              placeholderStyle={styles.placeholderStyle}
-              selectedTextStyle={styles.selectedTextStyle}
-              inputSearchStyle={styles.inputSearchStyle}
-              data={dataDropdown2}
-              maxHeight={300}
-              labelField="label"
-              valueField="value"
-              placeholder={!isFocus2 ? "Type operation" : "..."}
-              value={typeOperation}
-              onFocus={() => setIsFocus2(true)}
-              onBlur={() => setIsFocus2(false)}
-              onChange={(item) => {
-                setTypeOperation(item.value);
-                setIsFocus2(false);
-              }}
-            />
-            <Dropdown
-              style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
-              placeholderStyle={styles.placeholderStyle}
-              selectedTextStyle={styles.selectedTextStyle}
-              inputSearchStyle={styles.inputSearchStyle}
-              data={dataDropdown}
-              maxHeight={300}
-              labelField="label"
-              valueField="value"
-              placeholder={!isFocus ? "Choisir un asset" : "..."}
-              value={asset}
-              onFocus={() => setIsFocus(true)}
-              onBlur={() => setIsFocus(false)}
-              onChange={(item) => {
-                setAsset(item.value);
-                setIsFocus(false);
-              }}
-            />
-            <TextInput
-              style={styles.input}
-              onChangeText={setAmountOfToken}
-              value={amountOfToken.toString()}
-              placeholder="Amount of tokens traded"
-              keyboardType="numeric"
-            />
-            <TextInput
-              style={styles.input}
-              onChangeText={setAmountPaid}
-              value={amountPaid.toString()}
-              placeholder="Amount of dollars traded"
-              keyboardType="numeric"
-            />
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => {
-                setModalVisible(!modalVisible);
-                addOperation();
-                setAsset(null);
-                setDate(new Date());
-                setAmountOfToken("");
-                setAmountPaid("");
-                setTypeOperation(null);
-              }}
-            >
-              <Text style={styles.textStyle}>CONFIRMER</Text>
-            </Pressable>
           </View>
-        </View>
-      </Modal>
-      
-      <Text
-        style={{
-          color: "white",
-        }}
-      >
-        TRANSACTIONS
-      </Text>
-      {operationsList}
-    </ScrollView>
+        </Modal>
+
+        <Text
+          style={{
+            color: "white",
+          }}
+        >
+          TRANSACTIONS
+        </Text>
+        {operationsList}
+      </ScrollView>
       <Button
         style={styles.button}
         onPress={() => {
