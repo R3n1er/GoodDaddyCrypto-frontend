@@ -13,6 +13,8 @@ import {
   ScrollView,
 } from "react-native";
 
+import { LinearGradient } from "expo-linear-gradient";
+
 import { Dropdown } from "react-native-element-dropdown";
 import { Card } from "@rneui/themed";
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -61,21 +63,22 @@ function TransactionsScreen(props) {
   var operationsList = operations.map((ope, i) => {
     var dateOpe = new Date(ope.date).toLocaleDateString("fr");
     return (
-      <Card title="HELLO WORLD" key={i} style={{ backgroundColor: "black" }}>
+      <Card key={i} containerStyle={ope.typeOperation =="CREDIT" ? { backgroundColor: "#222121", borderRadius:10, borderColor:"#E335DC"} : { backgroundColor: "#222121", borderRadius:10, borderColor:"#00B295"}}>
         <View
           style={{
             flexDirection: "column",
-            marginBottom: 20,
-            backgroundColor: "black",
           }}
         >
-          <Text style={styles.text}>Date : {dateOpe}</Text>
-          <Text style={styles.text}>Type Operation : {ope.typeOperation}</Text>
-          <Text style={styles.text}>
-            Quantité Asset echangée : {ope.amountOfToken}
+          <Text style={{color:'white'}}>Date : {dateOpe}</Text>
+          <Text style={ope.typeOperation =="CREDIT" ? {color:"#E335DC"} : {color: "#00B295"}}>Type : {ope.typeOperation}</Text>
+          <Text style={{color:'white'}}>
+            Asset : {ope.asset}
           </Text>
-          <Text style={styles.text}>
-            Quantité dollar echangée: {ope.amountPaid}
+          <Text style={{color:'white'}}>
+            Quantité tokens echangés : {ope.amountOfToken} 
+          </Text>
+          <Text style={{color:'white'}}>
+            Quantité euros echangés: {ope.amountPaid} €
           </Text>
         </View>
       </Card>
@@ -83,8 +86,8 @@ function TransactionsScreen(props) {
   });
 
   const addOperation = async () => {
-    var dateOpe = date.setUTCHours(0,0,0,0);
-    dateOpe = new Date(dateOpe).toISOString() ;
+    var dateOpe = date.setUTCHours(0, 0, 0, 0);
+    dateOpe = new Date(dateOpe).toISOString();
     var rawResult = await fetch(
       "https://gooddaddybackend.herokuapp.com/operation/addOperation",
       {
@@ -117,7 +120,25 @@ function TransactionsScreen(props) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <LinearGradient
+        colors={["#1A0596", "transparent"]}
+        style={styles.background}
+      >
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "#222121",
+            minWidth: 700,
+            maxHeight: 50,
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: 30,
+          }}
+        >
+          <Text style={{ color: "white", fontWeight: "bold", fontSize: 20 }}>
+            OPERATIONS
+          </Text>
+        </View>
         <Modal
           animationType="slide"
           style={styles.centeredView}
@@ -127,14 +148,14 @@ function TransactionsScreen(props) {
             setModalVisible(!modalVisible);
           }}
         >
+          
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text style={styles.modalText}>AJOUTER UNE OPERATION</Text>
               <View>
-                <Button
+                <Pressable
                   onPress={showDatepicker}
-                  title={date.toLocaleDateString("fr")}
-                />
+                  style={styles.button}
+                ><Text style={styles.textStyle}>{date.toLocaleDateString("fr")}</Text></Pressable>
                 {show && (
                   <DateTimePicker
                     testID="dateTimePicker"
@@ -185,18 +206,18 @@ function TransactionsScreen(props) {
                 style={styles.input}
                 onChangeText={setAmountOfToken}
                 value={amountOfToken.toString()}
-                placeholder="Amount of tokens traded"
+                placeholder="Quantité de tokens échangés"
                 keyboardType="numeric"
               />
               <TextInput
                 style={styles.input}
                 onChangeText={setAmountPaid}
                 value={amountPaid.toString()}
-                placeholder="Amount of dollars traded"
+                placeholder="Quantité d'euros échangés"
                 keyboardType="numeric"
               />
               <Pressable
-                style={[styles.button, styles.buttonClose]}
+                style={styles.buttonConfirmer}
                 onPress={() => {
                   if (
                     (asset != null) &
@@ -220,22 +241,16 @@ function TransactionsScreen(props) {
           </View>
         </Modal>
 
-        <Text
-          style={{
-            color: "white",
+        <ScrollView>{operationsList}</ScrollView>
+        <Pressable
+          style={styles.button}
+          onPress={() => {
+            setModalVisible(true);
           }}
         >
-          TRANSACTIONS
-        </Text>
-        {operationsList}
-      </ScrollView>
-      <Button
-        style={styles.button}
-        onPress={() => {
-          setModalVisible(true);
-        }}
-        title="AJOUTER OPERATION"
-      ></Button>
+          <Text style={{color:"white"}}>AJOUTER UNE OPERATION</Text>
+        </Pressable>
+      </LinearGradient>
     </SafeAreaView>
   );
 }
@@ -247,24 +262,32 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  text: {
-    color: "white",
-    textAlignVertical: "center",
-    marginLeft: 30,
-  },
   button: {
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 12,
     paddingHorizontal: 32,
-    borderRadius: 4,
+    borderRadius: 20,
     elevation: 3,
-    backgroundColor: "black",
+    backgroundColor: "#8E94F2",
+    marginBottom: 20
+  },
+  buttonConfirmer: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 18,
+    paddingHorizontal: 45,
+    borderRadius: 20,
+    elevation: 3,
+    backgroundColor: "#8E94F2",
+    marginTop: 20
   },
   modalView: {
     margin: 20,
-    backgroundColor: "#fafafa",
+    backgroundColor:"#222121",
     borderRadius: 20,
+    borderColor:'white',
+    borderWidth:0.5,
     padding: 50,
     alignItems: "center",
     shadowColor: "#000",
@@ -275,11 +298,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
   },
   buttonOpen: {
     backgroundColor: "#F194FF",
@@ -299,15 +317,15 @@ const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22,
+    alignItems: "center"
   },
   input: {
-    width: "80%",
     height: 40,
-    margin: 12,
+    width:180,
+    marginBottom: 12,
     borderWidth: 1,
     padding: 10,
+    backgroundColor:'white'
   },
   dropdown: {
     height: 50,
@@ -316,6 +334,8 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderRadius: 8,
     paddingHorizontal: 8,
+    backgroundColor:"white",
+    marginBottom:12
   },
   icon: {
     marginRight: 5,
@@ -342,6 +362,13 @@ const styles = StyleSheet.create({
   inputSearchStyle: {
     height: 40,
     fontSize: 16,
+  },
+  background: {
+    flex: 6,
+    resizeMode: "cover",
+    alignItems: "center",
+    justifyContent: "center",
+    minWidth: 500,
   },
 });
 
