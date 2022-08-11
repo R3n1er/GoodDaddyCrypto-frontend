@@ -89,7 +89,7 @@ const LoginScreen = (props) => {
           style={styles.text}
           onPress={() => props.navigation.navigate("Register")}
         >
-          Nouveau compte ? Créer un compte !{" "}
+          Nouvel utilisateur ? Créer un compte !{" "}
         </Text>
       </LinearGradient>
     </ScrollView>

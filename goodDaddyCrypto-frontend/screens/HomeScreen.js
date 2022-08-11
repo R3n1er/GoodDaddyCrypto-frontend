@@ -14,7 +14,7 @@ export default function HomeScreen({ navigation }) {
         colors={['#1A0596', 'transparent']}
         style={styles.background}
       >
-      <Text style={styles.textTitle}>Good Daddy Crypto</Text>
+      <Text style={styles.textTitle}>GOOD DADDY CRYPTO</Text>
       <Pressable
           style={styles.button}
           onPress={() => {
