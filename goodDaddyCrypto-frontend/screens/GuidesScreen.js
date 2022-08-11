@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Card , Paragraph} from 'react-native-paper';
+import { Card, Paragraph } from "react-native-paper";
 
 import {
   StyleSheet,
@@ -12,12 +12,8 @@ import {
   Image,
   ScrollView,
 } from "react-native";
-// Icones
-import Icon from "react-native-vector-icons/FontAwesome";
-// React Redux
-import { connect } from "react-redux";
 
-
+import { LinearGradient } from "expo-linear-gradient";
 
 const guidesProposal = (props) => {
   // INITIALISATION DES ETATS
@@ -29,43 +25,62 @@ const guidesProposal = (props) => {
       "https://gooddaddybackend.herokuapp.com/guide/getGuide"
     );
     var result = await rawResult.json();
-    setGuide(result.guides)
+    setGuide(result.guides);
     console.log(result);
-};
+  };
 
-useEffect(()=>{
-  getGuide()
-},[])
+  useEffect(() => {
+    getGuide();
+  }, []);
 
-let guideToDisplay = guide.map((guide,i)=>{
+  let guideToDisplay = guide.map((guide, i) => {
+    return (
+      <Card key={i} style={{ backgroundColor: "#222121", marginTop: 20, borderRadius:10,borderColor:"white", borderWidth:0.2 }}>
+        <Card.Title
+          title={<Text style={{ color: "white" }}>{guide.title}</Text>}
+        />
+        <View style={{height:1,width:'50%',backgroundColor:"white",marginLeft:'10%',marginBottom:10}}></View>
+        <Card.Content>
+          <Paragraph style={{ color: "white" }}>{guide.content}</Paragraph>
+          <View style={{flexDirection:"row", justifyContent:"space-around", marginTop: 20}}>
+            <Text style={{ color: "white", fontStyle:"italic" }}>Auteur: {guide.author}</Text>
+            <Text style={{ color: "white", fontStyle:"italic" }}>
+              Publié le: {guide.dateRelease}
+            </Text>
+          </View>
+        </Card.Content>
+        {/* <Card.Cover source={guide.image} /> */}
+      </Card>
+    );
+  });
+
   return (
-    <Card key={i}>
-              <Card.Title title={guide.title} />
-                <Card.Content>
-                  <Paragraph>{guide.content}</Paragraph>
-                  <Text>Auteur: {guide.author} / Publié le: {guide.dateRelease}</Text>
-                </Card.Content>
-              {/* <Card.Cover source={guide.image} /> */}
-            </Card>
-  )
-})
-
-return (
-
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
+      <LinearGradient
+        colors={["#1A0596", "transparent"]}
+        style={styles.background}
+      >
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "#222121",
+            minWidth: 700,
+            maxHeight: 50,
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: 30,
+          }}
+        >
+          <Text style={{ color: "white", fontWeight: "bold", fontSize: 20 }}>
+            GUIDES
+          </Text>
+        </View>
         <ScrollView>
-          <View>
-            <Text> Liste des Guides</Text>
-          </View>
-          <View>
-            
-            {guideToDisplay}
-    
-          </View>
+          <View style={{ width: 350 }}>{guideToDisplay}</View>
         </ScrollView>
+      </LinearGradient>
     </SafeAreaView>
-      );
-
+  );
 };
 
 // Style CSS 🎨
@@ -97,10 +112,12 @@ const styles = StyleSheet.create({
     elevation: 3,
     backgroundColor: "black",
   },
+  background: {
+    flex: 6,
+    resizeMode: "cover",
+    alignItems: "center",
+    minWidth: "100%",
+  },
 });
 
-// Fonction REDUX
-// function mapStateToProps(state) {
-//   return { title: guide.title, content: guide.content, author: guide.author, dataRelease: guide.dateRelease, image: guide.image };
-// }
-export default connect(null, null)(guidesProposal);
+export default guidesProposal;

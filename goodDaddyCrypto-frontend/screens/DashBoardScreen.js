@@ -7,12 +7,12 @@ import {
   Button,
   ScrollView,
   Dimensions,
+  Pressable,
 } from "react-native";
-import {
-  LineChart
-} from "react-native-chart-kit";
+import { LineChart } from "react-native-chart-kit";
 import { connect } from "react-redux";
 
+import { LinearGradient } from "expo-linear-gradient";
 function DashBoardScreen(props) {
   const [operations, setOperations] = useState([]);
   const [totalInvestmentAsset, setTotalInvestmentAsset] = useState(0);
@@ -20,6 +20,9 @@ function DashBoardScreen(props) {
   const [bitcoinToEuroToday, setBitcoinToEuroToday] = useState(0);
   const [tabPerf, setTabPerf] = useState([]);
   const [timeInterval, setTimeInterval] = useState(7);
+  const [ isPress, setIsPress ] = useState(true);
+  const [ isPress2, setIsPress2 ] = useState(false);
+  const [ isPress3, setIsPress3 ] = useState(false);
 
   //INITIALISATION COMPONENT
   useEffect(() => {
@@ -46,7 +49,7 @@ function DashBoardScreen(props) {
       setTotalInvestmentEuro(totalEuro);
       createTab(timeInterval, result.operations);
     }
-    //recupere le prix actuel du BTC
+    //**************recupere le prix actuel du BTC****************
     async function getBitcoinToEuro() {
       var rawResult = await fetch(
         `https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur`
@@ -58,7 +61,7 @@ function DashBoardScreen(props) {
     getBitcoinToEuro();
   }, []);
 
-  //PREPARATION TABLEAU DU GRAPH
+  //***************PREPARATION TABLEAU DU GRAPH*****************
   async function createTab(timeInterval, opeTab) {
     // recupere la date du jour et la met au bon format
     var todayDate = new Date().setUTCHours(0, 0, 0, 0);
@@ -73,7 +76,7 @@ function DashBoardScreen(props) {
     for (let i = 0; i < timeInterval; i++) {
       var totalEuro = 0;
       var todayTotalBTC = 0;
-      //parcout tableau operations
+      //parcours tableau operations
       for (let j = 0; j < opeTab.length; j++) {
         // la date de l'operation est plus ancienne que la date a tester
         if (Date.parse(opeTab[j].date) <= Date.parse(todayDate)) {
@@ -105,13 +108,14 @@ function DashBoardScreen(props) {
       tab.push([new Date(todayDate), performance]);
 
       //retire 1 jour a la date pour le prochain passage de boucle
+      console.log(Date.parse(todayDate));
       var newDate = new Date(todayDate).getDate() - 1;
       newDate = new Date(todayDate).setDate(newDate);
       todayDate = new Date(newDate).toISOString();
     }
     setTabPerf(tab);
   }
-  //INITIALISATION DU GRAPH
+  //*************INITIALISATION DU GRAPH***********
   var graph = function () {
     console.log(tabPerf);
     //remplit dataSet/label avec les dates et les perfs de tabPerf
@@ -124,10 +128,9 @@ function DashBoardScreen(props) {
     }
     labelTab.reverse();
     dataSet.reverse();
-    //renvoit le graphique
+    //**************renvoit le graphique*********
     return (
       <View>
-        <Text>Bezier Line Chart</Text>
         <LineChart
           data={{
             labels: labelTab,
@@ -146,7 +149,7 @@ function DashBoardScreen(props) {
             backgroundGradientFrom: "#222121",
             backgroundGradientTo: "#222121",
             decimalPlaces: 2, // optional, defaults to 2dp
-            color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+            color: (opacity = 1) => `rgb(0, 178, 149, ${opacity})`,
             labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
             style: {
               borderRadius: 16,
@@ -166,73 +169,126 @@ function DashBoardScreen(props) {
       </View>
     );
   };
+  
+  // *********RETURN DU JSX***********
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={{ color: "white" }}>DASHBOARD</Text>
-
-      <View style={{ flexDirection: "row" }}>
-        <Button
-          style={styles.button}
-          onPress={() => {
-            props.navigation.navigate("WalletBtc");
+      <LinearGradient
+        colors={["#1A0596", "transparent"]}
+        style={styles.background}
+      >
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "#222121",
+            minWidth: 700,
+            maxHeight: 50,
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: 30,
           }}
-          title="WALLET BTC"
-        ></Button>
-        <Button
-          style={styles.button}
-          onPress={() => {
-            props.navigation.navigate("WalletEth");
-          }}
-          title="WALLET ETH"
-        ></Button>
-      </View>
-      <Text style={{ color: "white" }}>
-        total asset possédé : {totalInvestmentAsset} BTC
-      </Text>
-      <Text style={{ color: "white" }}>
-        valeur du portefeuille : {totalInvestmentAsset * bitcoinToEuroToday} e
-      </Text>
-      <Text style={{ color: "white" }}>Investi : {totalInvestmentEuro} e</Text>
-      <Text style={{ color: "white" }}>
-        Gain: {totalInvestmentAsset * bitcoinToEuroToday - totalInvestmentEuro}{" "}
-        e
-      </Text>
-      <Text style={{ color: "white" }}>
-        Performance:{" "}
-        {Math.round(
-          ((totalInvestmentAsset * bitcoinToEuroToday - totalInvestmentEuro) *
-            100) /
-            totalInvestmentEuro
-        )}{" "}
-        %
-      </Text>
-      {tabPerf.length != 0 ? graph(): null }
-      <View style={{ flexDirection: "row" }}>
-        <Button
-          style={styles.button}
-          onPress={() => {
-            setTimeInterval(7);
-          }}
-          title="1W"
-        ></Button>
-        <Button
-          style={styles.button}
-          onPress={() => {
-            setTimeInterval(30);
-          }}
-          title="1M"
-        ></Button>
-        <Button
-          style={styles.button}
-          onPress={() => {
-          }}
-          title="1Y"
-        ></Button>
-      </View>
+        >
+          <Text style={{ color: "white", fontWeight: "bold", fontSize: 20 }}>
+            DASHBOARD
+          </Text>
+        </View>
+        <View style={{ flexDirection: "row", margin: 20,marginLeft:35 }}>
+          <Pressable
+            style={styles.button}
+            onPress={() => {
+              props.navigation.navigate("WalletBtc");
+            }}
+          >
+            <Text style={{ color: "white" }}>WALLET BTC</Text>
+          </Pressable>
+          <Pressable
+            style={styles.button}
+            onPress={() => {
+              props.navigation.navigate("WalletEth");
+            }}
+          >
+            <Text style={{ color: "white" }}>WALLET ETH</Text>
+          </Pressable>
+        </View>
+        <View style={{ alignItems: "center",margin:20}}>
+          <Text style={{ color: "white", fontSize: 20 }}>
+            INVESTISSEMENT TOTAL :
+          </Text>
+          <Text style={{ color: "#F433AB", fontSize: 20, fontWeight: "bold" }}>
+            {totalInvestmentEuro} € / {totalInvestmentAsset} BTC
+          </Text>
+          <Text style={{ color: "white", fontSize: 20 }}>PERFORMANCE :</Text>
+          <Text style={{ color: "#F433AB", fontSize: 20, fontWeight: "bold" }}>
+            {Math.round(
+              ((totalInvestmentAsset * bitcoinToEuroToday -
+                totalInvestmentEuro) *
+                100) /
+                totalInvestmentEuro
+            )}{" "}
+            %
+          </Text>
+          <Text style={{ color: "white", fontSize: 20  }}>
+            VALEUR DU PORTEFEUILLE:
+          </Text>
+          
+          <Text style={{ color: "#F433AB", fontSize: 20, fontWeight: "bold" }}>
+          {totalInvestmentAsset * bitcoinToEuroToday}{" "}
+          €
+          </Text>
+        </View>
+        {tabPerf.length != 0 ? graph() : null}
+        <View style={{ flexDirection: "row" }}>
+          <Pressable
+            style={isPress ? styles.buttonGraphActive : styles.buttonGraph}
+            onPress={() => {
+              setTimeInterval(7);
+              createTab(timeInterval, operations);
+              if( isPress == false) {
+                setIsPress(true)
+              }
+              if( isPress2 == true) {
+                setIsPress2(false)
+              }
+              if( isPress3 == true) {
+                setIsPress3(false)
+              }
+            }}
+          >
+          <Text style={{ color: "white" }}>1W</Text></Pressable>
+          <Pressable
+            style={isPress2 ? styles.buttonGraphActive : styles.buttonGraph}
+            onPress={() => {
+              setTimeInterval(30);
+              createTab(timeInterval, operations);
+              if( isPress == true) {
+                setIsPress(false)
+              };
+              if( isPress2 == false) {
+                setIsPress2(true)
+              }
+              if( isPress3 == true) {
+                setIsPress3(false)
+              }
+            }}
+          >
+            <Text style={{ color: "white" }}>1M</Text>
+          </Pressable>
+          <Pressable style={isPress3 ? styles.buttonGraphActive : styles.buttonGraph} onPress={() => {
+              if( isPress == true) {
+                setIsPress(false)
+              }
+              if( isPress2 == true) {
+                setIsPress2(false)
+              }
+              if( isPress3 == false) {
+                setIsPress3(true)
+              }}} >
+            <Text style={{ color: "white" }}>1Y</Text></Pressable>
+        </View>
+      </LinearGradient>
     </ScrollView>
   );
 }
-
 // Style CSS 🎨
 const styles = StyleSheet.create({
   container: {
@@ -259,10 +315,35 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 12,
     paddingHorizontal: 32,
-    borderRadius: 4,
+    borderRadius: 20,
     elevation: 3,
-    backgroundColor: "black",
+    backgroundColor: "#8E94F2",
     marginRight: 20,
+  },
+  buttonGraph: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 11,
+    paddingHorizontal: 18,
+    borderRadius: 40,
+    elevation: 3,
+    backgroundColor: "#222121",
+    marginRight: 20,
+  },
+  buttonGraphActive: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 11,
+    paddingHorizontal: 18,
+    borderRadius: 40,
+    elevation: 3,
+    backgroundColor: "#8E94F2",
+    marginRight: 20,
+  },
+  background: {
+    flex: 6,
+    resizeMode: "cover",
+    alignItems: "center",
   },
 });
 

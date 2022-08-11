@@ -70,7 +70,7 @@ const BottomNavigator = () => {
         },
       }}
     >
-      <Tab.Screen name="Dashboard" component={DashboardStack} />
+      <Tab.Screen name="Dashboard" component={DashboardScreen} />
       <Tab.Screen name="Strategies" component={StrategiesScreen} />
       <Tab.Screen name="Transactions" component={TransactionsScreen} />
       <Tab.Screen name="Guides" component={GuidesScreen} />
@@ -78,18 +78,18 @@ const BottomNavigator = () => {
   );
 };
 // Menu stack pour le menu Dashboard
-function DashboardStack(){
+function WalletStack(){
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="DashboardStack"
-        component={DashboardScreen}
-        options={{ title: "Good Daddy Crypto" }}
-      />
       <Stack.Screen
         name="WalletBtc"
         component={WalletBtcScreen}
         options={{ title: "Wallet Bitcoin" }}
+      />
+      <Stack.Screen
+        name="WalletEth"
+        component={WalletEthScreen}
+        options={{ title: "Wallet Ethereum" }}
       />
     </Stack.Navigator>
   );
@@ -158,12 +158,12 @@ export default function App() {
           />
           <Stack.Screen
             name="WalletBtc"
-            component={WalletBtcScreen}
+            component={WalletStack}
             options={{ title: "Wallet Bitcoin" }}
           />
           <Stack.Screen
             name="WalletEth"
-            component={WalletEthScreen}
+            component={WalletStack}
             options={{ title: "Wallet Ethereum" }}
           />
           {/* <Stack.screen

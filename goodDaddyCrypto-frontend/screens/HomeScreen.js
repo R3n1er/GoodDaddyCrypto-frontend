@@ -4,13 +4,8 @@ import { StyleSheet, View, Text } from "react-native";
 
 import { LinearGradient } from 'expo-linear-gradient';
 
-// React Native Elements
-
-import { ThemeProvider, Button, createTheme } from "@rneui/themed";
-// Import de la navigation
-
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+// Import React Native Elements
+import { Button, createTheme } from "@rneui/themed";
 
 export default function HomeScreen({ navigation }) {
   return (

@@ -109,6 +109,12 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
   },
+  background: {
+    flex: 6,
+    resizeMode: "cover",
+    alignItems: "center",
+    minWidth: 500,
+  },
 });
 
 export default ethWallet;
