@@ -18,7 +18,11 @@ import TransactionsScreen from "./screens/TransactionsScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 
-// Imports des screensdu formulaire
+// Import des screens de Wallets
+import WalletBtcScreen from "./screens/wallets/btcWalletScreen";
+import WalletEthScreen from "./screens/wallets/ethWalletScreen";
+
+// Imports des screens du formulaire
 import FirstForm from "./screens/formulairesRegister/firstform";
 import SecondForm from "./screens/formulairesRegister/secondform";
 import ThirdForm from "./screens/formulairesRegister/thirdform";
@@ -66,13 +70,30 @@ const BottomNavigator = () => {
         },
       }}
     >
+      <Tab.Screen name="Dashboard" component={DashboardStack} />
       <Tab.Screen name="Strategies" component={StrategiesScreen} />
-      <Tab.Screen name="Dashboard" component={DashboardScreen} />
       <Tab.Screen name="Transactions" component={TransactionsScreen} />
       <Tab.Screen name="Guides" component={GuidesScreen} />
     </Tab.Navigator>
   );
 };
+// Menu stack pour le menu Dashboard
+function DashboardStack(){
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="DashboardStack"
+        component={DashboardScreen}
+        options={{ title: "Good Daddy Crypto" }}
+      />
+      <Stack.Screen
+        name="WalletBtc"
+        component={WalletBtcScreen}
+        options={{ title: "Wallet Bitcoin" }}
+      />
+    </Stack.Navigator>
+  );
+}
 
 // on peut créer une page dans stratégie avec une fonction stratégie
 
@@ -135,6 +156,21 @@ export default function App() {
             component={StrategyProposal}
             options={{ title: "Proposition Strategie" }}
           />
+          <Stack.Screen
+            name="WalletBtc"
+            component={WalletBtcScreen}
+            options={{ title: "Wallet Bitcoin" }}
+          />
+          <Stack.Screen
+            name="WalletEth"
+            component={WalletEthScreen}
+            options={{ title: "Wallet Ethereum" }}
+          />
+          {/* <Stack.screen
+            name="Guides"
+            component={GuidesScreen}
+            options={{ title: "Guides Débutant Crypto "}}
+          /> */}
           <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
         </Stack.Navigator>
       </NavigationContainer>

@@ -6,39 +6,48 @@ import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
 import { connect } from "react-redux";
 
 function StrategiesScreen(props) {
-
   //initialisations des etats
-  const [amountPaid, setAmountPaid] =  useState(0);
-  const [frequency, setFrequency] = useState("par mois");
+  const [strategies, setStrategies] = useState([]);
 
-
-  var getStrategies = async () => {
-    console.log(props.userToken);
-    var rawResult = await fetch(
-      `https://gooddaddybackend.herokuapp.com/investment/getStrategy?userToken=${props.userToken}`
-    );
-    var result = await rawResult.json();
-    console.log(result);
-    setAmountPaid(result.strategies[0].amountPaid);
-    setFrequency(result.strategies[0].frequency);
-  };
-
+  // RECUPERE LES STRATEGIES A L'INITIALISATION DU SCREEN
   useEffect(() => {
-    getStrategies();
+    async function fetchData() {
+      var rawResult = await fetch(
+        `https://gooddaddybackend.herokuapp.com/investment/getStrategy?userToken=${props.userToken}`
+      );
+      var result = await rawResult.json();
+      setStrategies(result.strategies);
+    }
+    fetchData();
   }, []);
+
+  var strategiesList = strategies.map((strat, i) => {
+    var assetLogo = "";
+    if (strat.asset == "BTC") {
+      assetLogo = require("../assets/Bitcoin.svg.png")
+    }
+    else if (strat.asset == "ETH") {
+      assetLogo = require("../assets/Ethereum.png");
+    }
+    return (
+      <View key={i} style={{ flexDirection: "row", marginBottom: 20 }}>
+        <Image style={styles.logo} source={assetLogo} />
+        <Text
+          style={{
+            color: "white",
+            textAlignVertical: "center",
+            marginLeft: 30,
+          }}
+        >
+          {strat.amountPaid}e {strat.frequency}
+        </Text>
+      </View>
+    );
+  });
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <View>
-        <View style={{flexDirection:"row"}}>
-          <Image
-            style={styles.logo}
-            source={require("../assets/Bitcoin.svg.png")}
-          />
-          <Text style={{ color: "white", textAlignVertical:"center", marginLeft: 30 }}>{amountPaid}e {frequency}</Text>
-        </View>
-      </View>
-      <View></View>
+      <View>{strategiesList}</View>
     </ScrollView>
   );
 }
@@ -55,7 +64,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 50,
     height: 50,
-  }
+  },
 });
 
 function mapStateToProps(state) {

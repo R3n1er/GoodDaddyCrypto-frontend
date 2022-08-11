@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
-  Text,
   View,
-  Button,
   SafeAreaView,
   TouchableOpacity,
 } from "react-native";
+
+import { Text, Card, Button, Image } from "@rneui/themed";
+
 import Icon from "react-native-vector-icons/FontAwesome";
 // React Redux
 import { connect } from "react-redux";
@@ -28,6 +29,7 @@ const resultform = (props) => {
     console.log(result);
   };
 
+  // Pourquoi un useeffect ici ? 
   useEffect(() => {
     console.log(props.answers)
     var answersTab = props.answers;

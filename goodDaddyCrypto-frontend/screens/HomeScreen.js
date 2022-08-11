@@ -2,6 +2,8 @@ import React from "react";
 
 import { StyleSheet, View, Text } from "react-native";
 
+import { LinearGradient } from 'expo-linear-gradient';
+
 // React Native Elements
 
 import { ThemeProvider, Button, createTheme } from "@rneui/themed";
@@ -13,12 +15,17 @@ import { createStackNavigator } from "@react-navigation/stack";
 export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
+      <LinearGradient
+        colors={['#1A0596', 'transparent']}
+        style={styles.background}
+      >
       <Text style={styles.textTitle}>Good Daddy Crypto</Text>
       <Button
         title="GO !"
         styles={styles.button}
         onPress={() => navigation.navigate("Login")}
       />
+      </LinearGradient>
     </View>
   );
 }
@@ -37,7 +44,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 50,
   },
-
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 550,
+  },
   text: {
     color: "white",
     fontSize: 20,
