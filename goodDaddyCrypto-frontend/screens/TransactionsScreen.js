@@ -45,7 +45,7 @@ function TransactionsScreen(props) {
     { label: "Credit", value: "CREDIT" },
   ];
 
-  // RECUPERE LES OPERATIONS A L'INITIALISATION DU SCREEN
+  // ***********RECUPERE LES OPERATIONS A L'INITIALISATION DU SCREEN**********
   useEffect(() => {
     getOperations();
   }, []);
@@ -97,7 +97,8 @@ function TransactionsScreen(props) {
     getOperations();
   };
 
-  // FONCTIONS POUR LE DATE PICKER
+  // ********FONCTIONS POUR LE DATE PICKER*************
+  
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;
     setShow(false);
@@ -238,7 +239,7 @@ function TransactionsScreen(props) {
     </SafeAreaView>
   );
 }
-
+// Styles CSS 🖼
 const styles = StyleSheet.create({
   container: {
     flex: 1,

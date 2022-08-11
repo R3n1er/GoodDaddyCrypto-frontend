@@ -9,7 +9,7 @@ function StrategiesScreen(props) {
   //initialisations des etats
   const [strategies, setStrategies] = useState([]);
 
-  // RECUPERE LES STRATEGIES A L'INITIALISATION DU SCREEN
+  // *******RECUPERE LES STRATEGIES A L'INITIALISATION DU SCREEN************
   useEffect(() => {
     async function fetchData() {
       var rawResult = await fetch(

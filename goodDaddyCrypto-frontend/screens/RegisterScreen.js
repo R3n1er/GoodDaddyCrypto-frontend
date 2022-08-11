@@ -17,7 +17,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 // React Redux
 import { connect } from "react-redux";
 
-// Initialisation des etats pour le formulaire
+// **********Initialisation des etats pour le formulaire******
 function RegisterScreen(props) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");

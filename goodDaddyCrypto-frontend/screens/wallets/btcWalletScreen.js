@@ -18,6 +18,9 @@ import { connect } from "react-redux";
 // AXIOS pour requette API
 import axios from "axios";
 
+// Import du composant affichage du chart
+import AssetChart from "../../Components/AssetChart";
+
 //// **********DEBUT CREATION DU COMPOSANT***********
 const btcWallet = (props) => {
   // Declaration variable d'etat pour afficher le current price
@@ -42,8 +45,7 @@ const btcWallet = (props) => {
         const response = await axios.get(
           `https://api.coingecko.com/api/v3/simple/price?ids=${cryptoAssetId}&vs_currencies=eur`
         );
-        // Gestion du success
-        // Retour de la fonction
+        // Retour de la requete API
         console.log("typeof response", typeof response.data.bitcoin.eur);
 
         setShowPrice(response.data.bitcoin.eur);
@@ -53,9 +55,6 @@ const btcWallet = (props) => {
     }
     getCryptoPriceData();
   }, []);
-
-  // Use Effect for getPriceInterval
-  useEffect(() => {});
 
   return (
     <SafeAreaView style={styles.container}>
@@ -73,7 +72,7 @@ const btcWallet = (props) => {
       </Card>
       {/* // Insert du graphique ici 
       Le graphique doit afficher l'évolution du portefeuille dans le temps en fonction de amount of token et price$*/}
-      
+      <AssetChart CryptoAssetID="bitcoin" IntervalDays={7} />
       {/* // Ici information sur la valeur du portefeuille */}
       <View>
         <Card>

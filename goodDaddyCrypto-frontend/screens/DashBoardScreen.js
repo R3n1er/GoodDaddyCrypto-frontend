@@ -46,7 +46,7 @@ function DashBoardScreen(props) {
       setTotalInvestmentEuro(totalEuro);
       createTab(timeInterval, result.operations);
     }
-    //recupere le prix actuel du BTC
+    //**************recupere le prix actuel du BTC****************
     async function getBitcoinToEuro() {
       var rawResult = await fetch(
         `https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur`
@@ -58,7 +58,7 @@ function DashBoardScreen(props) {
     getBitcoinToEuro();
   }, []);
 
-  //PREPARATION TABLEAU DU GRAPH
+  //***************PREPARATION TABLEAU DU GRAPH*****************
   async function createTab(timeInterval, opeTab) {
     // recupere la date du jour et la met au bon format
     var todayDate = new Date().setUTCHours(0, 0, 0, 0);
@@ -73,7 +73,7 @@ function DashBoardScreen(props) {
     for (let i = 0; i < timeInterval; i++) {
       var totalEuro = 0;
       var todayTotalBTC = 0;
-      //parcout tableau operations
+      //parcours tableau operations
       for (let j = 0; j < opeTab.length; j++) {
         // la date de l'operation est plus ancienne que la date a tester
         if (Date.parse(opeTab[j].date) <= Date.parse(todayDate)) {
@@ -111,7 +111,7 @@ function DashBoardScreen(props) {
     }
     setTabPerf(tab);
   }
-  //INITIALISATION DU GRAPH
+  //*************INITIALISATION DU GRAPH***********
   var graph = function () {
     console.log(tabPerf);
     //remplit dataSet/label avec les dates et les perfs de tabPerf
@@ -124,7 +124,7 @@ function DashBoardScreen(props) {
     }
     labelTab.reverse();
     dataSet.reverse();
-    //renvoit le graphique
+    //**************renvoit le graphique*********
     return (
       <View>
         <Text>Bezier Line Chart</Text>
@@ -166,6 +166,8 @@ function DashBoardScreen(props) {
       </View>
     );
   };
+  
+  // *********RETURN DU JSX***********
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={{ color: "white" }}>DASHBOARD</Text>
@@ -232,7 +234,6 @@ function DashBoardScreen(props) {
     </ScrollView>
   );
 }
-
 // Style CSS 🎨
 const styles = StyleSheet.create({
   container: {
