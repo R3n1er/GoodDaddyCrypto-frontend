@@ -37,7 +37,6 @@ function RegisterScreen(props) {
       }
     );
     var response = await result.json();
-    console.log(response);
     setUserToken(response.userToken);
   };
 
