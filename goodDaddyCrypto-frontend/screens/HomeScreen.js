@@ -1,6 +1,6 @@
 import React from "react";
 
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Pressable } from "react-native";
 
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -15,11 +15,14 @@ export default function HomeScreen({ navigation }) {
         style={styles.background}
       >
       <Text style={styles.textTitle}>Good Daddy Crypto</Text>
-      <Button
-        title="GO !"
-        style={styles.button}
-        onPress={() => navigation.navigate("Login")}
-      />
+      <Pressable
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate("Login")}
+          }
+        >
+          <Text style={{color:"white"}}>GO !</Text>
+          </Pressable>
       </LinearGradient>
     </View>
   );
@@ -48,13 +51,21 @@ const styles = StyleSheet.create({
     top: 0,
     height: 1000,
   },
-  button: {
-    marginTop: 30,
-    alignItems: 'center',
-  },
   text: {
     color: "white",
     fontSize: 20,
+  },
+  button: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    width:100,
+    alignSelf:"center",
+    borderRadius: 20,
+    elevation: 3,
+    backgroundColor: "#8E94F2",
+    marginTop: 100
   },
 });
 

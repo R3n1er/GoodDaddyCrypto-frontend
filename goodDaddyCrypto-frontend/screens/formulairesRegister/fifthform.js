@@ -10,9 +10,10 @@ import {
   TextInput,
   Keyboard,
   ScrollView,
+  Pressable,
 } from "react-native";
 
-import { LinearGradient } from 'expo-linear-gradient';
+import { LinearGradient } from "expo-linear-gradient";
 
 import { connect } from "react-redux";
 // Import Icon FontAwesome
@@ -27,79 +28,85 @@ const FifthForm = (props) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <LinearGradient
-        colors={['#1A0596', 'transparent']}
+        colors={["#1A0596", "transparent"]}
         style={styles.background}
       >
-      <View style={styles.buttonReturn}>
-        <TouchableOpacity
-          style={{
-            flexDirection: "row",
-            height: 50,
-            width: 120,
-            alignItems: "center",
-          }}
-          onPress={() => props.navigation.navigate("FourthForm")}
-        >
-          <Icon name="chevron-left" size={20} />
-          <Text style={{color: '#E335DC'}}> RETOUR </Text>
-        </TouchableOpacity>
-      </View>
-      <TouchableOpacity
-        activeOpacity={1}
-        onPress={() => Keyboard.dismiss()}
-        style={{flex: 5}}
-      >
-        <View style={styles.page}>
-          <Text style={styles.profilRisque}>Demande des gains mensuels</Text>
-          <Separator />
-          <Text style={styles.title}>QUEL EST TON SALAIRE NET ?</Text>
-          <View
+        <View style={styles.buttonReturn}>
+          <TouchableOpacity
             style={{
               flexDirection: "row",
-              justifyContent: "center",
+              height: 40,
+              width: 100,
               alignItems: "center",
-            }}
-          >
-            <TextInput
-              style={styles.input}
-              onChangeText={setSalary}
-              value={salary.toString()}
-              placeholder="SALAIRE"
-              keyboardType="numeric"
-            />
-            <Text style={styles.txtEuro}>€</Text>
-          </View>
-          <Separator />
-          <Text style={styles.title}>
-            AVEZ-VOUS DES REVENUS COMPLÉMENTAIRES ?
-          </Text>
-          <View
-            style={{
-              flexDirection: "row",
               justifyContent: "center",
-              alignItems: "center",
+              borderRadius: 20,
+              elevation: 3,
+              backgroundColor: "#8E94F2",
+              marginLeft: 10,
             }}
+            onPress={() => console.log(props.navigation.navigate("FourthForm"))}
           >
-          <TextInput
-            style={styles.input}
-            onChangeText={setIncomes}
-            value={incomes.toString()}
-            placeholder="REVENUS"
-            keyboardType="numeric"
-          />
-          <Text style={styles.txtEuro}>€</Text>
-          </View>
-          <Separator />
+            <Icon style={{ color: "white" }} name="chevron-left" size={20} />
+            <Text style={{ color: "white" }}> RETOUR </Text>
+          </TouchableOpacity>
         </View>
-        <Button
+        <TouchableOpacity
+          activeOpacity={1}
+          onPress={() => Keyboard.dismiss()}
+          style={{ flex: 5 }}
+        >
+          <View style={styles.page}>
+            <Text style={styles.profilRisque}>Demande des gains mensuels</Text>
+            <Separator />
+            <Text style={styles.title}>QUEL EST TON SALAIRE NET ?</Text>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <TextInput
+                style={styles.input}
+                onChangeText={setSalary}
+                value={salary.toString()}
+                placeholder="SALAIRE"
+                keyboardType="numeric"
+              />
+              <Text style={styles.txtEuro}>€</Text>
+            </View>
+            <Separator />
+            <Text style={styles.title}>
+              AVEZ-VOUS DES REVENUS COMPLÉMENTAIRES ?
+            </Text>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <TextInput
+                style={styles.input}
+                onChangeText={setIncomes}
+                value={incomes.toString()}
+                placeholder="REVENUS"
+                keyboardType="numeric"
+              />
+              <Text style={styles.txtEuro}>€</Text>
+            </View>
+            <Separator />
+          </View>
+          <Pressable
+            style={styles.button}
             onPress={() => {
               props.navigation.navigate("ResultForm");
               props.addSalary(parseInt(salary) + parseInt(incomes));
             }}
-            title="Confirmer"
-          ></Button>
-
-      </TouchableOpacity>
+          >
+            <Text style={{ color: "white" }}>CONFIRMER</Text>
+          </Pressable>
+        </TouchableOpacity>
       </LinearGradient>
     </ScrollView>
   );
@@ -119,13 +126,11 @@ const styles = StyleSheet.create({
     color: "white",
     marginBottom: 45,
   },
-  page: {
-  },
   txtEuro: {
-    color: 'white',
+    color: "white",
   },
   background: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     right: 0,
     top: 0,
@@ -136,9 +141,9 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     borderWidth: 1,
-    borderColor: '#FFF',
+    borderColor: "#FFF",
     padding: 10,
-    color: 'white',
+    color: "white",
   },
   title: {
     textAlign: "center",
@@ -155,6 +160,18 @@ const styles = StyleSheet.create({
   buttonReturn: {
     flex: 1,
     justifyContent: "center",
+  },
+  button: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    width: 150,
+    alignSelf: "center",
+    borderRadius: 20,
+    elevation: 3,
+    backgroundColor: "#8E94F2",
+    marginTop: 20,
   },
 });
 

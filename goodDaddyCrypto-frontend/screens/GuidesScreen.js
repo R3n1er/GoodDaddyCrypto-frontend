@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  Pressable,
 } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
@@ -26,7 +27,6 @@ const guidesProposal = (props) => {
     );
     var result = await rawResult.json();
     setGuide(result.guides);
-    console.log(result);
   };
 
   useEffect(() => {
@@ -35,22 +35,62 @@ const guidesProposal = (props) => {
 
   let guideToDisplay = guide.map((guide, i) => {
     return (
-      <Card key={i} style={{ backgroundColor: "#222121", marginTop: 20, borderRadius:10,borderColor:"white", borderWidth:0.2 }}>
-        <Card.Title
-          title={<Text style={{ color: "white" }}>{guide.title}</Text>}
-        />
-        <View style={{height:1,width:'50%',backgroundColor:"white",marginLeft:'10%',marginBottom:10}}></View>
-        <Card.Content>
-          <Paragraph style={{ color: "white" }}>{guide.content}</Paragraph>
-          <View style={{flexDirection:"row", justifyContent:"space-around", marginTop: 20}}>
-            <Text style={{ color: "white", fontStyle:"italic" }}>Auteur: {guide.author}</Text>
-            <Text style={{ color: "white", fontStyle:"italic" }}>
-              Publié le: {guide.dateRelease}
-            </Text>
-          </View>
-        </Card.Content>
-        {/* <Card.Cover source={guide.image} /> */}
-      </Card>
+      <Pressable key={i}>
+        <Card
+          style={{
+            backgroundColor: "#222121",
+            marginTop: 20,
+            borderRadius: 10,
+            borderColor: "white",
+            borderWidth: 0.2,
+          }}
+        >
+          <Card.Title
+            title={
+              <Text
+                style={{
+                  color: "white",
+                  fontSize: 20,
+                  fontWeight: "bold",
+                  color: "#E335DC",
+                }}
+              >
+                {guide.title}
+              </Text>
+            }
+          />
+          <View
+            style={{
+              height: 1,
+              width: "50%",
+              backgroundColor: "white",
+              marginLeft: "10%",
+              marginBottom: 10,
+            }}
+          ></View>
+          <Card.Content>
+            <Paragraph style={{ color: "white" }}>
+              {guide.content.slice(0, 80) + "..."}
+            </Paragraph>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-around",
+                marginTop: 20,
+              }}
+            >
+              <Text style={{ color: "#00B295", fontStyle: "italic" }}>
+                Auteur: {guide.author}
+              </Text>
+              <Text style={{ color: "#00B295", fontStyle: "italic" }}>
+                Publié le:{" "}
+                {new Date(guide.dateRelease).toLocaleDateString("fr")}
+              </Text>
+            </View>
+          </Card.Content>
+          {/* <Card.Cover source={guide.image} /> */}
+        </Card>
+      </Pressable>
     );
   });
 
@@ -69,13 +109,29 @@ const guidesProposal = (props) => {
             justifyContent: "center",
             alignItems: "center",
             marginTop: 30,
+            marginBottom: 10,
           }}
         >
           <Text style={{ color: "white", fontWeight: "bold", fontSize: 20 }}>
             GUIDES
           </Text>
         </View>
-        <ScrollView>
+        <Modal
+          animationType="slide"
+          style={styles.centeredView}
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            setModalVisible(!modalVisible);
+          }}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <View></View>
+            </View>
+          </View>
+        </Modal>
+        <ScrollView style={{ flex: 5 }}>
           <View style={{ width: 350 }}>{guideToDisplay}</View>
         </ScrollView>
       </LinearGradient>
@@ -117,6 +173,28 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
     alignItems: "center",
     minWidth: "100%",
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor:"#222121",
+    borderRadius: 20,
+    borderColor:'white',
+    borderWidth:0.5,
+    padding: 50,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
   },
 });
 

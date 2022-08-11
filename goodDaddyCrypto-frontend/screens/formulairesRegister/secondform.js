@@ -29,19 +29,24 @@ const secondform = (props) => {
       >
       {/* // Go back button */}
       <View style={styles.buttonReturn}>
-        <TouchableOpacity
-          style={{
-            flexDirection: "row",
-            height: 50,
-            width: 120,
-            alignItems: "center",
-          }}
-          onPress={() => props.navigation.navigate("FirstForm")}
-        >
-          <Icon name="chevron-left" size={20} />
-          <Text style={{color: '#E335DC'}}> RETOUR </Text>
-        </TouchableOpacity>
-      </View>
+          <TouchableOpacity
+            style={{
+              flexDirection: "row",
+              height: 40,
+              width: 100,
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 20,
+              elevation: 3,
+              backgroundColor: "#8E94F2",
+              marginLeft: 10,
+            }}
+            onPress={() => console.log(props.navigation.navigate("FirstForm"))}
+          >
+            <Icon style={{ color: "white" }} name="chevron-left" size={20} />
+            <Text style={{ color: "white" }}> RETOUR </Text>
+          </TouchableOpacity>
+        </View>
       {/* // End go back button */}
 
       <View style={styles.page}>
@@ -132,7 +137,6 @@ const styles = StyleSheet.create({
     fontSize: 28,
     textAlign: "center",
     color: "white",
-    marginTop: 65,
   },
   title: {
     textAlign: "center",
@@ -158,10 +162,12 @@ const styles = StyleSheet.create({
     borderBottomColor: "#737373",
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
-  
-
   page: {
-    flex: 4,
+    flex: 5,
+  },
+  buttonReturn: {
+    flex: 1,
+    justifyContent: "center",
   },
 });
 

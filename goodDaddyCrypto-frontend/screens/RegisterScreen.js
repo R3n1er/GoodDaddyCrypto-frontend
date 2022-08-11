@@ -8,9 +8,10 @@ import {
   Image,
   SafeAreaView,
   TouchableOpacity,
+  Pressable
 } from "react-native";
 
-import { LinearGradient } from 'expo-linear-gradient';
+import { LinearGradient } from "expo-linear-gradient";
 
 // Import React Native Elements
 import { Input } from "@rneui/themed";
@@ -40,86 +41,94 @@ function RegisterScreen(props) {
     );
     var response = await result.json();
     setUserToken(response.userToken);
+    if (response.error.length == 0) {
+      props.navigation.navigate("FirstForm");
+    }
   };
 
   useEffect(() => {
-    props.addToken(userToken)
-  }, [userToken])
-  
+    props.addToken(userToken);
+  }, [userToken]);
+
   // Return the JSX
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
-      <LinearGradient
-        colors={['#1A0596', 'transparent']}
-        style={styles.background}
-      >
-        {/* // Button go back */}
-        <View style={styles.buttonReturn}>
-          <TouchableOpacity
-            style={{
-              flexDirection: "row",
-              height: 50,
-              width: 120,
-              alignItems: "center",
-            }}
-            onPress={() => console.log(props.navigation.navigate("Login"))}
-          >
-            <Icon name="chevron-left" size={20} />
-            <Text style={{color: '#E335DC'}}> RETOUR </Text>
-          </TouchableOpacity>
+        <LinearGradient
+          colors={["#1A0596", "transparent"]}
+          style={styles.background}
+        >
+          {/* // Button go back */}
+          <View style={styles.buttonReturn}>
+            <TouchableOpacity
+              style={{
+                flexDirection: "row",
+                height: 40,
+                width: 100,
+                alignItems: "center",
+                justifyContent:"center",
+                borderRadius: 20,
+                elevation: 3,
+                backgroundColor: "#8E94F2",
+                marginLeft:10
+              }}
+              onPress={() => console.log(props.navigation.navigate("Login"))}
+            >
+              <Icon style={{ color: "white" }} name="chevron-left" size={20} />
+              <Text style={{ color: "white" }}> RETOUR </Text>
+            </TouchableOpacity>
 
-          {/* // Bandeau titre */}
-        </View>
-        <View style={styles.inner}>
-        <Text style={styles.textTitle}>GOOD DADDY CRYPTO</Text>
-        <Input
-          placeholder="Nom"
-          containerStyle="{{marginBottom: 25, width: '70%', }}"
-          onChangeText={(value) => setLastName(value)}
-          value={lastName}
-          style={{ color: "white" }}
-        />
-        <Input
-          placeholder="Prenom"
-          containerStyle="{{marginBottom: 25, width: '70%', }}"
-          onChangeText={(value) => setFirstName(value)}
-          value={firstName}
-          style={{ color: "white" }}
-        />
-        <Input
-          placeholder="telephone"
-          containerStyle="{{marginBottom: 25, width: '70%', }}"
-          keyboardType="numeric"
-          onChangeText={(value) => setTelephone(value)}
-          value={telephone}
-          style={{ color: "white" }}
-        />
-        <Input
-          placeholder="email"
-          containerStyle="{{marginBottom: 25, width: '70%', }}"
-          keyboardType="email-address"
-          onChangeText={(value) => setEmail(value)}
-          style={{ color: "white" }}
-          value={email}
-        />
-        <Input
-          placeholder="Mot de passe"
-          containerStyle="{{marginBottom: 25, width: '70%', }}"
-          secureTextEntry={true}
-          onChangeText={(value) => setPassword(value)}
-          value={password}
-          style={{ color: "white" }}
-        />
-        </View>
-        <Button
-          title="REGISTER"
-          type="solid"
-          onPress={() => {
-            props.navigation.navigate("FirstForm");
-            submitRegister();
-          }}
-        />
+            {/* // Bandeau titre */}
+          </View>
+          <View >
+            <Text style={styles.textTitle}>GOOD DADDY CRYPTO</Text>
+            <Input
+              placeholder="Nom"
+              containerStyle="{{marginBottom: 25, width: '70%', }}"
+              onChangeText={(value) => setLastName(value)}
+              value={lastName}
+              style={{ color: "white",marginTop: 30 }}
+            />
+            <Input
+              placeholder="Prenom"
+              containerStyle="{{marginBottom: 25, width: '70%', }}"
+              onChangeText={(value) => setFirstName(value)}
+              value={firstName}
+              style={{ color: "white" }}
+            />
+            <Input
+              placeholder="telephone"
+              containerStyle="{{marginBottom: 25, width: '70%', }}"
+              keyboardType="numeric"
+              onChangeText={(value) => setTelephone(value)}
+              value={telephone}
+              style={{ color: "white" }}
+            />
+            <Input
+              placeholder="email"
+              containerStyle="{{marginBottom: 25, width: '70%', }}"
+              keyboardType="email-address"
+              onChangeText={(value) => setEmail(value)}
+              style={{ color: "white" }}
+              value={email}
+            />
+            <Input
+              placeholder="Mot de passe"
+              containerStyle="{{marginBottom: 25, width: '70%', }}"
+              secureTextEntry={true}
+              onChangeText={(value) => setPassword(value)}
+              value={password}
+              style={{ color: "white" }}
+            />
+          </View>
+          <Pressable
+            style={styles.button}
+            onPress={() => {
+              submitRegister();
+            }}
+          >
+            <Text style={{ color: "white" }}>REGISTER</Text>
+          </Pressable>
         </LinearGradient>
       </ScrollView>
     </SafeAreaView>
@@ -132,7 +141,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#222121",
     color: "white",
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     right: 0,
     top: 0,
@@ -142,10 +151,9 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 50,
-    marginTop: 100,
-    textAlign: 'center',
+    textAlign: "center",
   },
-  
+
   title: {
     color: "white",
     fontWeight: "bold",
@@ -162,9 +170,11 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: "20",
   },
-  
+
   buttonReturn: {
-    flex: 2,
+    flex: 1,
+    marginTop:70,
+    marginBottom:20,
     justifyContent: "center",
   },
   button: {
@@ -172,11 +182,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 12,
     paddingHorizontal: 32,
-    borderRadius: 4,
+    width: 150,
+    alignSelf: "center",
+    borderRadius: 20,
     elevation: 3,
-    backgroundColor: "#222121",
+    backgroundColor: "#8E94F2",
+    marginTop: 20,
   },
-  
 });
 // REDUX
 

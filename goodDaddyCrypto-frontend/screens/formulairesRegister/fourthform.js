@@ -38,18 +38,23 @@ const fourthform = (props) => {
           <TouchableOpacity
             style={{
               flexDirection: "row",
-              height: 50,
-              width: 120,
+              height: 40,
+              width: 100,
               alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 20,
+              elevation: 3,
+              backgroundColor: "#8E94F2",
+              marginLeft: 10,
             }}
-            onPress={() => props.navigation.navigate("ThirdForm")}
+            onPress={() => console.log(props.navigation.navigate("ThirdForm"))}
           >
-            <Icon name="chevron-left" size={20} />
-            <Text style={{color: '#E335DC'}}> RETOUR </Text>
+            <Icon style={{ color: "white" }} name="chevron-left" size={20} />
+            <Text style={{ color: "white" }}> RETOUR </Text>
           </TouchableOpacity>
         </View>
         {/* // End of GoBack Button */}
-        <View style={{ flex: 5 }}>
+        <View style={{ flex: 5}}>
           <View>
             <Text style={styles.profilRisque}>
               Détermination de ton profil de risque
@@ -144,24 +149,24 @@ const styles = StyleSheet.create({
     fontSize: 28,
     textAlign: "center",
     color: "white",
-    marginTop: 65,
   },
   title: {
     textAlign: "center",
     fontSize: 20,
     color: "white",
     marginVertical: 8,
+    marginLeft:20,
+    marginRight:20,
   },
   answer: {
     textAlign: "center",
     marginVertical: 5,
-    fontSize: 22,
+    fontSize: 16,
     backgroundColor: "#8E94F2",
     borderRadius: 12,
-    marginTop: 30,
+    marginTop: 8,
     color: "white",
-    paddingTop: 10,
-    paddingBottom: 10,
+    padding: 10,
     marginVertical : 10,
     marginHorizontal: 65,
   },
@@ -170,10 +175,12 @@ const styles = StyleSheet.create({
     borderBottomColor: "#737373",
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
-  
-
   page: {
-    flex: 4,
+    flex: 5,
+  },
+  buttonReturn: {
+    flex: 1,
+    justifyContent: "center",
   },
 });
 
