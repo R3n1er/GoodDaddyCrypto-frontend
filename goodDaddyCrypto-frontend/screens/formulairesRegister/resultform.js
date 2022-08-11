@@ -118,14 +118,14 @@ const resultform = (props) => {
         <TouchableOpacity
           style={{
             flexDirection: "row",
-            height: 50,
+            height: 150,
             width: 120,
             alignItems: "center",
           }}
           onPress={() => props.navigation.navigate("FifthForm")}
         >
           <Icon name="chevron-left" size={20} />
-          <Text> RETOUR </Text>
+          <Text style={{color: '#E335DC'}}> RETOUR </Text>
         </TouchableOpacity>
       </View>
       <View style={styles.page}>
@@ -136,7 +136,7 @@ const resultform = (props) => {
         <View style={{ marginTop: 80 }}>
           <Text style={styles.title}>{profilInvestor}</Text>
         </View>
-        <View style={{ marginTop: 50 }}>
+        <View style={{ marginTop: 50, marginHorizontal: 40 }}>
           <Button
             onPress={() => {
               props.navigation.navigate("StrategyProposal");
@@ -151,12 +151,16 @@ const resultform = (props) => {
   );
 };
 
+// Styles CSS🎨
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#222121",
+    color: "white",
+    alignItems: "center",
     justifyContent: "center",
-    marginHorizontal: 16,
-    backgroundColor: '#222121',
+  },
+  background: {
     position: 'absolute',
     left: 0,
     right: 0,
@@ -166,19 +170,16 @@ const styles = StyleSheet.create({
   profilRisque: {
     fontSize: 28,
     textAlign: "center",
+    color: "white",
+    marginTop: 200,
   },
   title: {
     textAlign: "center",
     fontSize: 20,
+    color: "white",
     marginVertical: 8,
   },
-  buttonReturn: {
-    flex: 2,
-    justifyContent: "center",
-  },
-  page: {
-    flex: 4,
-  },
+
 });
 
 function mapStateToProps(state) {
