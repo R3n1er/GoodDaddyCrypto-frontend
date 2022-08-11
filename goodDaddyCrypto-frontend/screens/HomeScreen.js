@@ -22,7 +22,7 @@ export default function HomeScreen({ navigation }) {
       <Text style={styles.textTitle}>Good Daddy Crypto</Text>
       <Button
         title="GO !"
-        styles={styles.button}
+        style={styles.button}
         onPress={() => navigation.navigate("Login")}
       />
       </LinearGradient>
@@ -43,13 +43,19 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 50,
+    marginTop: 250,
+    textAlign: 'center',
   },
   background: {
     position: 'absolute',
     left: 0,
     right: 0,
     top: 0,
-    height: 550,
+    height: 1000,
+  },
+  button: {
+    marginTop: 30,
+    alignItems: 'center',
   },
   text: {
     color: "white",
@@ -57,19 +63,19 @@ const styles = StyleSheet.create({
   },
 });
 
-// Definition du theme ReactNativeElements avec ThemeProvider
+// // Definition du theme ReactNativeElements avec ThemeProvider
 
-const theme = createTheme({
-  components: {
-    Button: {
-      raised: true,
-      alignItems: "center",
-      justifyContent: "center",
-      paddingVertical: 12,
-      paddingHorizontal: 32,
-      borderRadius: 4,
-      elevation: 3,
-      backgroundColor: "black",
-    },
-  },
-});
+// const theme = createTheme({
+//   components: {
+//     Button: {
+//       raised: true,
+//       alignItems: "center",
+//       justifyContent: "center",
+//       paddingVertical: 12,
+//       paddingHorizontal: 32,
+//       borderRadius: 4,
+//       elevation: 3,
+//       backgroundColor: "black",
+//     },
+//   },
+// });

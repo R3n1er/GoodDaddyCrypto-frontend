@@ -10,6 +10,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 
+import { LinearGradient } from 'expo-linear-gradient';
+
 // Import React Native Elements
 import { Input } from "@rneui/themed";
 import { Button } from "@rneui/base";
@@ -49,6 +51,10 @@ function RegisterScreen(props) {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
+      <LinearGradient
+        colors={['#1A0596', 'transparent']}
+        style={styles.background}
+      >
         {/* // Button go back */}
         <View style={styles.buttonReturn}>
           <TouchableOpacity
@@ -61,11 +67,12 @@ function RegisterScreen(props) {
             onPress={() => console.log(props.navigation.navigate("Login"))}
           >
             <Icon name="chevron-left" size={20} />
-            <Text> RETOUR </Text>
+            <Text style={{color: '#E335DC'}}> RETOUR </Text>
           </TouchableOpacity>
 
           {/* // Bandeau titre */}
         </View>
+        <View style={styles.inner}>
         <Text style={styles.textTitle}>GOOD DADDY CRYPTO</Text>
         <Input
           placeholder="Nom"
@@ -105,6 +112,7 @@ function RegisterScreen(props) {
           value={password}
           style={{ color: "white" }}
         />
+        </View>
         <Button
           title="REGISTER"
           type="solid"
@@ -113,6 +121,7 @@ function RegisterScreen(props) {
             submitRegister();
           }}
         />
+        </LinearGradient>
       </ScrollView>
     </SafeAreaView>
   );
@@ -124,17 +133,20 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#222121",
     color: "white",
-    alignItems: "center",
-    justifyContent: "center",
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 1000,
   },
   textTitle: {
     color: "white",
     fontWeight: "bold",
     fontSize: 50,
-    marginBottom: 50,
-    marginTop:50
+    marginTop: 100,
+    textAlign: 'center',
   },
-
+  
   title: {
     color: "white",
     fontWeight: "bold",
@@ -151,6 +163,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: "20",
   },
+  
   buttonReturn: {
     flex: 2,
     justifyContent: "center",
@@ -164,9 +177,7 @@ const styles = StyleSheet.create({
     elevation: 3,
     backgroundColor: "#222121",
   },
-  scrollView: {
-    marginHorizontal: 20,
-  },
+  
 });
 // REDUX
 

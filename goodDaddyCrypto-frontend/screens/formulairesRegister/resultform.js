@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 
+import { LinearGradient } from 'expo-linear-gradient';
+
 import { Text, Card, Button, Image } from "@rneui/themed";
 
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -108,6 +110,10 @@ const resultform = (props) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <LinearGradient
+        colors={['#1A0596', 'transparent']}
+        style={styles.background}
+      >
       <View style={styles.buttonReturn}>
         <TouchableOpacity
           style={{
@@ -140,6 +146,7 @@ const resultform = (props) => {
           ></Button>
         </View>
       </View>
+      </LinearGradient>
     </SafeAreaView>
   );
 };
@@ -149,6 +156,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     marginHorizontal: 16,
+    backgroundColor: '#222121',
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 1000,
   },
   profilRisque: {
     fontSize: 28,

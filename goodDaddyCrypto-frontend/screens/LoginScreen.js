@@ -11,6 +11,8 @@ import {
 import { Button } from "@rneui/base";
 import { Input } from "@rneui/themed";
 
+import { LinearGradient } from 'expo-linear-gradient';
+
 import { connect } from "react-redux";
 import { Linking, TouchableOpacity } from "react-native";
 // import { ScrollView } from "react-native-gesture-handler";
@@ -42,8 +44,13 @@ const LoginScreen = (props) => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <LinearGradient
+        colors={['#1A0596', 'transparent']}
+        style={styles.background}
+      >
       <Text style={styles.title}>GOOD DADDY CRYPTO</Text>
       {/* // Input champs pour le mail */}
+      <View style={styles.input}>
       <Input
         placeholder="user@mail.com"
         containerStyle={{
@@ -69,6 +76,7 @@ const LoginScreen = (props) => {
         onChangeText={(value) => setPassword(value)}
         value={password}
       />
+      </View>
 
       <TouchableOpacity onPress={() => {}}>
         <Button
@@ -87,6 +95,7 @@ const LoginScreen = (props) => {
       >
         Nouveau compte ? Créer un compte !{" "}
       </Text>
+      </LinearGradient>
     </ScrollView>
   );
 };
@@ -97,24 +106,29 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#222121",
     color: "white",
-    alignItems: "center",
-    justifyContent: "center",
   },
-  textTitle: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 50,
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 1000,
   },
-
+  input: {
+    alignItems: 'center',
+  },
   title: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 60,
-    marginBottom: "10%",
+    fontSize: 50,
+    marginTop: 175,
+    textAlign: 'center',
   },
   text: {
     color: "white",
     fontSize: 20,
+    textAlign: 'center',
+    marginTop: 25,
   },
   button: {
     alignItems: "center",
@@ -123,8 +137,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 4,
     elevation: 3,
-    backgroundColor: "#222121",
   },
+  
 });
 
 function mapDispatchToProps(dispatch) {

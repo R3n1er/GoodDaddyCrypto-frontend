@@ -11,6 +11,9 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Constants from 'expo-constants';
+
+import { LinearGradient } from 'expo-linear-gradient';
+
 // React Redux
 import { connect } from "react-redux";
 
@@ -21,6 +24,10 @@ const Separator = () => <View style={styles.separator} />;
 const firstform = (props) => {
   return (
     <SafeAreaView style={styles.container}>
+      <LinearGradient
+        colors={['#1A0596', 'transparent']}
+        style={styles.background}
+      >
       {/* // Bouton Go Back */}
       <View style={styles.buttonReturn}>
         <TouchableOpacity
@@ -33,7 +40,7 @@ const firstform = (props) => {
           onPress={() => props.navigation.navigate("Login")}
         >
           <Icon name="chevron-left" size={20} />
-          <Text> RETOUR </Text>
+          <Text style={{color: '#E335DC'}}> RETOUR </Text>
         </TouchableOpacity>
       </View>
       <View style={styles.page}>
@@ -98,7 +105,7 @@ const firstform = (props) => {
           </TouchableOpacity>
         </View>
       </View>
-      { <ProgressBar></ProgressBar> }
+      </LinearGradient>
     </SafeAreaView>
   );
 };
@@ -107,43 +114,50 @@ const firstform = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#222121",
+    color: "white",
+    alignItems: "center",
     justifyContent: "center",
-    marginHorizontal: 16,
   },
-  boxBarre: {
-    flex: 1,
-    flexDirection: "column", //column direction
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#ecf0f1',
-    padding: 8,
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 1000,
   },
   profilRisque: {
     fontSize: 28,
     textAlign: "center",
+    color: "white",
+    marginTop: 100,
   },
   title: {
     textAlign: "center",
     fontSize: 20,
+    color: "white",
     marginVertical: 8,
   },
   answer: {
     textAlign: "center",
-    marginVertical: 8,
-    fontSize: 16,
-    backgroundColor: "yellow",
+    marginVertical: 5,
+    fontSize: 22,
+    backgroundColor: "#8E94F2",
     borderRadius: 12,
+    marginTop: 30,
+    color: "white",
+    paddingTop: 10,
+    paddingBottom: 10,
+    marginVertical : 10,
+    marginHorizontal: 65,
   },
   separator: {
     marginVertical: 8,
     borderBottomColor: "#737373",
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
-  buttonReturn: {
-    flex: 2,
-    justifyContent: "center",
-  },
+  
+
   page: {
     flex: 4,
   },

@@ -10,7 +10,8 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-import ProgressBar from '../../Components/ProgressBar';
+import { LinearGradient } from 'expo-linear-gradient';
+
 
 // React Redux
 import { connect } from "react-redux";
@@ -22,6 +23,10 @@ const Separator = () => <View style={styles.separator} />;
 const secondform = (props) => {
   return (
     <SafeAreaView style={styles.container}>
+      <LinearGradient
+        colors={['#1A0596', 'transparent']}
+        style={styles.background}
+      >
       {/* // Go back button */}
       <View style={styles.buttonReturn}>
         <TouchableOpacity
@@ -34,7 +39,7 @@ const secondform = (props) => {
           onPress={() => props.navigation.navigate("FirstForm")}
         >
           <Icon name="chevron-left" size={20} />
-          <Text> RETOUR </Text>
+          <Text style={{color: '#E335DC'}}> RETOUR </Text>
         </TouchableOpacity>
       </View>
       {/* // End go back button */}
@@ -85,7 +90,7 @@ const secondform = (props) => {
                 props.navigation.navigate("ThirdForm");
               }}
             >
-              Je ne voudrais pas perdre plus de la moitié de mon capital
+              Je ne veux pas perdre la moitié de mon capital
             </Text>
           </TouchableOpacity>
           {/* Choix 4 */}
@@ -102,7 +107,7 @@ const secondform = (props) => {
           </TouchableOpacity>
         </View>
       </View>
-      { <ProgressBar></ProgressBar> } 
+      </LinearGradient>
     </SafeAreaView>
   );
 };
@@ -111,34 +116,50 @@ const secondform = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#222121",
+    color: "white",
+    alignItems: "center",
     justifyContent: "center",
-    marginHorizontal: 16,
+  },
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 1000,
   },
   profilRisque: {
     fontSize: 28,
     textAlign: "center",
+    color: "white",
+    marginTop: 65,
   },
   title: {
     textAlign: "center",
     fontSize: 20,
+    color: "white",
     marginVertical: 8,
   },
   answer: {
     textAlign: "center",
-    marginVertical: 8,
-    fontSize: 16,
-    backgroundColor: "yellow",
+    marginVertical: 5,
+    fontSize: 22,
+    backgroundColor: "#8E94F2",
     borderRadius: 12,
+    marginTop: 30,
+    color: "white",
+    paddingTop: 10,
+    paddingBottom: 10,
+    marginVertical : 10,
+    marginHorizontal: 65,
   },
   separator: {
     marginVertical: 8,
     borderBottomColor: "#737373",
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
-  buttonReturn: {
-    flex: 2,
-    justifyContent: "center",
-  },
+  
+
   page: {
     flex: 4,
   },

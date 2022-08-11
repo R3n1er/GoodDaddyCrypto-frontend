@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 
+import { LinearGradient } from 'expo-linear-gradient';
+
 import { ScrollView } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome";
 
@@ -22,6 +24,10 @@ const ThirdForm = (props) => {
   // RETURN DU JSX
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <LinearGradient
+        colors={['#1A0596', 'transparent']}
+        style={styles.background}
+      >
       {/* // Bouton Go Back */}
       <View style={styles.buttonReturn}>
         <TouchableOpacity
@@ -34,7 +40,7 @@ const ThirdForm = (props) => {
           onPress={() => props.navigation.navigate("SecondForm")}
         >
           <Icon name="chevron-left" size={20} />
-          <Text> RETOUR </Text>
+          <Text style={{color: '#E335DC'}}> RETOUR </Text>
         </TouchableOpacity>
       </View>
       <View style={{ flex: 5 }}>
@@ -110,52 +116,61 @@ const ThirdForm = (props) => {
           </View>
         </View>
       </View>
-      {<ProgressBar></ProgressBar>}
+      </LinearGradient>
     </ScrollView>
   );
 };
 
-// Styles CSS 🖼
+// Styles CSS🎨
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#222121",
+    color: "white",
+    alignItems: "center",
     justifyContent: "center",
-    marginHorizontal: 16,
+  },
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 1000,
   },
   profilRisque: {
     fontSize: 28,
     textAlign: "center",
+    color: "white",
+    marginTop: 65,
   },
   title: {
     textAlign: "center",
     fontSize: 20,
+    color: "white",
     marginVertical: 8,
   },
   answer: {
     textAlign: "center",
-    marginVertical: 8,
-    fontSize: 16,
-    backgroundColor: "yellow",
+    marginVertical: 5,
+    fontSize: 22,
+    backgroundColor: "#8E94F2",
     borderRadius: 12,
-  },
-  checkboxContainer: {
-    flexDirection: "row",
-    marginBottom: 20,
-  },
-  checkbox: {
-    alignSelf: "center",
-  },
-  label: {
-    margin: 8,
+    marginTop: 30,
+    color: "white",
+    paddingTop: 10,
+    paddingBottom: 10,
+    marginVertical : 10,
+    marginHorizontal: 65,
   },
   separator: {
     marginVertical: 8,
     borderBottomColor: "#737373",
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
-  buttonReturn: {
-    flex: 2,
-    justifyContent: "center",
+  
+
+  page: {
+    flex: 4,
   },
 });
 

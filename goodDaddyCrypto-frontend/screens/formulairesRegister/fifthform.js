@@ -9,12 +9,14 @@ import {
   TouchableOpacity,
   TextInput,
   Keyboard,
+  ScrollView,
 } from "react-native";
+
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { connect } from "react-redux";
 // Import Icon FontAwesome
 import Icon from "react-native-vector-icons/FontAwesome";
-import { ScrollView } from "react-native-gesture-handler";
 
 const Separator = () => <View style={styles.separator} />;
 
@@ -24,6 +26,10 @@ const FifthForm = (props) => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <LinearGradient
+        colors={['#1A0596', 'transparent']}
+        style={styles.background}
+      >
       <View style={styles.buttonReturn}>
         <TouchableOpacity
           style={{
@@ -35,7 +41,7 @@ const FifthForm = (props) => {
           onPress={() => props.navigation.navigate("FourthForm")}
         >
           <Icon name="chevron-left" size={20} />
-          <Text> RETOUR </Text>
+          <Text style={{color: '#E335DC'}}> RETOUR </Text>
         </TouchableOpacity>
       </View>
       <TouchableOpacity
@@ -43,7 +49,7 @@ const FifthForm = (props) => {
         onPress={() => Keyboard.dismiss()}
         style={{flex: 5}}
       >
-        <View>
+        <View style={styles.page}>
           <Text style={styles.profilRisque}>Demande des gains mensuels</Text>
           <Separator />
           <Text style={styles.title}>QUEL EST TON SALAIRE NET ?</Text>
@@ -61,7 +67,7 @@ const FifthForm = (props) => {
               placeholder="SALAIRE"
               keyboardType="numeric"
             />
-            <Text>€</Text>
+            <Text style={styles.txtEuro}>€</Text>
           </View>
           <Separator />
           <Text style={styles.title}>
@@ -81,43 +87,64 @@ const FifthForm = (props) => {
             placeholder="REVENUS"
             keyboardType="numeric"
           />
-          <Text>€</Text>
+          <Text style={styles.txtEuro}>€</Text>
           </View>
           <Separator />
-          <Button
+        </View>
+        <Button
             onPress={() => {
               props.navigation.navigate("ResultForm");
               props.addSalary(parseInt(salary) + parseInt(incomes));
             }}
             title="Confirmer"
           ></Button>
-        </View>
+
       </TouchableOpacity>
+      </LinearGradient>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 6,
+    flex: 1,
+    backgroundColor: "#222121",
+    color: "white",
+    alignItems: "center",
     justifyContent: "center",
-    marginHorizontal: 16,
   },
   profilRisque: {
     fontSize: 28,
     textAlign: "center",
+    color: "white",
+    marginBottom: 45,
+  },
+  page: {
+  },
+  txtEuro: {
+    color: 'white',
+  },
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 1000,
   },
   input: {
     width: "80%",
     height: 40,
     margin: 12,
     borderWidth: 1,
+    borderColor: '#FFF',
     padding: 10,
+    color: 'white',
   },
   title: {
     textAlign: "center",
     fontSize: 20,
     marginVertical: 8,
+    color: "white",
   },
 
   separator: {
@@ -126,7 +153,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   buttonReturn: {
-    flex: 2,
+    flex: 1,
     justifyContent: "center",
   },
 });
