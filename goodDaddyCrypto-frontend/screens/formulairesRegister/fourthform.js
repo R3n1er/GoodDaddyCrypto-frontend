@@ -90,7 +90,7 @@ const fourthform = (props) => {
                     props.navigation.navigate("FifthForm");
                   }}
                 >
-                  Tu vend 50% de ton portefeuille pour te protéger
+                  Tu vends 50% de ton portefeuille pour te protéger
                 </Text>
               </TouchableOpacity>
               {/* Choix 3 */}

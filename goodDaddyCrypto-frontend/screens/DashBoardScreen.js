@@ -237,8 +237,8 @@ function DashBoardScreen(props) {
           </Text>
         </View>
         {tabPerf.length != 0 ? graph() : null}
-        <View style={{ flexDirection: "row" }}>
-          <Pressable
+        <View style={{ flexDirection: "row" }} >
+          <Pressable 
             style={isPress ? styles.buttonGraphActive : styles.buttonGraph}
             onPress={() => {
               setTimeInterval(7);

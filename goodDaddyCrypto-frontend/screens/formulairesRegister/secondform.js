@@ -83,7 +83,7 @@ const secondform = (props) => {
                 props.navigation.navigate("ThirdForm");
               }}
             >
-              Pas sure
+              Pas sûr(e)
             </Text>
           </TouchableOpacity>
           {/* Choix 3 */}
@@ -107,7 +107,7 @@ const secondform = (props) => {
                 props.navigation.navigate("ThirdForm");
               }}
             >
-              Je suis ok avec cela !
+              Je suis ok avec celà !
             </Text>
           </TouchableOpacity>
         </View>

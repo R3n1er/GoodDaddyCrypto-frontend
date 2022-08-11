@@ -4,6 +4,7 @@ import {
   View,
   SafeAreaView,
   TouchableOpacity,
+  Pressable
 } from "react-native";
 
 import { LinearGradient } from 'expo-linear-gradient';
@@ -114,20 +115,27 @@ const resultform = (props) => {
         colors={['#1A0596', 'transparent']}
         style={styles.background}
       >
-      <View style={styles.buttonReturn}>
-        <TouchableOpacity
-          style={{
-            flexDirection: "row",
-            height: 150,
-            width: 120,
-            alignItems: "center",
-          }}
-          onPress={() => props.navigation.navigate("FifthForm")}
-        >
-          <Icon name="chevron-left" size={20} />
-          <Text style={{color: '#E335DC'}}> RETOUR </Text>
-        </TouchableOpacity>
-      </View>
+      
+        {/* // Bouton Go Back */}
+        <View style={styles.buttonReturn}>
+          <TouchableOpacity
+            style={{
+              flexDirection: "row",
+              height: 40,
+              width: 100,
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 20,
+              elevation: 3,
+              backgroundColor: "#8E94F2",
+              marginLeft: 10,
+            }}
+            onPress={() => console.log(props.navigation.navigate("FifthForm"))}
+          >
+            <Icon style={{ color: "white" }} name="chevron-left" size={20} />
+            <Text style={{ color: "white" }}> RETOUR </Text>
+          </TouchableOpacity>
+        </View>
       <View style={styles.page}>
         <View>
           <Text style={styles.profilRisque}>Ton profil correspond à :</Text>
@@ -137,13 +145,14 @@ const resultform = (props) => {
           <Text style={styles.title}>{profilInvestor}</Text>
         </View>
         <View style={{ marginTop: 50, marginHorizontal: 40 }}>
-          <Button
+          <Pressable
+            style={styles.button}
             onPress={() => {
               props.navigation.navigate("StrategyProposal");
-              submitTypeInvestor();
             }}
-            title="CE PROFIL ME CONVIENT"
-          ></Button>
+          >
+            <Text style={{ color: "white" }}>CE PROFIL ME CONVIENT</Text>
+          </Pressable>
         </View>
       </View>
       </LinearGradient>
@@ -171,13 +180,32 @@ const styles = StyleSheet.create({
     fontSize: 28,
     textAlign: "center",
     color: "white",
-    marginTop: 200,
+    marginTop: 80,
   },
   title: {
     textAlign: "center",
     fontSize: 20,
     color: "white",
     marginVertical: 8,
+  },
+  page: {
+    flex: 5,
+  },
+  buttonReturn: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  button: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    width: 250,
+    alignSelf: "center",
+    borderRadius: 20,
+    elevation: 3,
+    backgroundColor: "#8E94F2",
+    marginTop: 20,
   },
 
 });

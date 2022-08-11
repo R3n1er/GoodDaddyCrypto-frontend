@@ -12,6 +12,7 @@ import {
   Image,
   ScrollView,
   Pressable,
+  Modal
 } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
@@ -116,21 +117,7 @@ const guidesProposal = (props) => {
             GUIDES
           </Text>
         </View>
-        <Modal
-          animationType="slide"
-          style={styles.centeredView}
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => {
-            setModalVisible(!modalVisible);
-          }}
-        >
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <View></View>
-            </View>
-          </View>
-        </Modal>
+        
         <ScrollView style={{ flex: 5 }}>
           <View style={{ width: 350 }}>{guideToDisplay}</View>
         </ScrollView>

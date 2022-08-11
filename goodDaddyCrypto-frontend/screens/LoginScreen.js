@@ -80,7 +80,7 @@ const LoginScreen = (props) => {
         <Pressable
           style={styles.button}
           onPress={() => {
-            props.navigation.navigate("FirstForm");
+            submitSignIn();
           }}
         >
           <Text style={{ color: "white" }}>SIGN-IN</Text>

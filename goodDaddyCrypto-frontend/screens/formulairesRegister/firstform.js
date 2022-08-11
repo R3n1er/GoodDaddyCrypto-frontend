@@ -93,7 +93,7 @@ const firstform = (props) => {
                 }}
                 style={styles.answer}
               >
-                Intérmediaire
+                Intermediaire
               </Text>
             </TouchableOpacity>
 
