@@ -55,16 +55,12 @@ export default AssetChart = (props) => {
     <View>
       <LineChart
         data={{
-          labels: ["January", "February", "March", "April", "May", "June"],
+          labels: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
           datasets: [
             {
               data: [
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
+                22133.6, 22797.951, 22561.893, 22803.174617, 23363.1200714,
+                22729.049408,
               ],
             },
           ],
@@ -72,20 +68,20 @@ export default AssetChart = (props) => {
         width={Dimensions.get("window").width} // from react-native
         height={220}
         yAxisLabel="€"
-        yAxisSuffix="date"
+        yAxisSuffix=""
         yAxisInterval={1} // optional, defaults to 1
         chartConfig={{
-          backgroundColor: "#e26a00",
-          backgroundGradientFrom: "#fb8c00",
-          backgroundGradientTo: "#ffa726",
+          backgroundColor: "#222121",
+          backgroundGradientFrom: "#222121",
+          backgroundGradientTo: "#1A0596",
           decimalPlaces: 2, // optional, defaults to 2dp
           color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
           labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
           style: {
-            borderRadius: 16,
+            borderRadius: 6,
           },
           propsForDots: {
-            r: "6",
+            r: "7",
             strokeWidth: "2",
             stroke: "#ffa726",
           },
@@ -93,7 +89,7 @@ export default AssetChart = (props) => {
         bezier
         style={{
           marginVertical: 8,
-          borderRadius: 16,
+          borderRadius: 50,
         }}
       />
     </View>

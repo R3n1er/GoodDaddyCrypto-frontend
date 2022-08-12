@@ -90,28 +90,50 @@ const btcWallet = (props) => {
           <Card
             containerStyle={{ backgroundColor: "#222121", borderRadius: 10 }}
           >
-            <Card.Title style={{ color: "white",fontSize:20 }}>
+            <Card.Title style={{ color: "white", fontSize: 20 }}>
               Prix actuel du {assetName}
             </Card.Title>
             <Image source={{ assetLogo }} />
             <Card.Divider />
             {/*//get current Price of asset with API */}
-            <Text style={{ alignSelf: "center", color: "#E335DC", fontSize:25,  fontWeight:"bold" }}>
+            <Text
+              style={{
+                alignSelf: "center",
+                color: "#E335DC",
+                fontSize: 25,
+                fontWeight: "bold",
+              }}
+            >
               1 {assetSymbol} = {showprice} €
             </Text>
           </Card>
-          </View>
-          {/* // Insert du graphique ici 
+        </View>
+        {/* // Insert du graphique ici 
       Le graphique doit afficher l'évolution du portefeuille dans le temps en fonction de amount of token et price$*/}
-      <AssetChart CryptoAssetID="bitcoin" IntervalDays={7} />
-      {/* // Ici information sur la valeur du portefeuille */}
-      <View>
-        <Card>
-          <Text>Valeur de ton portefeuille {assetName}</Text>
-          <Text>800 €</Text>
-          <Text>soit 0,051 {assetSymbol}</Text>
-        </Card>
-      </View>
+        <AssetChart CryptoAssetID="bitcoin" IntervalDays={7} />
+        {/* // Ici information sur la valeur du portefeuille */}
+        <View>
+          <Card
+            containerStyle={{ backgroundColor: "#222121", borderRadius: 10 }}
+          >
+            <Card.Title style={{ color: "white", fontSize: 20 }}>
+              Valeur de ton portefeuille {assetName}
+            </Card.Title>
+            <Card.Divider />
+            <View style={{ alignItems: "center" }}>
+              <Text
+                style={{ color: "#00B295", fontSize: 25, fontWeight: "bold" }}
+              >
+                {totalInvestmentAsset * showprice} €
+              </Text>
+              <Text
+                style={{ color: "#00B295", fontSize: 25, fontWeight: "bold" }}
+              >
+                {totalInvestmentAsset} {assetSymbol}
+              </Text>
+            </View>
+          </Card>
+        </View>
       </LinearGradient>
     </SafeAreaView>
   );

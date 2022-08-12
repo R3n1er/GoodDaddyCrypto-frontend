@@ -63,10 +63,7 @@ const ethWallet = (props) => {
       </Card>
       {/* // Insert du graphique ici 
       Le graphique doit afficher l'évolution du portefeuille dans le temps en fonction de amount of token et price$*/}
-      <View>
-        <Text>ICI LA PLACE DU GRAPHIQUE</Text>
-        {/* <walletChart /> */}
-      </View>
+      <AssetChart CryptoAssetID="bitcoin" IntervalDays={7} />
       {/* // Ici information sur la valeur du portefeuille */}
       <View>
         <Card>
