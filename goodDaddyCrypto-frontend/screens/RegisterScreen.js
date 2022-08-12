@@ -41,9 +41,6 @@ function RegisterScreen(props) {
     );
     var response = await result.json();
     setUserToken(response.userToken);
-    if (response.error.length == 0) {
-      props.navigation.navigate("FirstForm");
-    }
   };
 
   useEffect(() => {
@@ -125,6 +122,7 @@ function RegisterScreen(props) {
             style={styles.button}
             onPress={() => {
               submitRegister();
+              props.navigation.navigate("FirstForm");
             }}
           >
             <Text style={{ color: "white" }}>REGISTER</Text>

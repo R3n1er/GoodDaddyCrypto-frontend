@@ -23,7 +23,7 @@ import { Card } from "react-native-paper";
 const strategyProposal = (props) => {
   // INITIALISATION DES ETATS
   const [strategy, setStrategy] = useState([
-    { amountPaid: 0, frequency: "null", asset: "BTC" },
+    { amountPaid: 0, frequency: "null", asset: "BTC" },{amountPaid: 0, frequency: "null", asset: "BTC" },
   ]);
 
   // FONCTION POUR ENVOYER LA STRATEGIE EN BDD UNE FOIS VALIDEE PAR LE USER
@@ -187,9 +187,9 @@ const strategyProposal = (props) => {
                     source={require("../../assets/Ethereum.png")}
                   />
                   <Text style={styles.paragraph}>
-                    {strategy[0].amountPaid} € {strategy[0].frequency}
+                    {strategy[1].amountPaid} € {strategy[1].frequency}
                   </Text>
-                  <Text style={styles.paragraph}>en {strategy[0].asset}</Text>
+                  <Text style={styles.paragraph}>en {strategy[1].asset}</Text>
                 </View>
               </Card>
             </View>
@@ -264,6 +264,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     justifyContent: "center",
+    marginLeft:20
   },
   page: {
     flex: 5,

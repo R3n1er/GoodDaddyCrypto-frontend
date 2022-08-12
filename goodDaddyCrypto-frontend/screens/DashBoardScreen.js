@@ -20,9 +20,9 @@ function DashBoardScreen(props) {
   const [bitcoinToEuroToday, setBitcoinToEuroToday] = useState(0);
   const [tabPerf, setTabPerf] = useState([]);
   const [timeInterval, setTimeInterval] = useState(7);
-  const [ isPress, setIsPress ] = useState(true);
-  const [ isPress2, setIsPress2 ] = useState(false);
-  const [ isPress3, setIsPress3 ] = useState(false);
+  const [isPress, setIsPress] = useState(true);
+  const [isPress2, setIsPress2] = useState(false);
+  const [isPress3, setIsPress3] = useState(false);
 
   //INITIALISATION COMPONENT
   useEffect(() => {
@@ -101,7 +101,8 @@ function DashBoardScreen(props) {
       //calcul de la performance et push dans le tableau
       if (totalEuro != 0)
         var performance =
-          ((todayTotalBTC * prices[i][1] - totalEuro) * 100) / totalEuro;
+          (((todayTotalBTC * prices[i][1]) - (totalEuro)) * 100) /
+          totalEuro ;
       else {
         var performance = 0;
       }
@@ -169,7 +170,7 @@ function DashBoardScreen(props) {
       </View>
     );
   };
-  
+
   // *********RETURN DU JSX***********
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -192,7 +193,7 @@ function DashBoardScreen(props) {
             DASHBOARD
           </Text>
         </View>
-        <View style={{ flexDirection: "row", margin: 20,marginLeft:35 }}>
+        <View style={{ flexDirection: "row", margin: 20, marginLeft: 35 }}>
           <Pressable
             style={styles.button}
             onPress={() => {
@@ -210,7 +211,7 @@ function DashBoardScreen(props) {
             <Text style={{ color: "white" }}>WALLET ETH</Text>
           </Pressable>
         </View>
-        <View style={{ alignItems: "center",margin:20}}>
+        <View style={{ alignItems: "center", margin: 20 }}>
           <Text style={{ color: "white", fontSize: 20 }}>
             INVESTISSEMENT TOTAL :
           </Text>
@@ -219,71 +220,70 @@ function DashBoardScreen(props) {
           </Text>
           <Text style={{ color: "white", fontSize: 20 }}>PERFORMANCE :</Text>
           <Text style={{ color: "#F433AB", fontSize: 20, fontWeight: "bold" }}>
-            {Math.round(
-              ((totalInvestmentAsset * bitcoinToEuroToday -
-                totalInvestmentEuro) *
-                100) /
-                totalInvestmentEuro
-            )}{" "}
-            %
+            {Math.round((((totalInvestmentAsset * bitcoinToEuroToday) - totalInvestmentEuro) *100) / totalInvestmentEuro)} %
           </Text>
-          <Text style={{ color: "white", fontSize: 20  }}>
+          <Text style={{ color: "white", fontSize: 20 }}>
             VALEUR DU PORTEFEUILLE:
           </Text>
-          
+
           <Text style={{ color: "#F433AB", fontSize: 20, fontWeight: "bold" }}>
-          {totalInvestmentAsset * bitcoinToEuroToday}{" "}
-          €
+            {totalInvestmentAsset * bitcoinToEuroToday} €
           </Text>
         </View>
         {tabPerf.length != 0 ? graph() : null}
-        <View style={{ flexDirection: "row" }} >
-          <Pressable 
+        <View style={{ flexDirection: "row" }}>
+          <Pressable
             style={isPress ? styles.buttonGraphActive : styles.buttonGraph}
             onPress={() => {
               setTimeInterval(7);
               createTab(timeInterval, operations);
-              if( isPress == false) {
-                setIsPress(true)
+              if (isPress == false) {
+                setIsPress(true);
               }
-              if( isPress2 == true) {
-                setIsPress2(false)
+              if (isPress2 == true) {
+                setIsPress2(false);
               }
-              if( isPress3 == true) {
-                setIsPress3(false)
+              if (isPress3 == true) {
+                setIsPress3(false);
               }
             }}
           >
-          <Text style={{ color: "white" }}>1W</Text></Pressable>
+            <Text style={{ color: "white" }}>1W</Text>
+          </Pressable>
           <Pressable
             style={isPress2 ? styles.buttonGraphActive : styles.buttonGraph}
             onPress={() => {
               setTimeInterval(30);
               createTab(timeInterval, operations);
-              if( isPress == true) {
-                setIsPress(false)
-              };
-              if( isPress2 == false) {
-                setIsPress2(true)
+              if (isPress == true) {
+                setIsPress(false);
               }
-              if( isPress3 == true) {
-                setIsPress3(false)
+              if (isPress2 == false) {
+                setIsPress2(true);
+              }
+              if (isPress3 == true) {
+                setIsPress3(false);
               }
             }}
           >
             <Text style={{ color: "white" }}>1M</Text>
           </Pressable>
-          <Pressable style={isPress3 ? styles.buttonGraphActive : styles.buttonGraph} onPress={() => {
-              if( isPress == true) {
-                setIsPress(false)
+          <Pressable
+            style={isPress3 ? styles.buttonGraphActive : styles.buttonGraph}
+            onPress={() => {
+              if (isPress == true) {
+                setIsPress(false);
               }
-              if( isPress2 == true) {
-                setIsPress2(false)
+              if (isPress2 == true) {
+                setIsPress2(false);
               }
-              if( isPress3 == false) {
-                setIsPress3(true)
-              }}} >
-            <Text style={{ color: "white" }}>1Y</Text></Pressable>
+              if (isPress3 == false) {
+                setIsPress3(true);
+              }
+            }}
+          >
+            <Text style={{ color: "white" }}>1Y</Text>
+          </Pressable>
         </View>
       </LinearGradient>
     </ScrollView>

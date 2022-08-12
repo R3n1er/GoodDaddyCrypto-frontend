@@ -95,7 +95,7 @@ const resultform = (props) => {
     }
     note = note / 40;
     console.log("La note du user est de : " + note)
-    if (Math.round(note) == 1) {
+    if (Math.round(note) == 1 || Math.round(note) == 0 ) {
       setProfilInvestor("INVESTISSEUR DEBUTANT");
     }
     if (Math.round(note) == 2) {
@@ -130,7 +130,7 @@ const resultform = (props) => {
               backgroundColor: "#8E94F2",
               marginLeft: 10,
             }}
-            onPress={() => console.log(props.navigation.navigate("FifthForm"))}
+            onPress={() => {console.log(props.navigation.navigate("FifthForm"));}}
           >
             <Icon style={{ color: "white" }} name="chevron-left" size={20} />
             <Text style={{ color: "white" }}> RETOUR </Text>
@@ -149,6 +149,7 @@ const resultform = (props) => {
             style={styles.button}
             onPress={() => {
               props.navigation.navigate("StrategyProposal");
+            submitTypeInvestor(profilInvestor);
             }}
           >
             <Text style={{ color: "white" }}>CE PROFIL ME CONVIENT</Text>
