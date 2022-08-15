@@ -99,11 +99,10 @@ function DashBoardScreen(props) {
         }
       }
       //calcul de la performance et push dans le tableau
-      if (totalEuro != 0)
+      if (totalEuro != 0) {
         var performance =
-          (((todayTotalBTC * prices[i][1]) - (totalEuro)) * 100) /
-          totalEuro ;
-      else {
+          ((todayTotalBTC * prices[i][1] - totalEuro) * 100) / totalEuro;
+      } else {
         var performance = 0;
       }
       tab.push([new Date(todayDate), performance]);
@@ -220,7 +219,13 @@ function DashBoardScreen(props) {
           </Text>
           <Text style={{ color: "white", fontSize: 20 }}>PERFORMANCE :</Text>
           <Text style={{ color: "#F433AB", fontSize: 20, fontWeight: "bold" }}>
-            {Math.round((((totalInvestmentAsset * bitcoinToEuroToday) - totalInvestmentEuro) *100) / totalInvestmentEuro)} %
+            {/*Math.round(
+              ((totalInvestmentAsset * bitcoinToEuroToday -
+                totalInvestmentEuro) *
+                100) /
+                totalInvestmentEuro
+            )*/}
+            0%
           </Text>
           <Text style={{ color: "white", fontSize: 20 }}>
             VALEUR DU PORTEFEUILLE:
